@@ -23,10 +23,6 @@ public class PlayerFSM
         
     }
 
-
-
-
-
     /// <summary>
     /// what we want to happen when we are in the current state
     /// </summary>
@@ -115,13 +111,6 @@ public class PlayerFSM
         return false;
     }
 
-
-    //lvl1
-    //lvl2
-    //lvl3
-
-
-
     /// <summary>
     /// called from input handler to change the state of the player
     /// </summary>
@@ -131,13 +120,6 @@ public class PlayerFSM
         CheckTransition(cState, to);
         HandleTransition(to);
     }
-
-    public void ChangeLevel(string lvl)
-    {
-
-
-    }
-
 
     private PlayerState cState;
 
