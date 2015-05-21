@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InputHandler : MonoBehaviour {
-
- 
-	
+public class InputHandler : MonoBehaviour 
+{
+    private GameObject player;
+    private GameObject turret;
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 	// Update is called once per frame
 	void Update () 
     {
@@ -36,6 +40,15 @@ public class InputHandler : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.V))
         {
             PlayerActions.instance.Shoot();
+        }
+
+        ////Turret Controls
+        //Place Turrets
+
+        //Select turret to place
+        if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            TurretManager.instance.PlaceTurret();
         }
 	}
 
