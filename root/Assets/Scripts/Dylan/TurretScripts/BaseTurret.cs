@@ -29,136 +29,135 @@ public class BaseTurret : MonoBehaviour
 
     public float fireDelay;
     public float reloadTime;
-}
 
-//    public void OnTriggerEnter(Collider c)
-//    {
-//        if(c.gameObject.tag == "Target")
-//        {
-//            validTarget = true;
-//            target = c.gameObject;
-//            isTargetInRadius = true; 
-//        }
-//    }
 
-//    public void OnTriggerExit()
-//    {
-//        isTargetInRadius = false;
-//        turretView.GetComponent<FieldOfView>().isTargetInView = false;
-//    }
+    public void OnTriggerEnter(Collider c)
+    {
+        if (c.gameObject.tag == "Target")
+        {
+            validTarget = true;
+            target = c.gameObject;
+            isTargetInRadius = true;
+        }
+    }
 
-//    void distanceToTarget(Vector3 targetPos)
-//    {
-//        Vector3 aimPoint = new Vector3(targetPos.x, targetPos.y, targetPos.z);
-//        aimPoint.y += target.transform.localScale.y / 2;
-//        rotationToGoal = Quaternion.LookRotation(aimPoint - transform.position);
-//        /*
-//            used to calculate the distance the turret must rotate till it reaches its targets position
-//         */
-//    }
+    public void OnTriggerExit()
+    {
+        isTargetInRadius = false;
+        turretView.GetComponent<FieldOfView>().isTargetInView = false;
+    }
 
-//    void bulletFire()
-//    {
-//        if (currentAmmo != 0 && turretView.GetComponent<FieldOfView>().isTargetInView == true)
-//        {
-//            fireDelay = Time.time + rateOfFire;
+    void distanceToTarget(Vector3 targetPos)
+    {
+        Vector3 aimPoint = new Vector3(targetPos.x, targetPos.y, targetPos.z);
+        aimPoint.y += target.transform.localScale.y / 2;
+        rotationToGoal = Quaternion.LookRotation(aimPoint - transform.position);
+        /*
+            used to calculate the distance the turret must rotate till it reaches its targets position
+         */
+    }
 
-//            bullet.GetComponent<BulletMove>().isFired = true;
-//            currentAmmo -= 1;
+    void bulletFire()
+    {
+        if (currentAmmo != 0 && turretView.GetComponent<FieldOfView>().isTargetInView == true)
+        {
+            fireDelay = Time.time + rateOfFire;
 
-//            if(gameObject.tag == "MG")
-//            {
-//                foreach (Transform theBarrelPos in barrelPos)
-//                {
-//                    Instantiate(bullet, theBarrelPos.position, theBarrelPos.rotation);
-//                    print("Shoot");
-//                }
-//            }
+            bullet.GetComponent<BulletMove>().isFired = true;
+            currentAmmo -= 1;
 
-//            if(gameObject.tag == "AA")
-//            {
-//                //looper++;
-//                //if(looper == 6)
-//                //{
-//                //     looper = 0;
-//                //}
+            if(gameObject.tag == "MG")
+            {
+                foreach (Transform theBarrelPos in barrelPos)
+                {
+                    Instantiate(bullet, theBarrelPos.position, theBarrelPos.rotation);
+                    print("Shoot");
+                }
+            }
+
+            if(gameObject.tag == "AA")
+            {
+                //looper++;
+                //if(looper == 6)
+                //{
+                //     looper = 0;
+                //}
                 
-//                //    Instantiate(bullet, barrelPos[looper].position, barrelPos[looper].rotation);
-//                //    print(looper);
+                //    Instantiate(bullet, barrelPos[looper].position, barrelPos[looper].rotation);
+                //    print(looper);
 
-//                for (int i = 0; i < looper; i++)
-//                {
-//                    Vector3 spawnPos = new Vector3(barrelPos[1].position.x, 0, barrelPos[1].position.z);
+                Vector3 spawnPos = new Vector3(barrelPos[1].position.x, 0, barrelPos[1].position.z);
 
-//                    switch (looper % 6)
-//                    {
-//                        case 1: spawnPos.x = barrelPos[1].x; break;
-//                        case 2: spawnPos.z = ; break;
-//                    }
+                switch (looper % 6)
+                {
+                    case 1: spawnPos = barrelPos[0].position; break;
+                    case 2: spawnPos = barrelPos[1].position; break;
+                    case 3: spawnPos = barrelPos[2].position; break;
+                    case 4: spawnPos = barrelPos[3].position; break;
+                    case 5: spawnPos = barrelPos[4].position; break;
+                    case 6: spawnPos = barrelPos[5].position; break;
+                }
 
-//                    barrelPos.Normalize();
-
-//                    barrelPos *= ;
-
-//                    Instantiate(bullet, barrelPos, barrelPos[looper].rotation);
-//                }
-//            }
+                spawnPos.Normalize();
+                Instantiate(bullet, transform.position, transform.rotation);
+                }
+            
     
 
-//            if(currentAmmo == 0)
-//            {
-//                isReloading = true;
-//                turretView.GetComponent<FieldOfView>().isTargetInView = false;
-//            }
-//            /*
-//                set a delay for the RateOfFire and this loops through each of the posistions of the 
-//             *  turrets barrels to spawn a new bullet in the barrel to be fired agian
-//             */
-//        }
-//    }
+            if(currentAmmo == 0)
+            {
+                isReloading = true;
+                turretView.GetComponent<FieldOfView>().isTargetInView = false;
+            }
+            /*
+                set a delay for the RateOfFire and this loops through each of the posistions of the 
+             *  turrets barrels to spawn a new bullet in the barrel to be fired agian
+             */
+        }
+    }
 
-//    void turretReload()
-//    {
-//        reloadTime = Time.time + reloadSpeed;
-//        currentAmmo = maxAmmo;
-//        isReloading = false;
-//        turretView.GetComponent<FieldOfView>().isTargetInView = true;
-   
-//        /*
-//  * checks to see if the turret has bullets to fire, if not it reloads.
-//  * if it has bullets then the turret will begin to fire at the target.
-//  */
-//    }
+    void turretReload()
+    {
+        reloadTime = Time.time + reloadSpeed;
+        currentAmmo = maxAmmo;
+        isReloading = false;
+        turretView.GetComponent<FieldOfView>().isTargetInView = true;
 
-//    // Use this for initialization
-//    void Start () {}
-	
-//    // Update is called once per frame
-//    void Update () 
-//    {
-//            if (isTargetInRadius == true && isReloading == false && validTarget == true)
-//            {
-//                distanceToTarget(target.transform.position);
-//                transform.rotation = Quaternion.Lerp(transform.rotation, rotationToGoal, Time.deltaTime * rotationSpeed);
+        /*
+  * checks to see if the turret has bullets to fire, if not it reloads.
+  * if it has bullets then the turret will begin to fire at the target.
+  */
+    }
 
-//                if (Time.time > fireDelay)
-//                {
-//                    bulletFire();
-//                }
-//                /*
-//                    when the target comes into the radius of the turret the turret will begin to rotate till 
-//                 * the target is in its field of view and once it comes into the field of view it will begin to fire
-//                 */
-//            }
+    // Use this for initialization
+    void Start() { }
 
-        
-//        if(isReloading == true)
-//        {
-//            if(Time.time > reloadTime)
-//            {
-//                turretReload();
-//                print("Reloading");
-//            }
-//        }
-//    }
-//}
+    // Update is called once per frame
+    void Update()
+    {
+        if (isTargetInRadius == true && isReloading == false && validTarget == true)
+        {
+            distanceToTarget(target.transform.position);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotationToGoal, Time.deltaTime * rotationSpeed);
+
+            if (Time.time > fireDelay)
+            {
+                bulletFire();
+            }
+            /*
+                when the target comes into the radius of the turret the turret will begin to rotate till 
+             * the target is in its field of view and once it comes into the field of view it will begin to fire
+             */
+        }
+
+
+        if (isReloading == true)
+        {
+            if (Time.time > reloadTime)
+            {
+                turretReload();
+                print("Reloading");
+            }
+        }
+    }
+}

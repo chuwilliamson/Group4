@@ -54,44 +54,44 @@ public class TurretPlacement : MonoBehaviour
     
     public void TurretSelect(int choice = 0)
     {
-        //if (Input.GetKeyDown("1")) 
-        //    // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
-        //{
-        //    print("1 Turret Selected");
-        //    // The turret placement will be placed in front of the player by 1 unit.
-        //    turret = turret1;
-        //    isSelected = true;
-        //}
-
-        //if (Input.GetKeyDown("2"))
-        //{
-        //    print("2 Turret Selected");
-        //    turret = turret2;
-        //    isSelected = true;
-        //}
-
-        //if (Input.GetKeyDown("3"))
-        //{
-        //    print("3 Turret Selected");
-        //    turret = turret3;
-        //    isSelected = true;
-        //}
-
-        //if (Input.GetKeyDown("4"))
-        //{
-        //    print("4 Turret Selected");
-        //    turret = turret4;
-        //    isSelected = true;
-        //}
-        switch(choice)
+        if (Input.GetKeyDown("1"))
+        // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
         {
-            case 1:  
-                {
-                    print("1 Turret Selected");
-                    //The turret placement will be placed in front of the player by 1 unit.
-                    turret = turret1;
-                    isSelected = true; break;
-                }
+            print("1 Turret Selected");
+            // The turret placement will be placed in front of the player by 1 unit.
+            turret = turret1;
+            isSelected = true;
         }
+
+        if (Input.GetKeyDown("2"))
+        {
+            print("2 Turret Selected");
+            turret = turret2;
+            isSelected = true;
+        }
+
+        if (Input.GetKeyDown("3"))
+        {
+            print("3 Turret Selected");
+            turret = turret3;
+            isSelected = true;
+        }
+
+        if (Input.GetKeyDown("4"))
+        {
+            print("4 Turret Selected");
+            turret = turret4;
+            isSelected = true;
+        }
+        //switch(choice)
+        //{
+        //    case 1:  
+        //        {
+        //            print("1 Turret Selected");
+        //            //The turret placement will be placed in front of the player by 1 unit.
+        //            turret = turret1;
+        //            isSelected = true; break;
+        //        }
+        //}
     }
 }
