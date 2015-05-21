@@ -13,7 +13,7 @@ public class EnemyStats : Stats
 
         m_Acc = 1;
         m_Def = 1;
-        m_Speed = 1;
+        m_Speed = 10;
         m_MaxHealth = 100;
         m_Health = m_MaxHealth;
 
