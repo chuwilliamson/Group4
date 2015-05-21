@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 public class PlayerFSM
 {
-    bool canSlap, canJump, canShoot;
+    bool canSlap, canJump, canShoot, placeTurret;
     Dictionary<string, bool> ActionDict;
     /// <summary>
     /// on construction we will initialize our action list
@@ -16,10 +16,13 @@ public class PlayerFSM
         canSlap = false;
         canJump = false;
         canShoot = false;
+        placeTurret = false;
+
         ActionDict = new Dictionary<string, bool>();
         ActionDict.Add("slap", canSlap);
         ActionDict.Add("jump", canJump);
         ActionDict.Add("shoot", canShoot);
+        ActionDict.Add("placeTurret", placeTurret);
         
     }
 
@@ -37,29 +40,29 @@ public class PlayerFSM
 
         switch (state)
         {
-            case PlayerState.init:
+            case PlayerState.init: //start up
                 foreach (KeyValuePair<string, bool> entry in ActionDict)
                 {
-                    ActionDict[entry.Key] = false;
+                    ActionDict[entry.Key] = false; //cant do anythingin the dictionary
                 }
                 break;
 
             case PlayerState.idle:
                 foreach (KeyValuePair<string, bool> entry in ActionDict)
                 {
-                    ActionDict[entry.Key] = true;
+                    ActionDict[entry.Key] = true; //can do everything in the dictionary
                 }
                 break;
 
             case PlayerState.walk:
                 foreach (KeyValuePair<string, bool> entry in ActionDict)
                 {
-                    ActionDict[entry.Key] = true;
+                    ActionDict[entry.Key] = true; //can do everything in the dictionary
                 }
                 break;
 
             case PlayerState.run:
-                ActionDict["slap"] = false;
+                ActionDict["slap"] = false; //cant do anythingin the dictionary
                 break;
         }
 
