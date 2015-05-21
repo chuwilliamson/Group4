@@ -1,16 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.UI;
 public class test : MonoBehaviour
 {
-    public List<GameObject> list = new List<GameObject>();
-    [ContextMenu("Space")]
-    void Space()
+    public ItemDatabase refToDB;
+    public Text nameQueryLabel;
+    public Text idQueryLabel;
+    
+    void NameQuery()
     {
-        foreach (GameObject go in list)
-        {
-            go.transform.position = new Vector3(go.transform.position.x + 5, go.transform.position.y + 5, go.transform.position.z + 5);
-        }
+        string theQuery = "";
+        theQuery = ShelbyDatabase.instance.SelectAllNames(refToDB);
+      //sword_0 sword_2
+        nameQueryLabel.text = theQuery;
     }
+
+    void IDQuery()
+    {
+        string theQuery = "";
+        theQuery = ShelbyDatabase.instance.SelectAllIDs(refToDB);
+        //sword_0 sword_2
+        idQueryLabel.text = theQuery;
+    }
+
 }
