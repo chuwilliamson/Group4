@@ -19,7 +19,7 @@ public class BaseTurret : MonoBehaviour
     public int maxHP = 100;  // max amount of HP the turret can have at any moment
     public int currentHP = 100;   //is decreased by a certain amount when damage is taken and will vary form enemy to enemy how much damage is taken
 
-    int looper;
+    int looper = 1;
 
     public bool isTargetInRadius = false; //checks to see if the target is in the radius of the turret
     public bool isReloading = false;
@@ -66,6 +66,9 @@ public class BaseTurret : MonoBehaviour
             bullet.GetComponent<BulletMove>().isFired = true;
             currentAmmo -= 1;
 
+            //Fire mechanics for the MachineGun turret
+            //gets the position of the barrel and spawns the 
+            //bullet at that barrels position
             if(gameObject.tag == "MG")
             {
                 foreach (Transform theBarrelPos in barrelPos)
@@ -75,34 +78,35 @@ public class BaseTurret : MonoBehaviour
                 }
             }
 
+            //Fire mechanics for the AA Turret
+            //Gets the positions of the barrels and assigns the
+            //spawn positions for the bullet based on the
+            //case selected for the barrel's location that
+            //we want the bullet to spawn
             if(gameObject.tag == "AA")
             {
-                //looper++;
-                //if(looper == 6)
-                //{
-                //     looper = 0;
-                //}
-                
-                //    Instantiate(bullet, barrelPos[looper].position, barrelPos[looper].rotation);
-                //    print(looper);
+                Vector3 spawnPos = new Vector3(barrelPos[0].position.x, 
+                                               barrelPos[0].position.y, 
+                                               barrelPos[0].position.z);
+                looper++;
 
-                Vector3 spawnPos = new Vector3(barrelPos[1].position.x, 0, barrelPos[1].position.z);
-
-                switch (looper % 6)
+                switch (looper % 7)
                 {
-                    case 1: spawnPos = barrelPos[0].position; break;
-                    case 2: spawnPos = barrelPos[1].position; break;
-                    case 3: spawnPos = barrelPos[2].position; break;
-                    case 4: spawnPos = barrelPos[3].position; break;
-                    case 5: spawnPos = barrelPos[4].position; break;
-                    case 6: spawnPos = barrelPos[5].position; break;
+                    case 1: spawnPos = barrelPos[0].position; print("Fire 1"); break;
+                    case 2: spawnPos = barrelPos[1].position; print("Fire 2"); break;
+                    case 3: spawnPos = barrelPos[2].position; print("Fire 3"); break;
+                    case 4: spawnPos = barrelPos[3].position; print("Fire 4"); break;
+                    case 5: spawnPos = barrelPos[4].position; print("Fire 5"); break;
+                    case 6: spawnPos = barrelPos[5].position; print("Fire 6"); break;
                 }
-
-                spawnPos.Normalize();
-                Instantiate(bullet, transform.position, transform.rotation);
+                
+                Instantiate(bullet, spawnPos, barrelPos[1].rotation);
                 }
             
-    
+            if(gameObject.tag == "ShotGun")
+            {
+
+            }
 
             if(currentAmmo == 0)
             {
