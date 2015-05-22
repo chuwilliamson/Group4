@@ -23,6 +23,12 @@ public class PlayerActions : MonoBehaviour, IActions
         print("shoot");
     }
 
+    public void PlaceTurret()
+    {
+        print("place turret");
+        GetComponent<TurretPlacement>().TurretSelect();
+    }
+
     protected static  PlayerActions _instance;
     private PlayerFSM fsm;
 

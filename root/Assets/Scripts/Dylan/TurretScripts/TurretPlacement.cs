@@ -16,13 +16,15 @@ public class TurretPlacement : MonoBehaviour
     {
         dot.gameObject.SetActive(false);
 	}
+
+
 	
-	// Update is called once per frame
+	 //Update is called once per frame
     void Update()
     {
         TurretSelect();
         TurretPlace();
-        //calls in the functions for selecting a turret and placing the turrets
+      //  calls in the functions for selecting a turret and placing the turrets
     }
 
     void TurretPlace()
@@ -49,10 +51,11 @@ public class TurretPlacement : MonoBehaviour
         }
     }
 
-    void TurretSelect()
+    
+    public void TurretSelect(int choice = 0)
     {
-        if (Input.GetKeyDown("1")) 
-            // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
+        if (Input.GetKeyDown("1"))
+        // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
         {
             print("1 Turret Selected");
             // The turret placement will be placed in front of the player by 1 unit.
@@ -80,5 +83,15 @@ public class TurretPlacement : MonoBehaviour
             turret = turret4;
             isSelected = true;
         }
+        //switch(choice)
+        //{
+        //    case 1:  
+        //        {
+        //            print("1 Turret Selected");
+        //            //The turret placement will be placed in front of the player by 1 unit.
+        //            turret = turret1;
+        //            isSelected = true; break;
+        //        }
+        //}
     }
 }
