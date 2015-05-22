@@ -69,7 +69,7 @@ public class BaseTurret : MonoBehaviour
             //Fire mechanics for the MachineGun turret
             //gets the position of the barrel and spawns the 
             //bullet at that barrels position
-            if(gameObject.tag == "MG")
+            if(gameObject.tag == "One Barrel")
             {
                 foreach (Transform theBarrelPos in barrelPos)
                 {
@@ -102,11 +102,6 @@ public class BaseTurret : MonoBehaviour
                 
                 Instantiate(bullet, spawnPos, barrelPos[1].rotation);
                 }
-            
-            if(gameObject.tag == "ShotGun")
-            {
-
-            }
 
             if(currentAmmo == 0)
             {

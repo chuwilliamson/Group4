@@ -8,7 +8,8 @@ TagManager:
   - Fire
   - Target
   - AA
-  - MG
+  - One Barrel
+  - ShotGunShell
   layers:
   - Default
   - TransparentFX

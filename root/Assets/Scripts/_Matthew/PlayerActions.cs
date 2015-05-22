@@ -29,6 +29,11 @@ public class PlayerActions : MonoBehaviour, IActions
         GetComponent<TurretPlacement>().TurretSelect();
     }
 
+    public void State(PlayerState state)
+    {
+        fsm.ChangeState(state);
+    }
+
     protected static  PlayerActions _instance;
     private PlayerFSM fsm;
 
