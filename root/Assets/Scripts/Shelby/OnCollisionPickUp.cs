@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public class OnCollisionPickUp : MonoBehaviour
 {
 
-    PlayerInventory inventory;
+    Inventory inventory;
 
     void Awake()
     {
-        inventory = gameObject.GetComponentInChildren<PlayerInventory>();
+        inventory = gameObject.GetComponentInChildren<Inventory>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -21,7 +21,7 @@ public class OnCollisionPickUp : MonoBehaviour
         {
             case "Resource":
                 int scrapValue = other.gameObject.GetComponent<Resource>().value;
-                //pickable objects have different values
+                // resource objects have different values
                 if (scrapValue >= 5)
                     inventory.scraps_special += scrapValue;
                 else if (scrapValue < 5)
@@ -31,55 +31,11 @@ public class OnCollisionPickUp : MonoBehaviour
                 break;
             case "Item":
                 //items will always have a playerinventory script attached to them
-                //gameObject.GetComponentInChildren<PlayerInventory>().items.Add(gameObject);
+                //gameObject.GetComponentInChildren<Inventory>().items.Add(gameObject);
                 other.gameObject.GetComponent<IPickup>().PickUp();
                 break;
             default: break;
         }
-
-        //Object.Destroy(other.gameObject);
-        //check other object's tags to determine what to do
-        //if (other.gameObject.tag == "Pickable")
-        //{
-            
-            // mTags = other.gameObject.GetComponent<MiscTags>();
-
-        //}
-
-
-
-
-        /*
-        switch(mTags.mTag01)
-        {
-            case "Item":
-                {
-                    //gameObject.GetComponentInChildren<PlayerInventory>().items.Add(gameObject);
-                    //other.gameObject.transform.parent = gameObject.transform;
-                    //other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                    //other.gameObject.transform.localPosition = new Vector3(0, 1, 2);
-                }
-                break;
-            case "Resource":
-                {
-
-                       
-                    /*
-                    if (mTags.mTag02 == "Scrap")
-                    {
-                        Object.Destroy(other.gameObject);
-                        inventory.scraps++;
-                           
-                    }
-                        
-                    else
-                    {
-                        Object.Destroy(other.gameObject); 
-                        inventory.scraps_special++;
-               
-                }
-                break;
-        }*/
 
         //print(gameObject.name);
         //if (other.gameObject.tag == "Item")
