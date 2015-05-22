@@ -1,13 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
-/// <summary>
-///  The Numbers displeyed in the HUD will be set by the ScoreManager
-/// 
-///  "ScoreManager.cs Needed"
-/// 
-/// </summary>
+
 public class HUDManager : Singleton<HUDManager>
 {
     [SerializeField] GameObject hp;
@@ -15,40 +11,99 @@ public class HUDManager : Singleton<HUDManager>
     [SerializeField] GameObject scrap;
     [SerializeField] GameObject promp;
 
+    
+
+    List<GameObject> Log = new List<GameObject>();
+    [SerializeField] GameObject LogText;
+    private int nexTile = 0;
+    private int maxLogSize = 5;
+
     void Awake()
     {
         GUIManager.instance.SetState(promp, false);
+
+        Log.Add(LogText);
+        nexTile++;
+
     }
    
 
     /// <summary>
-    /// Used by the Score Manager Do not call.
+    /// Changes the Text for hp,turrent,scrap 
     /// </summary>
     /// // // // // // // // // // // // // // // // // // // // // // // // // // // //
-     public void HpHUDfloat(float curHp, float maxHp)
+     public void HpHUD(float curHp, float maxHp)
     {
-        hp.GetComponent<Text>().text = curHp.ToString() + '/' + maxHp.ToString();
+        string curString = curHp.ToString();
+        string maxString = maxHp.ToString();
+
+         if(curHp >= 10000)
+         {
+             curHp /= 1000;
+             
+             curString = curHp.ToString("#.#") + 'K';
+         }
+         if(maxHp >= 10000)
+         {
+             maxHp /= 1000;
+             maxString = curHp.ToString("#.#") + 'K';
+         }
+
+
+        hp.GetComponent<Text>().text = curString + '/' + maxString;
     }
-     public void HpHUDint(int curHp, int maxHp)
+     public void HpHUD(int curHp, int maxHp)
+     {
+         string curString = curHp.ToString();
+         string maxString = maxHp.ToString();
+
+         if (curHp >= 10000)
+         {
+             
+             curHp /= 1000;
+             curString = curHp.ToString("#.#") + 'K';
+         }
+         if (maxHp >= 10000)
+         {
+             maxHp /= 1000;
+             curString = curHp.ToString("#.#") + 'K';
+         }
+
+
+         hp.GetComponent<Text>().text = curString + '/' + maxString;
+     }
+     public void ScrapHUD(float scraps)
     {
-        hp.GetComponent<Text>().text = curHp.ToString() + '/' + maxHp.ToString();
+
+        string scrapsString = scraps.ToString("#.#");
+
+        if (scraps >= 10000)
+        {
+            scraps /= 1000;
+            scrapsString = scraps.ToString("#.#") + 'K';
+        }
+        scrap.GetComponent<Text>().text = scrapsString;
     }
-     public  void ScrapHUDfloat(float scraps)
-    {
-        scrap.GetComponent<Text>().text = scraps.ToString();
-    }
-     public void ScrapHUDint(int scraps)
-    {
-        scrap.GetComponent<Text>().text = scraps.ToString();
-    }
-     public void TurHUDfloat(float tur)
+     public void ScrapHUD(int scraps)
+     {
+
+         string scrapsString = scraps.ToString();
+
+         if (scraps >= 10000)
+         {
+             scraps /= 1000;
+             scrapsString = scraps.ToString() + 'K';
+         }
+         scrap.GetComponent<Text>().text = scrapsString.ToString();
+     }
+     public void TurHUD(float tur)
     {
         turrent.GetComponent<Text>().text = tur.ToString();
     }
-     public void TurHUDint(int tur)
-    {
-        turrent.GetComponent<Text>().text = tur.ToString();
-    }
+     public void TurHUD(int tur)
+     {
+         turrent.GetComponent<Text>().text = tur.ToString();
+     }
     /// // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
      public void PrompDis(string strng)
@@ -65,15 +120,66 @@ public class HUDManager : Singleton<HUDManager>
         // Debug.Log("Settings");
 
      }
-
-
-    public void PrompClear()
+     public void PrompClear()
      {
 
         // promp.SetActive(false);
 
      }
   
+    public void SetLogSize(int size)
+     {
+         maxLogSize = size;
+     }
+    /// <summary>
+    /// 
+    /// Creates a new Tile based on the position of the last tile created and moves all the tiles up.
+    /// 
+    /// if the tile number gets to the same number as maxLogSize the next tile is not created but instead the first tile in the array moved to the start location.
+    /// 
+    /// 
+    /// </summary>
+    /// <param name="strng"></param>
+    public void LogUp(string strng)
+     {
+         int prev = 0;
+         if (nexTile < maxLogSize) { prev = nexTile;  nexTile = 0; }
+
+        if(nexTile <= maxLogSize && Log.Count < nexTile)
+        {
+            Vector3 vec3 = Log[nexTile-1].GetComponent<RectTransform>().localPosition;
+            vec3.y += Log[nexTile-1].GetComponent<RectTransform>().sizeDelta.y;
+            GameObject a = (GameObject)Instantiate(LogText, vec3, Log[nexTile-1].GetComponent<RectTransform>().localRotation);
+            Log.Add(a);
+            Log[nexTile].GetComponent<Text>().text = strng;
+
+            nexTile++;
+        }
+        else if(nexTile <= maxLogSize && Log[nexTile].activeSelf == true)
+        {
+            Vector3 vec3 = Log[prev].GetComponent<RectTransform>().localPosition;
+            vec3.y += Log[prev].GetComponent<RectTransform>().sizeDelta.y;
+          
+            Log[nexTile].GetComponent<Text>().text = strng;
+        }
+
+        for (int i = 0; i <= Log.Count - 1; i++)
+        {
+            Vector3 vec3 = Log[i].GetComponent<RectTransform>().localPosition;
+            vec3.y += Log[nexTile - 1].GetComponent<RectTransform>().sizeDelta.y;
+            Log[i].GetComponent<RectTransform>().localPosition = vec3;
+        }
+
+
+     }
+    /*
+     
+     * Log:
+     * 
+     * Array of logs
+     * 
+     
+     */
    
 
 }
