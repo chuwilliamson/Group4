@@ -24,9 +24,12 @@ public class test : MonoBehaviour
         idQueryLabel.text = theQuery;
     }
 
-    void Update ()
+    public string blah = "shelby";
+    [ContextMenu("test string")]
+    void testSTring()
     {
-        NameQuery();
-        IDQuery();
+        blah = blah.Remove(blah.Length - 2, 2);
+        print(blah);
+  
     }
 }
