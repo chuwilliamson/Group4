@@ -51,7 +51,7 @@ public  class ShelbyDatabase : Singleton<ShelbyDatabase>
         string Names = "";
         for (int i = 0; i < db.database.Count; ++i)
         {
-            Names = db.database[i].GetComponent<Item>().name + ",\n";
+            Names += db.database[i].GetComponent<Item>().name + ",\n";
         }
         Names.Remove(Names.Length - 2, 2);
         return Names;
@@ -62,7 +62,7 @@ public  class ShelbyDatabase : Singleton<ShelbyDatabase>
         string IDs = "";
         for (int i = 0; i < db.database.Count; ++i)
         {
-            IDs = db.database[i].GetComponent<Item>().id.ToString() + ",\n";
+            IDs += db.database[i].GetComponent<Item>().id.ToString() + ",\n";
         }
         IDs.Remove(IDs.Length - 2, 2);
         return IDs;
