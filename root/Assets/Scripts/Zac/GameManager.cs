@@ -1,21 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-
+using System.Collections.Generic; 
 public class GameManager : Singleton<GameManager>
 {
-    //// For Test only
-    //public string theLevel;
+    //[horizontalLine]
+    [HideInInspector]
+    public List<string> Levels = new List<string>();
 
-    [SerializeField]
-    private string mainMenu;
-    [SerializeField]
-    private string exitMenu;
-    [SerializeField]
-    private string jumpLevel;
-    
-    private bool transitionPossible;
-
+    public AnimationCurve curve;
+    // Game State possible  : <Enum>
     public enum StateManager 
     { 
         INIT,
@@ -23,133 +16,173 @@ public class GameManager : Singleton<GameManager>
         RUNNING,
         EXIT
     };
-
+    // Different Level      : <Enum>
     public enum Level
     {
         MainMenu,
-        Combat,
+        Level1,
+        Level2,
+        Level3,
         Conclusion,
     }
-    private StateManager currentState;
+    // Pause State rate     : <Enum>
+    public enum PauseState
+    {
+        Full,       // Update Halted
+        Half,       // Update at half speed
+        None,       // Update rate not effected
+    }
+
+    private bool transitionPossible;
+    private StateManager c_GameState;
+    private Level        c_Level;
+    private PauseState   c_PauseState;
+    
 
     protected override void Awake()
     {
         transitionPossible = true;
-        currentState = StateManager.INIT;
+        c_GameState = StateManager.INIT;
         base.Awake();           
     }
 
+    public void PopulateArray()
+    {
+        print("print that array");
+    }
 
-    /// <summary>
+    [ContextMenu("do the thing i said to do")]
+    public void doIt()
+    {
+        GameObject blah = new GameObject();
+        blah.name = "doit";
+        Instantiate(blah);
+        print("do it dude make a go");
+    }
+
+    public void PopulateArray(string go)
+    {
+        Levels.Add(go);
+        print(curve.Evaluate(0.5f));
+    }
     /// usage: GameManager.instance.Transition("Combat")
-    /// </summary>
-    /// <param name="o"></param>
     public void Transition(Level lev)
     {
-        
         switch(lev)
         {
             case Level.MainMenu:
-                Application.LoadLevel(mainMenu);
+                if(CheckTransition(StateManager.MAINMENU))
+                {
+                    Application.LoadLevel(Levels[(int)Level.MainMenu]);
+                    c_GameState = StateManager.MAINMENU;
+                }
                 break;
-            case Level.Combat:
-                Application.LoadLevel(jumpLevel);
+            case Level.Level1:
+                if (CheckTransition(StateManager.INIT))
+                {
+                    Application.LoadLevel(Levels[(int)Level.Level1]);
+                    c_GameState = StateManager.INIT;
+                }
+                break;
+            case Level.Level2:
+                if (CheckTransition(StateManager.INIT))
+                {
+                    Application.LoadLevel(Levels[(int)Level.Level2]);
+                    c_GameState = StateManager.INIT;
+                }
+                break;
+            case Level.Level3:
+                if (CheckTransition(StateManager.INIT))
+                {
+                    Application.LoadLevel(Levels[(int)Level.MainMenu]);
+                    c_GameState = StateManager.INIT;
+                }
                 break;
             case Level.Conclusion:
-                Application.LoadLevel(exitMenu);
+                if(CheckTransition(StateManager.EXIT))
+                    Application.LoadLevel(Levels[(int)Level.Conclusion]);
                 break;
-
+            default: break;
         } 
         
-        print("hit");
+        print("hit");   // test
         print(Application.loadedLevelName);
-
-
-        //prevent self transition
-        //if (Application.loadedLevelName /**/)
-        //{
-        //    transitionPossible = false;
-        //    print("Already Loaded");
-        //}
-
-        //if (true)
-        //{
-        //    //switch (currentState)
-        //    //{
-        //    //    case StateManager.INIT:
-        //    //        {
-
-        //    //        } break;
-        //    //    case StateManager.EXIT:
-        //    //        {
-        //    //            Application.LoadLevel(exitMenu);
-        //    //        } break;
-                 
-        //    //    case StateManager.MAINMENU:
-        //    //        {
-        //    //            Application.LoadLevel(mainMenu);
-        //    //        } break;
-        //    //    case StateManager.RUNNING:
-        //    //        {
-        //    //            Application.LoadLevel(jumpLevel);
-        //    //        } break;
-        //    //}
-        //}
-        
     }
 
-    
-
-
-    private bool CheckTransition(StateManager stateA, StateManager stateB)
+    private bool CheckTransition(StateManager stateB)
     {
-        switch(stateA)
+        if (c_GameState == stateB)
         {
-                //init to mainmenu check
-            case StateManager.INIT:
-                if (stateB == StateManager.MAINMENU)
-                    return true;
-                break;
-                //mainmenu to running check
-            case StateManager.MAINMENU:
-                if (stateB == StateManager.RUNNING)
-                    return true;
-                break;
-                //running back to mainmenu 
-                //the popback
-            case StateManager.RUNNING:
-                if (stateB == StateManager.MAINMENU)
-                    return true;
-                break;
-
-            default:
-                break;               
+            /// Not valid; Transistion to current state
+            print("Already in this state. Check returned: False");
+            return false;
         }
 
-        return false;
+        else
+        {
+            switch (c_GameState)
+            {
+                // init to mainmenu check
+                case StateManager.INIT:
+                    if (stateB == StateManager.MAINMENU)
+                        return true;
+                    break;
+                // mainmenu to running check
+                case StateManager.MAINMENU:
+                    if (stateB == StateManager.RUNNING)
+                        return true;
+                    break;
+                // running back to mainmenu 
+                case StateManager.RUNNING:
+                    if (stateB == StateManager.MAINMENU)
+                        return true;
+                    if (stateB == StateManager.EXIT)
+                        return true;
+                    break;
+
+                default:
+                    break;
+            }
+
+            return false;
+        }
     }
-
-    
-
     
 
 	// Use this for initialization
 	void Start () 
     {
-        
+        c_GameState  = StateManager.MAINMENU;
+        c_PauseState = PauseState.None;
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Transition(Level.MainMenu);
-        }
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Transition(Level.Combat);
-        }
+        
+
 	}
+
+    public void Pause(PauseState state)
+    {
+        string debugtext = "Blank";
+        switch(state)
+        {
+            case PauseState.None:
+                { Time.timeScale = 1; debugtext = "Full Update"; }
+                break;
+            case PauseState.Half:
+                { Time.timeScale = 0.5f; debugtext = "Half Update"; }
+                break;
+            case PauseState.Full:
+                { Time.timeScale = 0; debugtext = "Update Halfed"; }
+                break;
+            default: break;
+        }
+        // Debug
+        print("Pause function hit. State triggered: " + debugtext);
+    }
+
+    
 }
