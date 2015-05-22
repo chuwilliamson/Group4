@@ -9,7 +9,6 @@ public class EnemyStats : Stats
     void Start()
     {
         m_Level = 1;
-        m_ExpNeeded = 100;
 
         m_Acc = 1;
         m_Def = 1;
