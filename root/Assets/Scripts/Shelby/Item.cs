@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Item : MonoBehaviour {
+public abstract class Item : MonoBehaviour 
+{    
+    public string name;
+    public string id;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    protected void Awake()
+    {
+        if (name == "" || id == "")
+            PopulateFields();
+    }
+
+    [ContextMenu("Populate Item Fields")]
+    protected void PopulateFields()
+    {
+        name = gameObject.name;
+        string type = "sword_";
+        id = gameObject.name.Replace(type, ""); 
+    }
 }
