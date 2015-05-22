@@ -8,7 +8,9 @@ public class BulletMove : MonoBehaviour {
 
     private float myDist;
 
-    int numOfShots;
+    private int spreadRate = 4;
+
+    int numOfShots = 1;
 
     public bool isFired = false; //a bool to check if the bullet is beign fired
 
@@ -39,13 +41,11 @@ public class BulletMove : MonoBehaviour {
 
             Vector3 BBPos = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
 
-            switch(numOfShots % 6)
+            switch(numOfShots % 4)
             {
-                case 1: break;
-                case 2: break;
-                case 3: break;
-                case 4: break;
-                case 5: break;
+                case 1: BBPos.x += Random.Range(-spreadRate, spreadRate); break;
+                case 2: BBPos.y += Random.Range(-spreadRate, spreadRate); break;
+                case 3: BBPos.z += Random.Range(-spreadRate, spreadRate); break;
             }
         }
 	}
