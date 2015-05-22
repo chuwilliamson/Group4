@@ -2,15 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class LevelLoader : MonoBehaviour {
-    // Going to be handled by GameManager
-    //public enum GameState
-    //{
-    //    RUNNING,
-    //    PAUSED,
-    //    EXIT
-    //}
-    // Persistant GameObjects to carry over
+public class LevelLoader : MonoBehaviour 
+{
     public List<GameObject> persistant;
     
     
