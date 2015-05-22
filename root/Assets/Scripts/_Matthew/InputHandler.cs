@@ -10,7 +10,7 @@ public class InputHandler : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 	// Update is called once per frame
-	void Update () 
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -28,7 +28,7 @@ public class InputHandler : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.D))
-        { 
+        {
             //walk state
         }
 
@@ -41,6 +41,7 @@ public class InputHandler : MonoBehaviour
         {
             PlayerActions.instance.Shoot();
         }
+<<<<<<< HEAD
 
         ////Turret Controls
         //Place Turrets
@@ -51,6 +52,26 @@ public class InputHandler : MonoBehaviour
             TurretManager.instance.PlaceTurret();
         }
 	}
+=======
+>>>>>>> chuwilliamson/master
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            /// Pause State Half (Update at Half speed)
+            GameManager.instance.Pause(GameManager.PauseState.Half);
+        }
 
-}
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            /// Pause State Full (Update Halted)
+            GameManager.instance.Pause(GameManager.PauseState.Full);
+        }
+
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            /// 
+            //GameManager.instance.Transition();
+        }
+    }
+        
+    }
