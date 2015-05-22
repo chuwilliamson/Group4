@@ -21,20 +21,20 @@ public class InputManager : MonoBehaviour {
     
 
 	// Update is called once per frame
-	void Update () 
-    {
-        int pn = 1;
-        Input.GetAxis("Horizontal" + pn); // if pn = 1
+    //void Update () 
+    //{
+    //    int pn = 1;
+    //    Input.GetAxis("Horizontal" + pn); // if pn = 1
 
 
 
 
-        if(Input.GetButton("Fire1"))
-        {
+    //    if(Input.GetButton("Fire1"))
+    //    {
 
-        }
-        bool buttonpress = false;
-        if (buttonpress)
-            GameManager.instance.Transition(GameManager.Level.MainMenu);
-	}
+    //    }
+    //    bool buttonpress = false;
+    //    if (buttonpress)
+    //        GameManager.instance.Transition(GameManager.Level.MainMenu);
+    //}
 }

@@ -5,8 +5,6 @@ using System.Collections.Generic;
 public class LevelLoader : MonoBehaviour 
 {
     public List<GameObject> persistant;
-    
-    
     public string testNext;     // Test 
     
     void addPersistant(GameObject o)
