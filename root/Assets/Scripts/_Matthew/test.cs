@@ -24,6 +24,12 @@ public class test : MonoBehaviour
         idQueryLabel.text = theQuery;
     }
 
+    void Update ()
+    {
+        NameQuery();
+        IDQuery();
+    }
+
     public string blah = "shelby";
     [ContextMenu("test string")]
     void testSTring()

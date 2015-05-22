@@ -5,18 +5,21 @@ using EquipmentTypes;
 public class MakeEquipment : MonoBehaviour
 {
     public GameObject equipment;
+    public ItemDatabase refToDB;
 
-    void OnTriggerStay(Collider other)
+
+    [ContextMenu("Get shit done.")]
+    void MakeTheEquipment()
     {
-        if (other.gameObject.tag == "Player")
-        {
-            Instantiate(equipment).GetComponent<EquipmentStats>().Build(1);
-        }
+        var newItem = Instantiate(equipment) as GameObject;
+        newItem.gameObject.name = "Item";
+        newItem.GetComponent<EquipmentStats>().Build(1);
+
+        ShelbyDatabase.instance.AddSingleItem(newItem, refToDB);
     }
 
-    void OnTriggerExit(Collider other)
+    void RemoveTheThings()
     {
-        if (other.gameObject.tag == "Player");
-            //Destroy(gameObject);
+
     }
 }
