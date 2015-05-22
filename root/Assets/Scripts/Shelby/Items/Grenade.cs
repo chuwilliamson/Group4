@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Grenade : ItemData, IPickup{
+public class Grenade : Item, IPickup{
 
     protected Rigidbody rb;
     [SerializeField]

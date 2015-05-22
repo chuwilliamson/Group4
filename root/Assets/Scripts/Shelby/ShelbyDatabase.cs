@@ -3,49 +3,6 @@ using System.Collections;
 
 public  class ShelbyDatabase : Singleton<ShelbyDatabase> 
 {
- 
-    //public Inventory inventory;
-    /*
-    public void ListResources(ItemDatabase inv)
-    {
-       // print("Scraps:         " + inv.scraps);
-        //print("Special Scraps: " + inv.scraps_special);
-    }
-
-
-    public void ListItemNames(ItemDatabase inv)
-    {
-        for (int i = 0; i < inv.items.Count; ++i)
-            print(inv.items[i].GetComponent<Item>().name);
-    }
-
-    public void ListItemIDs(ItemDatabase inv)
-    {
-        for (int i = 0; i < inv.items.Count; ++i)
-            print(inv.items[i].GetComponent<Item>().id);
-    }
-
-    public void ListItemsAll(ItemDatabase inv)
-    {
-        for (int i = 0; i < inv.items.Count; ++i)
-        {
-            print(inv.items[i].GetComponent<Item>().name);
-            print(inv.items[i].GetComponent<Item>().id);
-        }
-
-        ListResources(inv);
-    }
- */
-
-    /// <summary>
-    /// Query for a database that has names in it
-    /// </summary>
-    /// <param name="db">
-    /// the database to look through
-    /// </param>
-    /// <returns>
-    /// a big ass string of names in the format "name0 name1 name2..."
-    /// </returns>
     public string SelectAllNames(ItemDatabase db)
     {
         string Names = "";
