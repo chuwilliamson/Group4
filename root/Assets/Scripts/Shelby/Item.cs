@@ -16,7 +16,7 @@ public abstract class Item : MonoBehaviour
     protected void PopulateFields()
     {
         name = gameObject.name;
-        string type = "sword_";
+        string type = "swerd_";
         id = gameObject.name.Replace(type, ""); 
     }
 }

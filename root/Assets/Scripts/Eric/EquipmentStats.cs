@@ -139,6 +139,9 @@ public class EquipmentStats : UniqueID
         m_Speed     *= m_Level * m_Rare;
         m_DOT       *= m_Level * m_Rare;
 
+       
+        name = "Level " + m_Rare.ToString() + " " +  name.Replace("e_", "") + " " + e_type.ToString().Replace("e_", "");
+
         if (UniqueID.ID > 999999)
             id = UniqueID.ID.ToString();
         else if (UniqueID.ID > 99999)

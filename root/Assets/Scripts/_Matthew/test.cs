@@ -24,4 +24,9 @@ public class test : MonoBehaviour
         idQueryLabel.text = theQuery;
     }
 
+    void Update ()
+    {
+        NameQuery();
+        IDQuery();
+    }
 }
