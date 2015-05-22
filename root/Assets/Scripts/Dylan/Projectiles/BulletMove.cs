@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletMove : MonoBehaviour {
+public class BulletMove : MonoBehaviour 
+{
+    GameObject[] BB; // shots inside of a shot
 
-    public float mySpeed;
-    public float maxDistance;
+    private float mySpeed = 1f;
+    private float maxDistance = 4f;
 
     private float myDist;
 
-    private int spreadRate = 4;
+    private float spreadRate = 4;
 
     int numOfShots = 1;
 
@@ -37,15 +39,24 @@ public class BulletMove : MonoBehaviour {
 
         if (gameObject.tag == "ShotGunShell" && isFired == true)
         {
-            numOfShots++;
+            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Instantiate(BB[numOfShots], transform.position, transform.rotation);
 
-            Vector3 BBPos = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+            transform.Translate(Vector3.up * Time.deltaTime * mySpeed);
 
-            switch(numOfShots % 4)
+            forward.x += Random.Range(spreadRate, -spreadRate);
+            forward.y += Random.Range(spreadRate, -spreadRate);
+            forward.z += Random.Range(spreadRate, -spreadRate);
+
+            BB[numOfShots].transform.LookAt(forward);
+
+            myDist += Time.deltaTime * mySpeed;
+            if (myDist > maxDistance)
             {
-                case 1: BBPos.x += Random.Range(-spreadRate, spreadRate); break;
-                case 2: BBPos.y += Random.Range(-spreadRate, spreadRate); break;
-                case 3: BBPos.z += Random.Range(-spreadRate, spreadRate); break;
+                Destroy(gameObject);
+                print("Obj Gone");
+                //checks to see if the bullet has passed the maximum distance it can travel
+                //and if it dis destroy the object
             }
         }
 	}

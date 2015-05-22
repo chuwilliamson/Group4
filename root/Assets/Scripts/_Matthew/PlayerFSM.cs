@@ -37,13 +37,12 @@ public class PlayerFSM
 
     private void HandleTransition(PlayerState state)
     {
-
         switch (state)
         {
             case PlayerState.init: //start up
                 foreach (KeyValuePair<string, bool> entry in ActionDict)
                 {
-                    ActionDict[entry.Key] = false; //cant do anythingin the dictionary
+                    ActionDict[entry.Key] = false; //cant do anything in the dictionary
                 }
                 break;
 
@@ -62,13 +61,12 @@ public class PlayerFSM
                 break;
 
             case PlayerState.run:
-                ActionDict["slap"] = false; //cant do anythingin the dictionary
+                ActionDict["slap"] = false; //cant slap but can do everyting else in the dictionary
                 break;
         }
-
     }
 
-    static PlayerFSM fsm;
+    protected static PlayerFSM _fsm;
     /// <summary>
     /// validate a transition from one state to another state
     /// </summary>
@@ -88,31 +86,43 @@ public class PlayerFSM
         {
             case PlayerState.init:
                 if (to == PlayerState.idle)
+                {
+                    Debug.Log(to);
                     return true;
+                }
                 break;
 
             case PlayerState.idle:
                 if (to == PlayerState.walk)
+                {
+                    Debug.Log(to);
                     return true;
+                }
                 break;
 
             case PlayerState.walk:
                 if (to == PlayerState.run || to == PlayerState.idle)
+                {
+                    Debug.Log(to);
                     return true;
+                }
                 break;
 
             case PlayerState.run:
                 if (to == PlayerState.walk)
+                {
+                    Debug.Log(to);
                     return true;
+                }
                 break;
 
             default:
                 break;
 
         }
-
         return false;
     }
+
 
     /// <summary>
     /// called from input handler to change the state of the player
