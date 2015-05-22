@@ -20,12 +20,12 @@ public class TurretPlacement : MonoBehaviour
 	// Update is called once per frame
     void Update()
     {
-        TurretSelect();
+        //TurretSelect();
         TurretPlace();
         //calls in the functions for selecting a turret and placing the turrets
     }
 
-    void TurretPlace()
+     void TurretPlace()
     {
         Vector3 pos = transform.position + Camera.main.transform.forward * 3;
         pos.y = 1;
@@ -49,7 +49,7 @@ public class TurretPlacement : MonoBehaviour
         }
     }
 
-    void TurretSelect()
+    public void TurretSelect()
     {
         if (Input.GetKeyDown("1")) 
             // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
