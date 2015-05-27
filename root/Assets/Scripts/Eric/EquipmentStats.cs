@@ -68,7 +68,7 @@ public class EquipmentStats : UniqueID
                 case 2: m_Defence = 5; m_Speed = 5; break; // ChainMail
                 case 3: m_Defence = 6; m_Speed = 4; break; // FullPlate
                 case 4: m_Defence = 7; m_Speed = 3; break; // BattleArmour
-                case 5: m_Defence = 7; m_Speed = 5; break; // DragonScale
+                case 5: m_Defence = 6; m_Speed = 5; break; // DragonScale
             }
             sub_type = r;
             ArmourTypes a = (ArmourTypes)sub_type;
