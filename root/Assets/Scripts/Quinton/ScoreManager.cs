@@ -17,10 +17,6 @@ public class ScoreManager : Singleton<ScoreManager>
         gm = GM.GetComponent<GameManager>();
     }
 
-
-    
-
-
     public bool HpFloat(float curHp, float maxHp)
      {
          if (curHp > maxHp)
