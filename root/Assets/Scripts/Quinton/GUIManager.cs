@@ -25,7 +25,6 @@ public class GUIManager : Singleton<GUIManager>
     public void SetState(GameObject go, bool state)
     {
         go.SetActive(state);
-        //gameObject.SetActive(onoff);
     }
 
 

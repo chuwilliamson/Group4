@@ -6,73 +6,70 @@ using UnityEngine.UI;
 
 public class HUDManager : Singleton<HUDManager>
 {
-    [SerializeField] GameObject hp;
-    [SerializeField] GameObject turrent;
-    [SerializeField] GameObject scrap;
-    [SerializeField] GameObject promp;
+    [SerializeField]
+    GameObject hp;
+    [SerializeField]
+    GameObject turrent;
+    [SerializeField]
+    GameObject scrap;
+    [SerializeField]
+    GameObject promp;
 
-    
 
-    List<GameObject> Log = new List<GameObject>();
-    [SerializeField] GameObject LogText;
-    private int nexTile = 0;
-    private int maxLogSize = 5;
 
-    void Awake()
-    {
-        GUIManager.instance.SetState(promp, false);
-
-        Log.Add(LogText);
-        nexTile++;
-
-    }
    
+    [SerializeField]
+    GameObject LogText;
+    List<GameObject> Log = new List<GameObject>();
+   
+
+
 
     /// <summary>
     /// Changes the Text for hp,turrent,scrap 
     /// </summary>
+    /// <usedby>ScoreManager (Each function is used by the simular "Score" Funcion in the ScoreManager)</usedby>
     /// // // // // // // // // // // // // // // // // // // // // // // // // // // //
-     public void HpHUD(float curHp, float maxHp)
+    public void HpHUD(float curHp, float maxHp)
     {
         string curString = curHp.ToString();
         string maxString = maxHp.ToString();
 
-         if(curHp >= 10000)
-         {
-             curHp /= 1000;
-             
-             curString = curHp.ToString("#.#") + 'K';
-         }
-         if(maxHp >= 10000)
-         {
-             maxHp /= 1000;
-             maxString = curHp.ToString("#.#") + 'K';
-         }
+        if (curHp >= 10000)
+        {
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            maxString = curHp.ToString("#.#") + 'K';
+        }
 
 
         hp.GetComponent<Text>().text = curString + '/' + maxString;
     }
-     public void HpHUD(int curHp, int maxHp)
-     {
-         string curString = curHp.ToString();
-         string maxString = maxHp.ToString();
+    public void HpHUD(int curHp, int maxHp)
+    {
+        string curString = curHp.ToString();
+        string maxString = maxHp.ToString();
 
-         if (curHp >= 10000)
-         {
-             
-             curHp /= 1000;
-             curString = curHp.ToString("#.#") + 'K';
-         }
-         if (maxHp >= 10000)
-         {
-             maxHp /= 1000;
-             curString = curHp.ToString("#.#") + 'K';
-         }
+        if (curHp >= 10000)
+        {
+
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
 
 
-         hp.GetComponent<Text>().text = curString + '/' + maxString;
-     }
-     public void ScrapHUD(float scraps)
+        hp.GetComponent<Text>().text = curString + '/' + maxString;
+    }
+    public void ScrapHUD(float scraps)
     {
 
         string scrapsString = scraps.ToString("#.#");
@@ -84,102 +81,178 @@ public class HUDManager : Singleton<HUDManager>
         }
         scrap.GetComponent<Text>().text = scrapsString;
     }
-     public void ScrapHUD(int scraps)
-     {
+    public void ScrapHUD(int scraps)
+    {
 
-         string scrapsString = scraps.ToString();
+        string scrapsString = scraps.ToString();
 
-         if (scraps >= 10000)
-         {
-             scraps /= 1000;
-             scrapsString = scraps.ToString() + 'K';
-         }
-         scrap.GetComponent<Text>().text = scrapsString.ToString();
-     }
-     public void TurHUD(float tur)
+        if (scraps >= 10000)
+        {
+            scraps /= 1000;
+            scrapsString = scraps.ToString() + 'K';
+        }
+        scrap.GetComponent<Text>().text = scrapsString.ToString();
+    }
+    public void TurHUD(float tur)
     {
         turrent.GetComponent<Text>().text = tur.ToString();
     }
-     public void TurHUD(int tur)
-     {
-         turrent.GetComponent<Text>().text = tur.ToString();
-     }
-    /// // // // // // // // // // // // // // // // // // // // // // // // // // // //
+    public void TurHUD(int tur)
+    {
+        turrent.GetComponent<Text>().text = tur.ToString();
+    }
+    ////////////////////////////////////////////////////////////////////////////////////
+    
+    /// <summary>
+    /// Pass in a string to activate promp with that string. Pas in the same string will remove the promp;
+    /// </summary>
+    /// <param name="strng"></param>
+    public void PrompDis(string strng)
+    {
+        //if its already active turn it off
+        if (promp.activeSelf && promp.GetComponent<Text>().text == strng)
+        { promp.SetActive(false); }
+        //otherwise activate it
+        else
+        {
+            if(!promp.activeSelf)
+                promp.SetActive(true);
 
-     public void PrompDis(string strng)
-     {
-         //if its already active turn it off
-         if (promp.activeSelf)
-             promp.GetComponent<Text>().text = strng;
-         //otherwise activate it
-         else
-         {
-             GUIManager.instance.SetState(promp, true);
-             promp.GetComponent<Text>().text = strng;
-         }
+            promp.GetComponent<Text>().text = strng;
+        }
         // Debug.Log("Settings");
 
-     }
-     public void PrompClear()
-     {
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    public void PrompClear()
+    {
 
         // promp.SetActive(false);
 
-     }
-  
-    public void SetLogSize(int size)
-     {
-         maxLogSize = size;
-     }
+    }
+
     /// <summary>
     /// 
-    /// Creates a new Tile based on the position of the last tile created and moves all the tiles up.
+    /// Changes the amount of logs displayed based on the number passed in
     /// 
-    /// if the tile number gets to the same number as maxLogSize the next tile is not created but instead the first tile in the array moved to the start location.
-    /// 
-    /// 
+    /// </summary>
+    /// <param name="size"></param>
+    public void NewLogSize(int size)
+    {
+        int oldLogSize = Log.Count;
+        int newLogSize = size;
+        int loopCounter;
+        //if the old size is bigger then loop over the smaller size
+        if (oldLogSize > newLogSize)
+            loopCounter = newLogSize;
+        else
+            loopCounter = oldLogSize;
+
+        List<GameObject> Temp = new List<GameObject>();
+       
+
+        for (int i = 0; i < loopCounter; i++)
+            Temp.Add(Log[i]);
+     
+        Log.Clear();
+        foreach (GameObject go in Temp)
+            Log.Add(go);
+       
+       LogMake(newLogSize);
+    }
+    /// <summary>
+    /// Creates the rest of the "Log Nodes" for the Log.
+    /// </summary>
+    /// <usedby>NewLogSize</usedby>
+    /// <param name="size"></param>
+    private void LogMake(int size)
+    {
+   
+        if (Log.Count < size)
+        {
+          
+            int dif = size - Log.Count;
+            
+            for(int i = 0; i < dif; i++ )
+            {
+                Vector3 vec3 = Log[Log.Count - 1].GetComponent<RectTransform>().localPosition;
+                vec3.y += Log[Log.Count - 1].GetComponent<RectTransform>().sizeDelta.y;
+                Log.Add((GameObject)Instantiate(LogText, vec3, Log[Log.Count - 1].GetComponent<RectTransform>().localRotation));
+                Log[Log.Count - 1].GetComponent<RectTransform>().transform.parent = Log[Log.Count - 2].GetComponent<RectTransform>().transform.parent;
+                Log[Log.Count - 1].GetComponent<RectTransform>().transform.localPosition = vec3;
+                Log[Log.Count - 1].GetComponent<Text>().text = "";
+                
+            }
+        }
+     
+    }
+    /// <summary>
+    /// Pass in a String;
+    /// Newest will be placed on the "Bottom" of the "HuD"
     /// </summary>
     /// <param name="strng"></param>
     public void LogUp(string strng)
-     {
-         int prev = 0;
-         if (nexTile < maxLogSize) { prev = nexTile;  nexTile = 0; }
+    {
 
-        if(nexTile <= maxLogSize && Log.Count < nexTile)
+        while(strng.Length > 0)
         {
-            Vector3 vec3 = Log[nexTile-1].GetComponent<RectTransform>().localPosition;
-            vec3.y += Log[nexTile-1].GetComponent<RectTransform>().sizeDelta.y;
-            GameObject a = (GameObject)Instantiate(LogText, vec3, Log[nexTile-1].GetComponent<RectTransform>().localRotation);
-            Log.Add(a);
-            Log[nexTile].GetComponent<Text>().text = strng;
+           int stringSize;
+           if (strng.Length >= 20)
+               stringSize = 20;
+           else
+               stringSize = strng.Length;
 
-            nexTile++;
+
+            for (int i = 0; i < Log.Count - 1; i++)
+                Log[Log.Count - 1 - i].GetComponent<Text>().text = Log[Log.Count - 1 - i - 1].GetComponent<Text>().text;
+
+            Log[0].GetComponent<Text>().text = strng.Substring(0, stringSize);
+
+
+            strng = strng.Substring(stringSize);
         }
-        else if(nexTile <= maxLogSize && Log[nexTile].activeSelf == true)
-        {
-            Vector3 vec3 = Log[prev].GetComponent<RectTransform>().localPosition;
-            vec3.y += Log[prev].GetComponent<RectTransform>().sizeDelta.y;
-          
-            Log[nexTile].GetComponent<Text>().text = strng;
-        }
-
-        for (int i = 0; i <= Log.Count - 1; i++)
-        {
-            Vector3 vec3 = Log[i].GetComponent<RectTransform>().localPosition;
-            vec3.y += Log[nexTile - 1].GetComponent<RectTransform>().sizeDelta.y;
-            Log[i].GetComponent<RectTransform>().localPosition = vec3;
-        }
+        
+        
+        //if (strng.Length > 10)
+        //{
+            
+        //}
 
 
-     }
-    /*
-     
-     * Log:
-     * 
-     * Array of logs
-     * 
-     
-     */
+
+        
+            //for (int i = 0; i < Log.Count - 1; i++)
+            //    Log[Log.Count - 1 - i].GetComponent<Text>().text = Log[Log.Count - 1 - i - 1].GetComponent<Text>().text;
+
+            //Log[0].GetComponent<Text>().text = strng;
+        
+    }
+    public void Awake()
+    {
+       //GUIManager.instance.SetState(promp, false);
+      
+        
+    }
+
+    /// <summary>
+    /// GameObect "go" must be the InputField.
+    /// Uses the LogUp fucntion to add what is typed in the InputField into the Log.
+    /// </summary>
+    /// <param name="go"> GameObect "go" must be the InputField. or have the Input Field Component</param>
+    public void inputField(GameObject go)
+    { 
+        LogUp(go.GetComponent<InputField>().text);
+        go.GetComponent<InputField>().text = "";
    
+    }
 
+
+
+     void Start()
+     {  
+     Log.Add(LogText);
+     NewLogSize(5);
+     }
 }

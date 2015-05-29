@@ -22,7 +22,6 @@ public class ScoreManager : Singleton<ScoreManager>
         HUDManager.instance.HpHUD(curHp, maxHp);
         return true;
     }
-
     /// <summary>
     /// Pass in 2 variables. The first is the Current Health the second is The max Health.
     /// If Current Health is greater then the max it will be changed to max health.
@@ -44,7 +43,6 @@ public class ScoreManager : Singleton<ScoreManager>
         HUDManager.instance.HpHUD(curHp, maxHp);
         return true;
     }
-
     /// <summary>
     /// Pass in 1 Variable. The variable will be the number of Scraps(Currency). 
     /// It will measure the amount as a bool. 
@@ -63,7 +61,6 @@ public class ScoreManager : Singleton<ScoreManager>
         HUDManager.instance.ScrapHUD(scrapCount);
         return true;
     }
-
     /// <summary>
     /// Pass in 1 Variable. The variable will be the number of Scraps(Currency). 
     /// It will measure the amount as a bool. 
@@ -82,7 +79,6 @@ public class ScoreManager : Singleton<ScoreManager>
         HUDManager.instance.ScrapHUD(scrapCount);
         return true;
     }
-    
     public bool SpecialScrap(float scrapCount)
     {
         if (scrapCount < 0)
@@ -117,7 +113,6 @@ public class ScoreManager : Singleton<ScoreManager>
         HUDManager.instance.TurHUD(turretNumber);
         return true;
     }
-
     /// <summary>
     /// 
     /// Pass in 1 Variable. The Variable will be the number of turrets placed.
