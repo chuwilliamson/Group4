@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public class OnCollisionPickUp : MonoBehaviour
 {
 
-    Inventory inventory;
+    Database inventory;
 
     void Awake()
     {
-        inventory = gameObject.GetComponentInChildren<Inventory>();
+        inventory = gameObject.GetComponentInChildren<Database>();
         DontDestroyOnLoad(gameObject);
     }
 
