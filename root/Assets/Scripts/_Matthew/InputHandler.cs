@@ -21,10 +21,6 @@ public class InputHandler : MonoBehaviour
     //public KeyCode right = KeyCode.D;
     
 
-    //public string Actions;
-    //public List<InputHandler> todo = new List<InputHandler>()
-    //public InputHandler(Input.(KeyCode)
-
 	// Update is called once per frame
     delegate void PauseDelegate();
     delegate void NumberDelegate(int n);
@@ -58,11 +54,11 @@ public class InputHandler : MonoBehaviour
 
         if (Input.GetKeyDown(pause))
         {
-            //numMultiDel = null;
-            //num++;
-            //numMultiDel += NumberPlusFive;
-            //numMultiDel += NumberSquared;
-            //numMultiDel(num);
+            numMultiDel = null;
+            num++;
+            numMultiDel += NumberPlusFive;
+            numMultiDel += NumberSquared;
+            numMultiDel(num);
 
             GameManager.instance.Pause(GameManager.PauseState.Full);
         }

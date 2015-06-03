@@ -81,4 +81,9 @@ public class TurretPlacement : Singleton<TurretPlacement>
             isSelected = true;
         }
     }
+
+    internal void TurretSelect()
+    {
+        throw new System.NotImplementedException();
+    }
 }
