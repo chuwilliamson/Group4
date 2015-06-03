@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aef9c45476c7e84a96fe7f1eb3ef0e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 2800000, guid: b6af36d92a40391429dcea1dd3e59e7c, type: 3}
+  crosshair: {fileID: 2800000, guid: 1fc2b521c59a9ab458d3854aebe624fe, type: 3}
   position:
     serializedVersion: 2
     x: 0
