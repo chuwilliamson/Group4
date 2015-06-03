@@ -49,7 +49,7 @@ public class TurretPlacement : Singleton<TurretPlacement>
         }
     }
 
-    public void TurretSelect(KeyCode a, KeyCode b, KeyCode c, KeyCode d)
+    public void TurretSelect(KeyCode a)
     {
         if (Input.GetKeyDown(a)) 
             // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
@@ -60,21 +60,21 @@ public class TurretPlacement : Singleton<TurretPlacement>
             isSelected = true;
         }
 
-        if (Input.GetKeyDown(b))
+        if (Input.GetKeyDown(a))
         {
             print("Turret 2 Selected.");
             turret = turret2;
             isSelected = true;
         }
 
-        if (Input.GetKeyDown(c))
+        if (Input.GetKeyDown(a))
         {
             print("Turret 3 Selected.");
             turret = turret3;
             isSelected = true;
         }
 
-        if (Input.GetKeyDown(d))
+        if (Input.GetKeyDown(a))
         {
             print("Turret 4 Selected.");
             turret = turret4;
