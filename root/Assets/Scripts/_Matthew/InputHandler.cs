@@ -48,15 +48,22 @@ public class InputHandler : MonoBehaviour
             player.GetComponent<PlayerActions>().State(PlayerState.init);
         }
 
+
+
         ////Player Actions
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)) //slaps
         {
             player.GetComponent<PlayerActions>().Slap();
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V)) //shoots
         {
             player.GetComponent<PlayerActions>().Shoot();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space)) //jumps
+        {
+            player.GetComponent<PlayerActions>().Jump();
         }
 
 
@@ -71,11 +78,6 @@ public class InputHandler : MonoBehaviour
 
 
         ////GameManager Controls
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            /// Pause State Half (Update at Half speed)
-            GameManager.instance.Pause(GameManager.PauseState.Half);
-        }
 
         if (Input.GetKeyDown(KeyCode.P))
         {

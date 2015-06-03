@@ -37,33 +37,28 @@ public class PlayerFSM
 
     private void HandleTransition(PlayerState state)
     {
-        switch (state)
+        foreach (string Key in new List<string>(ActionDict.Keys))
         {
-            case PlayerState.init: //start up
-                foreach (KeyValuePair<string, bool> entry in ActionDict)
-                {
-                    ActionDict[entry.Key] = false; //cant do anything in the dictionary
-                }
-                break;
+            switch (state)
+            {
+                case PlayerState.init: //start up
+                    ActionDict[Key] = false; //cant do anything in the dictionary
+                    break;
 
-            case PlayerState.idle:
-                foreach (KeyValuePair<string, bool> entry in ActionDict)
-                {
-                    ActionDict[entry.Key] = true; //can do everything in the dictionary
-                }
-                break;
+                case PlayerState.idle:
+                    ActionDict[Key] = true; //can do everything in the dictionary
+                    break;
 
-            case PlayerState.walk:
-                foreach (KeyValuePair<string, bool> entry in ActionDict)
-                {
-                    ActionDict[entry.Key] = true; //can do everything in the dictionary
-                }
-                break;
-
-            case PlayerState.run:
-                ActionDict["slap"] = false; //cant slap but can do everyting else in the dictionary
-                break;
+                case PlayerState.walk:
+                    ActionDict[Key] = true; //can do everything in the dictionary
+                    break;
+                case PlayerState.run:
+                    ActionDict["slap"] = false; //cant slap but can do everyting else in the dictionary
+                    ActionDict["placeTurret"] = false;
+                    break;
+            }
         }
+
     }
 
     protected static PlayerFSM _fsm;
@@ -87,7 +82,7 @@ public class PlayerFSM
             case PlayerState.init:
                 if (to == PlayerState.idle)
                 {
-                    Debug.Log(to);
+                    cState = to;
                     return true;
                 }
                 break;
@@ -95,7 +90,7 @@ public class PlayerFSM
             case PlayerState.idle:
                 if (to == PlayerState.walk)
                 {
-                    Debug.Log(to);
+                    cState = to;
                     return true;
                 }
                 break;
@@ -103,7 +98,7 @@ public class PlayerFSM
             case PlayerState.walk:
                 if (to == PlayerState.run || to == PlayerState.idle)
                 {
-                    Debug.Log(to);
+                    cState = to;
                     return true;
                 }
                 break;
@@ -111,7 +106,7 @@ public class PlayerFSM
             case PlayerState.run:
                 if (to == PlayerState.walk)
                 {
-                    Debug.Log(to);
+                    cState = to;
                     return true;
                 }
                 break;
@@ -134,7 +129,7 @@ public class PlayerFSM
         HandleTransition(to);
     }
 
-    private PlayerState cState;
+    private PlayerState cState = PlayerState.idle;
 
     public PlayerState CurrentState
     {
