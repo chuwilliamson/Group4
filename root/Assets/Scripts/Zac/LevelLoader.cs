@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class LevelLoader : MonoBehaviour 
 {
     public List<GameObject> persistant;
-    public string testNext;     // Test 
     
     void addPersistant(GameObject o)
     {
@@ -16,7 +15,7 @@ public class LevelLoader : MonoBehaviour
         persistant.Remove(o);
     }
 
-    void loadLevel(string nextLevel)
+    void loadLevel(string nextLevel, LevelState state)
     {
         currentLevel = nextLevel;
         lastLevel = Application.loadedLevelName;
@@ -28,28 +27,6 @@ public class LevelLoader : MonoBehaviour
             DontDestroyOnLoad(persistant[i]);
         }          
     }
-    void loadPrevios()
-    {
-        loadLevel(lastLevel);
-    }
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-    {
-	    if(Input.GetKeyDown(KeyCode.E))
-        {
-            loadLevel(testNext);
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-           loadPrevios();
-        }
-	}
 
     Stack<string> lvlStack = new Stack<string>();
     void OnLevelWasLoaded(int lvl)
@@ -61,5 +38,5 @@ public class LevelLoader : MonoBehaviour
     }
 
     private string lastLevel;
-    public string currentLevel;
+    public  string currentLevel;
 }

@@ -52,7 +52,7 @@ public class GameManagerEditor : Editor
                 {
                     //Whats left is a scene file
                     string ft = f.ToString();
-                    ft = ft.Remove(' ');
+                    ft = ft.Replace(f.ToString(), "");
                     Debug.Log(f);
                     Debug.Log(ft);
                 }
