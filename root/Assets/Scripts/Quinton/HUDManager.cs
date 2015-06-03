@@ -21,7 +21,9 @@ public class HUDManager : Singleton<HUDManager>
     [SerializeField]
     GameObject LogText;
     List<GameObject> Log = new List<GameObject>();
-   
+    
+    private int MaxCharInNodes = 40;
+    private int LogNodeNum;
 
 
 
@@ -141,6 +143,7 @@ public class HUDManager : Singleton<HUDManager>
     /// <param name="size"></param>
     public void NewLogSize(int size)
     {
+        LogNodeNum = size;
         int oldLogSize = Log.Count;
         int newLogSize = size;
         int loopCounter;
@@ -163,6 +166,7 @@ public class HUDManager : Singleton<HUDManager>
        LogMake(newLogSize);
     }
     /// <summary>
+    /// used for the EndEdit
     /// Creates the rest of the "Log Nodes" for the Log.
     /// </summary>
     /// <usedby>NewLogSize</usedby>
@@ -199,8 +203,8 @@ public class HUDManager : Singleton<HUDManager>
         while(strng.Length > 0)
         {
            int stringSize;
-           if (strng.Length >= 20)
-               stringSize = 20;
+           if (strng.Length >= MaxCharInNodes)
+               stringSize = MaxCharInNodes;
            else
                stringSize = strng.Length;
 
@@ -235,7 +239,6 @@ public class HUDManager : Singleton<HUDManager>
       
         
     }
-
     /// <summary>
     /// GameObect "go" must be the InputField.
     /// Uses the LogUp fucntion to add what is typed in the InputField into the Log.
@@ -246,6 +249,17 @@ public class HUDManager : Singleton<HUDManager>
         LogUp(go.GetComponent<InputField>().text);
         go.GetComponent<InputField>().text = "";
    
+    }
+    /// <summary>
+    /// Used for the OnValueChange for the input field
+    /// </summary>
+    /// <param name="go"></param>
+    public void inputFieldCheck(GameObject go)
+    {
+        if(go.GetComponent<InputField>().text.Length >= LogNodeNum * MaxCharInNodes)
+        {
+            go.GetComponent<InputField>().text = go.GetComponent<InputField>().text.Remove(go.GetComponent<InputField>().text.Length - 1);
+        }
     }
 
 
