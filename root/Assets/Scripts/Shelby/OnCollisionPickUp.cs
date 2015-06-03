@@ -4,12 +4,13 @@ using System.Collections.Generic;
 
 public class OnCollisionPickUp : MonoBehaviour
 {
+    public ItemDatabase pInventory;
 
-    Inventory inventory;
+    //Database inventory;
 
     void Awake()
     {
-        inventory = gameObject.GetComponentInChildren<Inventory>();
+        //pInventory = gameObject.GetComponentInChildren<ItemDatabase>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -23,15 +24,18 @@ public class OnCollisionPickUp : MonoBehaviour
                 int scrapValue = other.gameObject.GetComponent<Resource>().value;
                 // resource objects have different values
                 if (scrapValue >= 5)
-                    inventory.scraps_special += scrapValue;
+                    //inventory.scraps_special += scrapValue;
+                    pInventory.scraps_special += scrapValue;
                 else if (scrapValue < 5)
-                    inventory.scraps += scrapValue;
-                    
-                Object.Destroy(other.gameObject);
+                    pInventory.scraps += scrapValue;
+                other.gameObject.GetComponent<IPickup>().PickUp();
+                
                 break;
             case "Item":
                 //items will always have a playerinventory script attached to them
                 //gameObject.GetComponentInChildren<Inventory>().items.Add(gameObject);
+                ShelbyDatabase.instance.AddSingleItem(other.gameObject, pInventory);
+                
                 other.gameObject.GetComponent<IPickup>().PickUp();
                 break;
             default: break;

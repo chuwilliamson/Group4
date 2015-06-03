@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ItemDatabase : Database
+public class Database : MonoBehaviour 
 {
-    public int scraps, scraps_special;
+    public List<GameObject> database;
 }

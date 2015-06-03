@@ -26,16 +26,20 @@ public class test : MonoBehaviour
 
     void Update ()
     {
-        NameQuery();
-        IDQuery();
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+
+             NameQuery();
+             //IDQuery();
+        }
     }
 
-    public string blah = "shelby";
-    [ContextMenu("test string")]
-    void testSTring()
-    {
-        blah = blah.Remove(blah.Length - 2, 2);
-        print(blah);
+    //public string blah = "shelby";
+    //[ContextMenu("test string")]
+    //void testSTring()
+    //{
+    //    blah = blah.Remove(blah.Length - 2, 2);
+    //    print(blah);
   
-    }
+    //}
 }

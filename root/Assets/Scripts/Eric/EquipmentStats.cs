@@ -12,10 +12,10 @@ public class EquipmentStats : UniqueID
     public int m_Level, m_Rare, m_RuneSlots, m_RunesEquiped;
     public float m_Attack, m_Dexterity, m_Defence, m_Speed, m_DOT;
 
-    public void Build(int a_Level)
+    public void Build()
     {
         e_type  = (Equipment)Random.Range(0, 5);
-        m_Level = a_Level;
+        m_Level = Random.Range(1, 11);//a_Level;
         m_Rare  = Random.Range(1, 102);
 
         m_Attack = m_Dexterity = m_Defence = m_Speed = m_DOT = 0;   // Defaults stats to 0
