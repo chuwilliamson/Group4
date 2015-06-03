@@ -30,12 +30,12 @@ public class test : MonoBehaviour
         IDQuery();
     }
 
-    public string blah = "shelby";
-    [ContextMenu("test string")]
-    void testSTring()
-    {
-        blah = blah.Remove(blah.Length - 2, 2);
-        print(blah);
+    //public string blah = "shelby";
+    //[ContextMenu("test string")]
+    //void testSTring()
+    //{
+    //    blah = blah.Remove(blah.Length - 2, 2);
+    //    print(blah);
   
-    }
+    //}
 }
