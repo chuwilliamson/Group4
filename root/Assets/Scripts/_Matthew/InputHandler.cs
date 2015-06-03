@@ -1,43 +1,76 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InputHandler : MonoBehaviour {
-
- 
-	
+public class InputHandler : MonoBehaviour 
+{
+    private GameObject player;
+    private GameObject turret;
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 	// Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        ////Player States
+        if (Input.GetKeyDown(KeyCode.W)) //Walk forwrad
         {
-            //walk state
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A)) //Walk to the left
         {
-            //walk state
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S)) //Walk backwards
         {
-            //walk state
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D)) //Walk to the right
         {
-            //walk state
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift)) //toggles run
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.run);
+        }
+
+        if (Input.GetKeyDown(KeyCode.I)) //toggles idles
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.idle);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O)) //toggles init
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.init);
+        }
+
+        ////Player Actions
         if (Input.GetKeyDown(KeyCode.F))
         {
-            PlayerActions.instance.Slap();
+            player.GetComponent<PlayerActions>().Slap();
         }
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            PlayerActions.instance.Shoot();
+            player.GetComponent<PlayerActions>().Shoot();
         }
 
+
+        ////Turret Controls
+        //Place Turrets
+
+        //Select turret to place
+        if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            TurretManager.instance.PlaceTurret();
+        }
+
+
+        ////GameManager Controls
         if (Input.GetKeyDown(KeyCode.Space))
         {
             /// Pause State Half (Update at Half speed)
@@ -57,4 +90,4 @@ public class InputHandler : MonoBehaviour {
         }
     }
         
-    }
+}
