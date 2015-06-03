@@ -65,13 +65,14 @@ public class GameManager : Singleton<GameManager>
         Levels.Add(go);
         print(curve.Evaluate(0.5f));
     }
+
     /// usage: GameManager.instance.Transition("Combat")
-    public void Transition(Level lev)
+    public void Transition (Level lev)
     {
-        switch(lev)
+        switch (lev)
         {
             case Level.MainMenu:
-                if(CheckTransition(StateManager.MAINMENU))
+                if (CheckTransition(StateManager.MAINMENU))
                 {
                     Application.LoadLevel(Levels[(int)Level.MainMenu]);
                     c_GameState = StateManager.MAINMENU;
@@ -99,7 +100,7 @@ public class GameManager : Singleton<GameManager>
                 }
                 break;
             case Level.Conclusion:
-                if(CheckTransition(StateManager.EXIT))
+                if (CheckTransition(StateManager.EXIT))
                     Application.LoadLevel(Levels[(int)Level.Conclusion]);
                 break;
             default: break;

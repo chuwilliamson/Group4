@@ -19,10 +19,18 @@ public class EnemyStats : Stats
         m_PowerLevel = false;
     }
 
+    void TakeDamage(int amount, Vector3 hitPoint)
+    {
+        m_Health -= amount;
+    }
+
     void Update()
     {
         if (m_PowerLevel)
-            PowerLevel(m_pLvl);
+            PowerLevel(m_pLvl);   
+        
+        if (Input.GetKey(KeyCode.Return))
+            m_Health = m_MaxHealth - 5;
     }
 
     void PowerLevel(int lvl)

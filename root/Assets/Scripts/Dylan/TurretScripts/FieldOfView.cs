@@ -3,8 +3,6 @@ using System.Collections;
 
 public class FieldOfView : MonoBehaviour 
 {
-    public Transform opticals;
-
     public bool isTargetInView = false;
 
     public void OnTriggerEnter()
