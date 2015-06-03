@@ -16,12 +16,23 @@ public  class ShelbyDatabase : Singleton<ShelbyDatabase>
     public string SelectAllNames(Database db)
     {
         string Names = "";
-        for (int i = 0; i < db.database.Count -1; ++i)
+        print(db.database.Count);
+        if (db.database.Count > 1)
         {
-            Names += db.database[i].GetComponent<EquipmentStats>().name + ",\n";
+            for (int i = 0; i < db.database.Count ; ++i)
+            {
+                Names += db.database[i].GetComponent<EquipmentStats>().name + "\n";
+               
+            }
+            print(Names);
         }
         //Names = Names.Remove(Names.Length - 2, 2);
-        Names += db.database[db.database.Count].GetComponent<EquipmentStats>().name;
+        else
+        {
+            Names += db.database[0].GetComponent<EquipmentStats>().name;
+        }
+        
+        
         return Names;
     }
 
