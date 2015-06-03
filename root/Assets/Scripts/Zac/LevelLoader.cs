@@ -27,7 +27,10 @@ public class LevelLoader : MonoBehaviour
             DontDestroyOnLoad(persistant[i]);
         }          
     }
-
+    void ExitGame()
+    {
+        Application.Quit();
+    }
     Stack<string> lvlStack = new Stack<string>();
     void OnLevelWasLoaded(int lvl)
     {
