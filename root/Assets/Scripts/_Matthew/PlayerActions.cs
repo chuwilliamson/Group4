@@ -11,19 +11,19 @@ public class PlayerActions : MonoBehaviour, IActions
     public void Slap()
     {
         if (fsm.ActionDict["slap"] == true)
-        print("slap");
+            HUDManager.instance.actionHUD("Slap");
     }
 
     public void Jump()
     {
         if (fsm.ActionDict["jump"] == true)
-        print("jump");
+            HUDManager.instance.actionHUD("Jump");
     }
 
     public void Shoot()
     {
         if (fsm.ActionDict["shoot"] == true)
-        print("shoot");
+            HUDManager.instance.actionHUD("Shoot");
     }
 
     public void PlaceTurret()
