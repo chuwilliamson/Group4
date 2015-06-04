@@ -11,6 +11,8 @@ TagManager:
   - One Barrel
   - ShotGunShell
   - MG
+  - Target1
+  - Target2
   layers:
   - Default
   - TransparentFX
