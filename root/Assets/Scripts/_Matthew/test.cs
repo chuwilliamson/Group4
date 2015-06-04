@@ -12,7 +12,7 @@ public class test : MonoBehaviour
     {
         string theQuery = "";
         theQuery = ShelbyDatabase.instance.SelectAllNames(refToDB);
-      //sword_0 sword_2
+        //sword_0 sword_2
         nameQueryLabel.text = theQuery;
     }
 
