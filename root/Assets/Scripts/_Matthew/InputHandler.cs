@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class InputHandler : MonoBehaviour 
 {
     private GameObject player;
+    private GameObject turretManager;
     private GameObject turret;
 
 
@@ -36,6 +37,9 @@ public class InputHandler : MonoBehaviour
     public KeyCode init = KeyCode.I;
     public KeyCode idle = KeyCode.O;
 
+    //Dev controls
+    public KeyCode killTurret = KeyCode.B;
+
 	// Update is called once per frame
     delegate void PauseDelegate();
     delegate void NumberDelegate(int n);
@@ -46,10 +50,13 @@ public class InputHandler : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        turret = GameObject.FindGameObjectWithTag("TurretManager");
+        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
+
     }
     void Update()
     {
+        turret = GameObject.FindGameObjectWithTag("MG");
+
         //Game State changes
         if (Input.GetKeyDown(halfPause))
         {
@@ -111,24 +118,24 @@ public class InputHandler : MonoBehaviour
         ////Player turret Selction and placement
         if (Input.GetKeyDown(tTurret1))
         {
-            turret.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
         }
         if (Input.GetKeyDown(tTurret2))
         {
-            turret.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
         }
         if (Input.GetKeyDown(tTurret3))
         {
-            turret.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
         }
         if (Input.GetKeyDown(tTurret4))
         {
-            turret.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
         }
 
         if(Input.GetKeyDown(place))
         {
-            turret.GetComponent<TurretPlacement>().TurretPlacePoint();
+            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
         }
 
         ////Player Actions
@@ -146,5 +153,12 @@ public class InputHandler : MonoBehaviour
         {
             player.GetComponent<PlayerActions>().Jump();
         }     
+
+
+        /////Dev Controls
+        if(Input.GetKeyDown(killTurret))
+        {
+            turret.GetComponent<BaseTurret>().currentHP -= 101;
+        }
     }       
 }
