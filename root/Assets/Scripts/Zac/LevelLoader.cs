@@ -54,14 +54,10 @@ public class LevelLoader : Singleton<LevelLoader>
     }
     Stack<string> lvlStack = new Stack<string>();
     void OnLevelWasLoaded(int lvl)
-    { 
-        
+    {
         lastLevel = lvlStack.Peek();
         currentLevel = Application.loadedLevelName;
         lvlStack.Push(currentLevel);
-        
-       
-
     }
 
     [SerializeField]
