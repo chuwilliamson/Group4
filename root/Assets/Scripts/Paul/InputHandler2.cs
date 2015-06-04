@@ -185,7 +185,7 @@ public class InputHandler2 : MonoBehaviour
         /////Dev Controls
         if (Input.GetKeyDown(killTurret))
         {
-            turret.GetComponent<BaseTurret>().currentHP -= 101;
+            turret.GetComponent<BaseTurret>().m_Health -= 101;
         }
     }
 }
