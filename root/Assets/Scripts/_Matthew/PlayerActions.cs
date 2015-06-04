@@ -10,24 +10,29 @@ public class PlayerActions : MonoBehaviour, IActions
     }
     public void Slap()
     {
-        print("slap");
+        if (fsm.ActionDict["slap"] == true)
+            HUDManager.instance.actionHUD("Slap");
     }
 
     public void Jump()
     {
-        print("jump");
+        if (fsm.ActionDict["jump"] == true)
+            HUDManager.instance.actionHUD("Jump");
     }
 
     public void Shoot()
     {
-        print("shoot");
+        if (fsm.ActionDict["shoot"] == true)
+            HUDManager.instance.actionHUD("Shoot");
     }
 
     public void PlaceTurret()
     {
-        print("place turret");
-        GetComponent<TurretPlacement>().TurretSelect();
+        if (fsm.ActionDict["placeTurret"] == true)
+        print("turret placed");
     }
+
+
 
     public void State(PlayerState state)
     {

@@ -402,6 +402,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689c67a9205690a43ab13937ae5439c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  halfPause: 99
+  pause: 120
+  unpause: 122
+  StartGame: 271
+  tTurret1: 49
+  tTurret2: 50
+  tTurret3: 51
+  tTurret4: 52
+  place: 323
+  walkForward: 119
+  walkBack: 115
+  walkLeft: 97
+  walkRight: 100
+  toggelRun: 304
+  slap: 102
+  shoot: 118
+  jump: 32
+  init: 105
+  idle: 111
+  num: 0
 --- !u!4 &145487159
 Transform:
   m_ObjectHideFlags: 0
@@ -485,11 +505,11 @@ GameObject:
   - 114: {fileID: 820800321}
   m_Layer: 0
   m_Name: TurretManager
-  m_TagString: Untagged
+  m_TagString: TurretManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &820800320
 Transform:
   m_ObjectHideFlags: 0
@@ -510,9 +530,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 820800319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 243e53f80bb60bb4689f3da0762512b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 4871e084e450dbd489330b18fbcc6d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turret1: {fileID: 135458, guid: a0d680bd260a9514fa4a88743269d32a, type: 2}
+  turret2: {fileID: 130058, guid: 3969cc3c3c4de0348b70568c455ff16f, type: 2}
+  turret3: {fileID: 0}
+  turret4: {fileID: 0}
+  dot: {fileID: 0}
+  isSelected: 0
 --- !u!1 &1236265203
 GameObject:
   m_ObjectHideFlags: 0
