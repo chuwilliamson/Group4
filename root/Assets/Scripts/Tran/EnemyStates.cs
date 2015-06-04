@@ -6,14 +6,12 @@ public class EnemyStates : MonoBehaviour {
     NavMeshAgent enemy;
     private GameObject target;
 
-    public enum States { Idle, Patroll, Chase };
+    public enum States { Idle, Goal, Chase };
     public States enemyStates = States.Idle;
-    public Transform[] points;
+    public Transform goal;
     public float delay;
 
     public float timer;
-    private int destPoint = 0;
-   
 
 	void Start () 
     {
@@ -22,14 +20,6 @@ public class EnemyStates : MonoBehaviour {
         target = gameObject;
        
 	}
-	
-    void GoToNextPoint()
-    {
-        // return if no point have been set
-        if (points.Length == 0) { return; }
-        enemy.destination = points[destPoint].position;
-        destPoint = (destPoint + 1) % points.Length;
-    }
 
     void OnTriggerStay(Collider other)
     {
@@ -54,28 +44,30 @@ public class EnemyStates : MonoBehaviour {
             case States.Idle:
 
                 enemy.velocity = new Vector3(0, 0, 0);
-
-                if (target != gameObject)//(Vector3.Distance(enemy.transform.position, target.transform.position) <= enemy.radius)
+                
+                if (target != gameObject)
                 { enemyStates = States.Chase; }
 
                 if(timer > delay)
-                { enemyStates = States.Patroll; }
+                { enemyStates = States.Goal; }
                 break;
 
-            case States.Patroll:
+            case States.Goal:
 
-                if(enemy.remainingDistance < .5f)
-                { GoToNextPoint(); }
-
-                if (target != gameObject) //(Vector3.Distance(enemy.transform.position, target.transform.position) <= enemy.radius)
+                enemy.destination = goal.position;
+                
+                if (target != gameObject) 
                 { enemyStates = States.Chase; }
+
+                if (Vector3.Distance(enemy.transform.position, enemy.destination) <= enemy.radius)
+                    enemy.Stop();
                 break;
 
             case States.Chase:
                
                 enemy.destination = target.transform.position;
 
-                if (target == gameObject) //(Vector3.Distance(enemy.transform.position, target.transform.position) > 6)
+                if (target == gameObject) 
                 { timer = 0; enemyStates = States.Idle; }
                 break;
 
