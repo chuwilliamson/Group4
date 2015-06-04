@@ -127,6 +127,7 @@ public class InputHandler : MonoBehaviour
             player.GetComponent<PlayerActions>().State(PlayerState.init);
         }
 
+        /*
         ////Player turret Selction and placement
         if (Input.GetKeyDown(tTurret1))
         {
@@ -149,7 +150,7 @@ public class InputHandler : MonoBehaviour
         {
             turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
         }
-
+        */
         ////Player Actions
         if (Input.GetKeyDown(slap))
         {
@@ -170,7 +171,7 @@ public class InputHandler : MonoBehaviour
         /////Dev Controls
         if(Input.GetKeyDown(killTurret))
         {
-            turret.GetComponent<BaseTurret>().currentHP -= 101;
+            turret.GetComponent<BaseTurret>().m_Health -= 101;
         }
     }       
 }
