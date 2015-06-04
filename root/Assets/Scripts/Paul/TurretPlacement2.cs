@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TurretPlacement : Singleton<TurretPlacement> 
+public class TurretPlacement2 : Singleton<TurretPlacement> 
 {
     public GameObject turret1, turret2, turret3, turret4;
     public GameObject dot;

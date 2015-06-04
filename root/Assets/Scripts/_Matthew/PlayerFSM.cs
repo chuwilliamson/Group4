@@ -81,12 +81,12 @@ public class PlayerFSM
             case PlayerState.init:
                 if (to == PlayerState.idle)
                 {
-<<<<<<< HEAD
+
                     Debug.Log(to);
-=======
+
                     cState = to;
                     HUDManager.instance.stateHUD(cState);
->>>>>>> chuwilliamson/master
+
                     return true;
                 }
                 break;
@@ -94,12 +94,12 @@ public class PlayerFSM
             case PlayerState.idle:
                 if (to == PlayerState.walk)
                 {
-<<<<<<< HEAD
+
                     Debug.Log(to);
-=======
+
                     cState = to;
                     HUDManager.instance.stateHUD(cState);
->>>>>>> chuwilliamson/master
+
                     return true;
                 }
                 break;
@@ -107,12 +107,12 @@ public class PlayerFSM
             case PlayerState.walk:
                 if (to == PlayerState.run || to == PlayerState.idle)
                 {
-<<<<<<< HEAD
+
                     Debug.Log(to);
-=======
+
                     cState = to;
                     HUDManager.instance.stateHUD(cState);
->>>>>>> chuwilliamson/master
+
                     return true;
                 }
                 break;
@@ -120,12 +120,12 @@ public class PlayerFSM
             case PlayerState.run:
                 if (to == PlayerState.walk)
                 {
-<<<<<<< HEAD
+
                     Debug.Log(to);
-=======
+
                     cState = to;
                     HUDManager.instance.stateHUD(cState);
->>>>>>> chuwilliamson/master
+
                     return true;
                 }
                 break;

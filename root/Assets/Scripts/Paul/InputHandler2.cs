@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class InputHandler : MonoBehaviour 
+public class InputHandler2 : MonoBehaviour 
 {
 
     private GameObject player;
