@@ -26,7 +26,6 @@ public class PlayerActions : MonoBehaviour, IActions
     public void PlaceTurret()
     {
         print("place turret");
-        GetComponent<TurretPlacement>().TurretSelect();
     }
 
     public void State(PlayerState state)

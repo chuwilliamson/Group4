@@ -7,6 +7,8 @@ public class TurretPlacement : Singleton<TurretPlacement>
     public GameObject dot;
     private GameObject turret;
 
+    private int turretCount = 0;
+
     public bool isSelected = false; //checks to see if a turret is selected
 
 
@@ -14,7 +16,7 @@ public class TurretPlacement : Singleton<TurretPlacement>
 	// Use this for initialization
 	void Start () 
     {
-       // dot.gameObject.SetActive(false);
+       dot.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -46,7 +48,10 @@ public class TurretPlacement : Singleton<TurretPlacement>
         if(Input.GetMouseButtonUp(0))
         {
             dot.gameObject.SetActive(false);
+            turretCount++;          
         }
+  
+         ScoreManager.instance.Turret(turretCount);
     }
 
     public void TurretSelect(KeyCode a, KeyCode b, KeyCode c, KeyCode d)

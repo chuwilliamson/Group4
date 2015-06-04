@@ -34,8 +34,8 @@ public class InputHandler : MonoBehaviour
     }
     void Update()
     {
-        TurretPlacement.instance.TurretSelect(tTurret1, tTurret2, tTurret3, tTurret4); // Input for Turret
-
+        TurretPlacement.instance.TurretSelect(tTurret1, tTurret2, tTurret3, tTurret4); // Select Turrets
+        TurretPlacement.instance.TurretPlace();
         if (Input.GetKeyDown(slap)) // Slap
         {
             PlayerActions.instance.Slap();
@@ -63,7 +63,7 @@ public class InputHandler : MonoBehaviour
             GameManager.instance.Pause(GameManager.PauseState.Full);
         }
 
-        if(Input.GetKeyDown(pause))
+        if (Input.GetKeyDown(unpause))
         {
             GameManager.instance.Pause(GameManager.PauseState.None);
         }
