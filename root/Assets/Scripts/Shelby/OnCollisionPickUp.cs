@@ -21,13 +21,13 @@ public class OnCollisionPickUp : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Resource":
-                int scrapValue = other.gameObject.GetComponent<Resource>().value;
+                int n_scraps = other.gameObject.GetComponent<Resource>().value;
+                //int n_specialScraps = 
                 // resource objects have different values
-                if (scrapValue >= 5)
-                    //inventory.scraps_special += scrapValue;
-                    pInventory.scraps_special += scrapValue;
-                else if (scrapValue < 5)
-                    pInventory.scraps += scrapValue;
+                if (n_scraps >= 11)
+                    pInventory.scraps_special += 1;
+                else
+                    pInventory.scraps += n_scraps;
                 other.gameObject.GetComponent<IPickup>().PickUp();
                 
                 break;
