@@ -40,7 +40,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0520cc8d5fd34498160da05d44f89b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
+  bDamage: 10
   isFired: 0
+  doDmg: 0
 --- !u!135 &13545868
 SphereCollider:
   m_ObjectHideFlags: 1

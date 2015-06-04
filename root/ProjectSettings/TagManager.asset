@@ -13,6 +13,7 @@ TagManager:
   - MG
   - TurretManager
   - Enemy
+  - Goal
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,7 @@ public class GoalPoint : Stats
     void Destroy()
     {
         Destroy(gameObject);
-        GetComponent<LevelLoader>().loadLevel("Outro");
+        GetComponent<LevelLoader>().loadLevel("Exit");
     }
 
     public void Update()

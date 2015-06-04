@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BaseTurret : MonoBehaviour
+public class BaseTurret : Stats
 {
     public GameObject bullet; //prefab for the bullet
     public GameObject turretView;
@@ -16,8 +16,6 @@ public class BaseTurret : MonoBehaviour
 
     public int maxAmmo = 100; //how mmuch ammo the turret can hold
     public int currentAmmo = 100; //how many shots the turret has is decressed by one for every shot unless the turret has multiple barrels
-    public int maxHP = 100;  // max amount of HP the turret can have at any moment
-    public int currentHP = 100;   //is decreased by a certain amount when damage is taken and will vary form enemy to enemy how much damage is taken
 
     public int damage = 5;
 
@@ -133,7 +131,10 @@ public class BaseTurret : MonoBehaviour
     }
 
     // Use this for initialization
-    void Start() { }
+    void Start() 
+    {
+        m_Health = 100;
+    }
 
     // Update is called once per frame
     void Update()
@@ -153,7 +154,7 @@ public class BaseTurret : MonoBehaviour
              */
         }
 
-        if (currentHP <= 0)
+        if (m_Health <= 0)
         {
             print("I dead");
             Destroy(gameObject);

@@ -7,6 +7,8 @@ public class InputHandler : MonoBehaviour
     private GameObject player;
     private GameObject turretManager;
     private GameObject turret;
+    private GameObject Enemy;
+    private GameObject goal;
 
 
     //Stores all the keys for each input that should perform an action
@@ -39,6 +41,8 @@ public class InputHandler : MonoBehaviour
 
     //Dev controls
     public KeyCode killTurret = KeyCode.B;
+    public KeyCode endGame = KeyCode.G;
+    public KeyCode killEnemy = KeyCode.V;
 
 	// Update is called once per frame
     delegate void PauseDelegate();
@@ -51,11 +55,13 @@ public class InputHandler : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         turretManager = GameObject.FindGameObjectWithTag("TurretManager");
+        goal = GameObject.FindGameObjectWithTag("Goal");
 
     }
     void Update()
     {
         turret = GameObject.FindGameObjectWithTag("MG");
+        Enemy = GameObject.FindGameObjectWithTag("Enemy");
 
         //Game State changes
         if (Input.GetKeyDown(halfPause))
@@ -170,7 +176,15 @@ public class InputHandler : MonoBehaviour
         /////Dev Controls
         if(Input.GetKeyDown(killTurret))
         {
-            turret.GetComponent<BaseTurret>().currentHP -= 101;
+            turret.GetComponent<BaseTurret>().m_Health -= 101;
+        }
+        if (Input.GetKeyDown(killEnemy))
+        {
+            Enemy.GetComponent<EnemyStats>().m_Health -= 101;
+        }
+        if (Input.GetKeyDown(endGame))
+        {
+            goal.GetComponent<GoalPoint>().m_Health -= 101;
         }
     }       
 }
