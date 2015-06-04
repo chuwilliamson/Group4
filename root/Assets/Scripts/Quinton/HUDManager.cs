@@ -211,7 +211,7 @@ public class HUDManager : Singleton<HUDManager>
                 Vector3 vec3 = Log[Log.Count - 1].GetComponent<RectTransform>().localPosition;
                 vec3.y += Log[Log.Count - 1].GetComponent<RectTransform>().sizeDelta.y;
                 Log.Add((GameObject)Instantiate(LogText, vec3, Log[Log.Count - 1].GetComponent<RectTransform>().localRotation));
-                Log[Log.Count - 1].GetComponent<RectTransform>().transform.parent = Log[Log.Count - 2].GetComponent<RectTransform>().transform.parent;
+                Log[Log.Count - 1].GetComponent<RectTransform>().transform.SetParent(Log[Log.Count - 2].GetComponent<RectTransform>().transform.parent);
                 Log[Log.Count - 1].GetComponent<RectTransform>().transform.localPosition = vec3;
                 Log[Log.Count - 1].GetComponent<Text>().text = "";
                 
@@ -296,4 +296,33 @@ public class HUDManager : Singleton<HUDManager>
      Log.Add(LogText);
      NewLogSize(5);
      }
+
+     public void SetState(string item, bool state)
+     {
+         switch (item)
+         {
+             case "menu": 
+                 _menu.SetActive(state);             
+                 break;
+             case "buttons":
+                 _buttons.SetActive(state);
+                 break;
+             case "finish":
+                 _finish.SetActive(state);
+                 break;
+             default:
+                 break;
+         }
+     }
+
+     public void SetInfoLeft(string t)
+     {
+         _info.text = t;
+     }
+
+ 
+     public GameObject _menu;
+     public GameObject _buttons;
+     public GameObject _finish;
+     public Text _info;
 }
