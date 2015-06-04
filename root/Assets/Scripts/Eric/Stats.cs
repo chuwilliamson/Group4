@@ -7,8 +7,8 @@ public class Stats : MonoBehaviour
     public float m_Level, m_Exp, m_ExpNeeded;
     //Health related
     public float m_MaxHealth, m_Health, m_HealthRegen;
-    //Generic
-    public float m_Def, m_Speed, m_Acc, m_Dam;
+    //Accuracy
+    public float m_Acc;
 
     //How the experience needed is incrimented per level
     public enum GrowthType
@@ -35,8 +35,6 @@ public class Stats : MonoBehaviour
 
         m_HealthRegen += Mathf.Log(m_HealthRegen);
         m_MaxHealth += Mathf.Log(m_MaxHealth);
-        m_Speed += Mathf.Log(m_Speed);
-        m_Def += Mathf.Log(m_Def);
         m_Acc += Mathf.Log(m_Acc);
     }
 }

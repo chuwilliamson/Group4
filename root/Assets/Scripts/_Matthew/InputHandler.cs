@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class InputHandler : MonoBehaviour 
 {
     private GameObject player;
+    private GameObject turretManager;
     private GameObject turret;
 
 
@@ -20,7 +21,7 @@ public class InputHandler : MonoBehaviour
     public KeyCode tTurret2 = KeyCode.Alpha2;
     public KeyCode tTurret3 = KeyCode.Alpha3;
     public KeyCode tTurret4 = KeyCode.Alpha4;
-    public KeyCode keyPad = KeyCode.KeypadEnter;
+    public KeyCode place = KeyCode.Mouse0;
 
     //player movement controls
     public KeyCode walkForward = KeyCode.W;
@@ -36,6 +37,9 @@ public class InputHandler : MonoBehaviour
     public KeyCode init = KeyCode.I;
     public KeyCode idle = KeyCode.O;
 
+    //Dev controls
+    public KeyCode killTurret = KeyCode.B;
+
 	// Update is called once per frame
     delegate void PauseDelegate();
     delegate void NumberDelegate(int n);
@@ -45,11 +49,13 @@ public class InputHandler : MonoBehaviour
     
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player"); 
+        player = GameObject.FindGameObjectWithTag("Player");
+        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
+
     }
     void Update()
     {
-        //TurretPlacement.instance.TurretSelect(tTurret1, tTurret2, tTurret3, tTurret4); // Input for Turret
+        turret = GameObject.FindGameObjectWithTag("MG");
 
         //Game State changes
         if (Input.GetKeyDown(halfPause))
@@ -70,7 +76,7 @@ public class InputHandler : MonoBehaviour
 
 
         ////Player States
-        if (Input.GetKeyDown(walkBack)) //Walk forwrad
+        if (Input.GetKeyDown(walkForward)) //Walk forwrad
         {
             player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
@@ -109,23 +115,28 @@ public class InputHandler : MonoBehaviour
             player.GetComponent<PlayerActions>().State(PlayerState.init);
         }
 
-        ////Player turret Selction
-        //if(Input.GetKeyDown(tTurret1))
-        //{
-        //    turret.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
-        //}
-        //if (Input.GetKeyDown(tTurret2))
-        //{
-        //    turret.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
-        //}
-        //if (Input.GetKeyDown(tTurret3))
-        //{
-        //    turret.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
-        //}
-        //if (Input.GetKeyDown(tTurret4))
-        //{
-        //    turret.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
-        //}
+        ////Player turret Selction and placement
+        if (Input.GetKeyDown(tTurret1))
+        {
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
+        }
+        if (Input.GetKeyDown(tTurret2))
+        {
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
+        }
+        if (Input.GetKeyDown(tTurret3))
+        {
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
+        }
+        if (Input.GetKeyDown(tTurret4))
+        {
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
+        }
+
+        if(Input.GetKeyDown(place))
+        {
+            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
+        }
 
         ////Player Actions
         if (Input.GetKeyDown(slap))
@@ -142,5 +153,12 @@ public class InputHandler : MonoBehaviour
         {
             player.GetComponent<PlayerActions>().Jump();
         }     
+
+
+        /////Dev Controls
+        if(Input.GetKeyDown(killTurret))
+        {
+            turret.GetComponent<BaseTurret>().currentHP -= 101;
+        }
     }       
 }
