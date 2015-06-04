@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-public class InputHandler : MonoBehaviour 
+public class InputHandler2 : MonoBehaviour 
 {
 
     private GameObject player;
@@ -185,7 +185,7 @@ public class InputHandler : MonoBehaviour
         /////Dev Controls
         if (Input.GetKeyDown(killTurret))
         {
-            turret.GetComponent<BaseTurret>().m_Health -= 101;
+            turret.GetComponent<BaseTurret>().currentHP -= 101;
         }
     }
 }
