@@ -13,6 +13,7 @@ public class PlayerFSM
     /// </summary>
     public PlayerFSM()
     {
+        //please work
         canSlap = false;
         canJump = false;
         canShoot = false;
