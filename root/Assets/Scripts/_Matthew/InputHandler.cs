@@ -43,8 +43,8 @@ public class InputHandler : MonoBehaviour
 	// Update is called once per frame
     delegate void PauseDelegate();
     delegate void NumberDelegate(int n);
-    public int num = 0; 
-
+    public int num = 0;
+    public bool paused = false;
     NumberDelegate numMultiDel;
     
     void Awake()
@@ -66,13 +66,25 @@ public class InputHandler : MonoBehaviour
 
         if (Input.GetKeyDown(pause))
         {
-            GameManager.instance.Pause(GameManager.PauseState.Full);
+            if (!paused)
+            {
+                GameManager.instance.Pause(GameManager.PauseState.Full);
+                print("pausing");
+                paused = !paused;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+                HUDManager.instance.SetState("menu", true);
+            }
+            else
+            {
+                GameManager.instance.Pause(GameManager.PauseState.None);
+                print("unpause");
+                paused = !paused;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+                HUDManager.instance.SetState("menu", false);
+            }
         }
 
-        if (Input.GetKeyDown(pause))
-        {
-            GameManager.instance.Pause(GameManager.PauseState.None);
-        }
+        
 
 
         ////Player States

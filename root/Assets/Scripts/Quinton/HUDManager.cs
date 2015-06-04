@@ -296,4 +296,27 @@ public class HUDManager : Singleton<HUDManager>
      Log.Add(LogText);
      NewLogSize(5);
      }
+
+     public void SetState(string item, bool state)
+     {
+         switch (item)
+         {
+             case "menu": 
+                 _menu.SetActive(state);             
+                 break;
+             case "buttons":
+                 _buttons.SetActive(state);
+                 break;
+             case "finish":
+                 _finish.SetActive(state);
+                 break;
+             default:
+                 break;
+         }
+     }
+
+ 
+     public GameObject _menu;
+     public GameObject _buttons;
+     public GameObject _finish;
 }
