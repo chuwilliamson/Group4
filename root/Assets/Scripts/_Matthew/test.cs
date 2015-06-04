@@ -26,8 +26,12 @@ public class test : MonoBehaviour
 
     void Update ()
     {
-        NameQuery();
-        IDQuery();
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+
+             NameQuery();
+             //IDQuery();
+        }
     }
 
     //public string blah = "shelby";
