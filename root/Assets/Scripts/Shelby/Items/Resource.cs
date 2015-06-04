@@ -7,7 +7,8 @@ public class Resource : MonoBehaviour, IPickup {
 
     public void PickUp()
     {
-        print("THAT'S A FREAKIN SPECIAL SCRAK");
+        print("Scraps: " + GameObject.Find("PlayerInventory").GetComponent<ItemDatabase>().scraps);
+        print("Special Scraps: " + GameObject.Find("PlayerInventory").GetComponent<ItemDatabase>().scraps_special);
         Object.Destroy(gameObject);
        
     }
