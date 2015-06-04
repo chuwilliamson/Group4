@@ -315,8 +315,14 @@ public class HUDManager : Singleton<HUDManager>
          }
      }
 
+     public void SetInfoLeft(string t)
+     {
+         _info.text = t;
+     }
+
  
      public GameObject _menu;
      public GameObject _buttons;
      public GameObject _finish;
+     public Text _info;
 }
