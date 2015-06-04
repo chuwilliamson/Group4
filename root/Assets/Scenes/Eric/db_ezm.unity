@@ -146,9 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8788f79c86e569d4aad6daa76517c56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scraps: 0
-  scraps_special: 0
-  database: []
 --- !u!4 &223382051
 Transform:
   m_ObjectHideFlags: 0
@@ -161,52 +158,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1005024448}
   m_RootOrder: 2
---- !u!1001 &247229820
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 494896, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 494896, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 494896, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 494896, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: .461939812
-      objectReference: {fileID: 0}
-    - target: {fileID: 494896, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: .191341713
-      objectReference: {fileID: 0}
-    - target: {fileID: 494896, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: .191341713
-      objectReference: {fileID: 0}
-    - target: {fileID: 494896, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: .844623208
-      objectReference: {fileID: 0}
-    - target: {fileID: 494896, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 175452, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-      propertyPath: m_Name
-      value: Scrap
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &328918634
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +856,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1392223284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +980,7 @@ MonoBehaviour:
   m_Acc: 0
   cGrowthType: 1
   Drop: {fileID: 175452, guid: 818bedb0d243d0e45968f476d7fdd987, type: 2}
+  sDrop: {fileID: 175452, guid: aefff8020ec1f504b8b17cd1dad72267, type: 2}
   m_PowerLevel: 1
   m_pLvl: 1
 --- !u!23 &1864169600
@@ -1085,7 +1037,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1889839763
 GameObject:
   m_ObjectHideFlags: 0
