@@ -54,7 +54,7 @@ public class EnemyStats : Stats
             DropPos.z += Random.Range(-.5f, .51f);
             DropPos.y = 0.5f;
             GameObject d = Instantiate(Drop, DropPos, transform.rotation) as GameObject;
-            d.GetComponent<Rigidbody>().AddForce(Vector3.up * 1000);
+            d.GetComponent<Rigidbody>().AddForce(Vector3.up * 100);
         }
 
         Destroy(gameObject);
