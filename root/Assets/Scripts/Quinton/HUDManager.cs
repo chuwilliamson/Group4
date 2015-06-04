@@ -14,7 +14,17 @@ public class HUDManager : Singleton<HUDManager>
     GameObject scrap;
     [SerializeField]
     GameObject promp;
-
+    [SerializeField]
+    GameObject pState;
+    [SerializeField]
+    GameObject pActions;
+    [SerializeField]
+    GameObject turSelcted;
+    /*s
+     
+     Gameobjecct 
+     
+     */
 
 
    
@@ -103,8 +113,25 @@ public class HUDManager : Singleton<HUDManager>
     {
         turrent.GetComponent<Text>().text = tur.ToString();
     }
+
+    public void TurSelectHUD(string turSelect)
+    {
+        turSelcted.GetComponent<Text>().text = turSelect;
+    }
+    public void stateHUD(PlayerState state)
+    {
+        pState.GetComponent<Text>().text = state.ToString(); ;
+    }
+    public void actionHUD(string action)
+    {
+        pActions.GetComponent<Text>().text = action;
+    }
     ////////////////////////////////////////////////////////////////////////////////////
     
+
+
+
+
     /// <summary>
     /// Pass in a string to activate promp with that string. Pas in the same string will remove the promp;
     /// </summary>

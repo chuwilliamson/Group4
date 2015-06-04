@@ -130,8 +130,4 @@ public class ScoreManager : Singleton<ScoreManager>
         HUDManager.instance.TurHUD(turretNumber);
         return true;
     }
-
-
-
-
 }
