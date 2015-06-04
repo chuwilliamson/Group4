@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 public class InputHandler : MonoBehaviour 
 {
-
     private GameObject player;
     private GameObject turretManager;
     private GameObject turret;
@@ -11,7 +11,6 @@ public class InputHandler : MonoBehaviour
 
     //Stores all the keys for each input that should perform an action
     //GameStates
-
     public KeyCode halfPause = KeyCode.C;
     public KeyCode pause = KeyCode.X;
     public KeyCode unpause = KeyCode.Z;
@@ -41,67 +40,56 @@ public class InputHandler : MonoBehaviour
     //Dev controls
     public KeyCode killTurret = KeyCode.B;
 
-    //public KeyCode forward = KeyCode.W;
-    //public KeyCode left = KeyCode.A;
-    //public KeyCode down = KeyCode.S;
-    //public KeyCode right = KeyCode.D;
-    
-
 	// Update is called once per frame
     delegate void PauseDelegate();
     delegate void NumberDelegate(int n);
     public int num = 0;
-  
-
+    public bool paused = false;
     NumberDelegate numMultiDel;
     
-    void Start() { }
-    void Update()
+    void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         turretManager = GameObject.FindGameObjectWithTag("TurretManager");
+
+    }
+    void Update()
+    {
         turret = GameObject.FindGameObjectWithTag("MG");
 
-        TurretPlacement.instance.TurretSelect(tTurret1, tTurret2, tTurret3, tTurret4); // Select Turrets
-        TurretPlacement.instance.TurretPlace();
-
-        if (Input.GetKeyDown(slap)) // Slap 
-        {
-            PlayerActions.instance.Slap();
-        }
-        if (Input.GetKeyDown(shoot)) // Shoot
-        {
-            PlayerActions.instance.Shoot();
-        }
         //Game State changes
-    
-
-        //if (Input.GetKeyDown(pause)) // Press X
-        //{
-        //    numMultiDel = null;
-        //    num++;
-        //    numMultiDel += NumberPlusFive;
-        //    numMultiDel += NumberSquared;
-        //    numMultiDel(num);
-
-        //    GameManager.instance.Pause(GameManager.PauseState.Full);
-        //}
-
-        if (Input.GetKeyDown(halfPause)) // Press C
+        if (Input.GetKeyDown(halfPause))
         {
             /// Pause State Half (Update at Half speed)
             GameManager.instance.Pause(GameManager.PauseState.Half);
         }
 
-        if (Input.GetKeyDown(unpause)) // Press Z
+        if (Input.GetKeyDown(pause))
         {
-            GameManager.instance.Pause(GameManager.PauseState.None);
+            if (!paused)
+            {
+                GameManager.instance.Pause(GameManager.PauseState.Full);
+                print("pausing");
+                paused = !paused;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+                HUDManager.instance.SetState("menu", true);
+            }
+            else
+            {
+                GameManager.instance.Pause(GameManager.PauseState.None);
+                print("unpause");
+                paused = !paused;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+                HUDManager.instance.SetState("menu", false);
+            }
         }
 
+        
 
+
+        ////Player States
         if (Input.GetKeyDown(walkForward)) //Walk forwrad
         {
-            //GameManager.instance.Transition();
             player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
 
@@ -119,7 +107,6 @@ public class InputHandler : MonoBehaviour
         {
             player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
-
 
         if (Input.GetKeyDown(toggelRun)) //toggles run on
         {
@@ -140,30 +127,28 @@ public class InputHandler : MonoBehaviour
             player.GetComponent<PlayerActions>().State(PlayerState.init);
         }
 
-
         ////Player turret Selction and placement
         if (Input.GetKeyDown(tTurret1))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect();
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
         }
         if (Input.GetKeyDown(tTurret2))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect();
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
         }
         if (Input.GetKeyDown(tTurret3))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect();
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
         }
         if (Input.GetKeyDown(tTurret4))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect();
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
         }
 
-        if (Input.GetKeyDown(place))
+        if(Input.GetKeyDown(place))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretPlace();
+            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
         }
-
 
         ////Player Actions
         if (Input.GetKeyDown(slap))
@@ -179,37 +164,13 @@ public class InputHandler : MonoBehaviour
         if (Input.GetKeyDown(jump))
         {
             player.GetComponent<PlayerActions>().Jump();
-        }
+        }     
 
 
         /////Dev Controls
-        if (Input.GetKeyDown(killTurret))
+        if(Input.GetKeyDown(killTurret))
         {
-            turret.GetComponent<BaseTurret>().m_Health -= 101;
+            turret.GetComponent<BaseTurret>().currentHP -= 101;
         }
-    }
+    }       
 }
-
-        
-
-    //void NumberSquared(int num)
-    //{
-    //    print("the number squared: = " + num * num);
-        
-    //}
-
-    //void NumberPlusFive(int num)
-    //{
-    //    print("the number: " + num + "= " + num + 5);
-    //}
-    //void doAnotherPause()
-    //{
-    //    print("doing another pause delegate");
-    //}
-
-    //void doSomethingUnrelatedToPause()
-    //{
-    //    print("doing something unrelated to pausing");
-    //}
-        
-    
