@@ -3,8 +3,8 @@ using System.Collections;
 
 public class GameOverManger : MonoBehaviour 
 {
-    Animator anim;
 
+    Animator anim;
 
     void Awake()
     {
