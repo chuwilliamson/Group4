@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class PlayerFSM
 {
     bool canSlap, canJump, canShoot, placeTurret;
-    Dictionary<string, bool> ActionDict;
+    public Dictionary<string, bool> ActionDict;
     /// <summary>
     /// on construction we will initialize our action list
     /// </summary>
@@ -23,17 +23,12 @@ public class PlayerFSM
         ActionDict.Add("jump", canJump);
         ActionDict.Add("shoot", canShoot);
         ActionDict.Add("placeTurret", placeTurret);
-        
     }
 
     /// <summary>
     /// what we want to happen when we are in the current state
     /// </summary>
     /// <param name="state"></param>
-    private IEnumerator HandleState(PlayerState state)
-    {
-        yield return null;
-    }
 
     private void HandleTransition(PlayerState state)
     {
@@ -76,13 +71,13 @@ public class PlayerFSM
     /// </returns>
     private bool CheckTransition(PlayerState from, PlayerState to)
     {
-
         switch (from)
         {
             case PlayerState.init:
                 if (to == PlayerState.idle)
                 {
                     cState = to;
+                    HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -91,6 +86,7 @@ public class PlayerFSM
                 if (to == PlayerState.walk)
                 {
                     cState = to;
+                    HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -99,6 +95,7 @@ public class PlayerFSM
                 if (to == PlayerState.run || to == PlayerState.idle)
                 {
                     cState = to;
+                    HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -107,6 +104,7 @@ public class PlayerFSM
                 if (to == PlayerState.walk)
                 {
                     cState = to;
+                    HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;

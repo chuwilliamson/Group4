@@ -14,7 +14,7 @@ public class TurretPlacement : Singleton<TurretPlacement>
 	// Use this for initialization
 	void Start () 
     {
-       // dot.gameObject.SetActive(false);
+       dot.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -25,58 +25,51 @@ public class TurretPlacement : Singleton<TurretPlacement>
         //calls in the functions for selecting a turret and placing the turrets
     }
 
-     public void TurretPlace()
+     public void TurretPlacePoint()
     {
         Vector3 pos = transform.position + Camera.main.transform.forward * 3;
         pos.y = 1;
         //Sets the spawn position that the turret will be placed at
 
-        if (Input.GetMouseButtonDown(0))
+        //dot.gameObject.SetActive(true);
+        
+
+        if (isSelected == true)
         {
             dot.gameObject.SetActive(true);
-        }
-
-        if (Input.GetMouseButtonUp(0) && isSelected == true)
-        {
-            dot.gameObject.SetActive(false);
             Instantiate(turret, pos, transform.rotation);
             isSelected = false;
         }
-
-        if(Input.GetMouseButtonUp(0))
-        {
-            dot.gameObject.SetActive(false);
-        }
     }
 
-    public void TurretSelect(KeyCode a, KeyCode b, KeyCode c, KeyCode d)
+    public void TurretSelect(KeyCode a)
     {
-        if (Input.GetKeyDown(a)) 
+        if (a == KeyCode.Alpha1) 
             // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
         {
-            print("Turret 1 Selected.");
+            HUDManager.instance.TurSelectHUD("Turret 1");
             // The turret placement will be placed in front of the player by 1 unit.
             turret = turret1;
             isSelected = true;
         }
 
-        if (Input.GetKeyDown(b))
+        if (a == KeyCode.Alpha2)
         {
-            print("Turret 2 Selected.");
+            HUDManager.instance.TurSelectHUD("Turret 2");
             turret = turret2;
             isSelected = true;
         }
 
-        if (Input.GetKeyDown(c))
+        if (a == KeyCode.Alpha3)
         {
-            print("Turret 3 Selected.");
+            HUDManager.instance.TurSelectHUD("Turret 3");
             turret = turret3;
             isSelected = true;
         }
 
-        if (Input.GetKeyDown(d))
+        if (a == KeyCode.Alpha4)
         {
-            print("Turret 4 Selected.");
+            HUDManager.instance.TurSelectHUD("Turret 4");
             turret = turret4;
             isSelected = true;
         }
