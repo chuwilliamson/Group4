@@ -5,6 +5,7 @@ public class EnemyStats : Stats
 {
     public bool m_PowerLevel;
     public int m_pLvl;
+    public int m_Def, m_Speed;
 
     void Start()
     {
