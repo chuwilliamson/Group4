@@ -1,93 +1,146 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class InputHandler : MonoBehaviour 
 {
     private GameObject player;
     private GameObject turret;
+
+
+    //Stores all the keys for each input that should perform an action
+    //GameStates
+    public KeyCode halfPause = KeyCode.C;
+    public KeyCode pause = KeyCode.X;
+    public KeyCode unpause = KeyCode.Z;
+    public KeyCode StartGame = KeyCode.E;
+
+    //player turret selections and placements
+    public KeyCode tTurret1 = KeyCode.Alpha1;
+    public KeyCode tTurret2 = KeyCode.Alpha2;
+    public KeyCode tTurret3 = KeyCode.Alpha3;
+    public KeyCode tTurret4 = KeyCode.Alpha4;
+    public KeyCode keyPad = KeyCode.KeypadEnter;
+
+    //player movement controls
+    public KeyCode walkForward = KeyCode.W;
+    public KeyCode walkBack = KeyCode.S;
+    public KeyCode walkLeft = KeyCode.A;
+    public KeyCode walkRight = KeyCode.D;
+    public KeyCode toggelRun = KeyCode.LeftShift;
+    public KeyCode slap = KeyCode.F;
+    public KeyCode shoot = KeyCode.V;
+    public KeyCode jump = KeyCode.Space;
+
+    //player state change controls
+    public KeyCode init = KeyCode.I;
+    public KeyCode idle = KeyCode.O;
+
+	// Update is called once per frame
+    delegate void PauseDelegate();
+    delegate void NumberDelegate(int n);
+    public int num = 0; 
+
+    NumberDelegate numMultiDel;
+    
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player"); 
     }
-	// Update is called once per frame
     void Update()
     {
-        ////Player States
-        if (Input.GetKeyDown(KeyCode.W)) //Walk forwrad
-        {
-            player.GetComponent<PlayerActions>().State(PlayerState.walk);
-        }
+        //TurretPlacement.instance.TurretSelect(tTurret1, tTurret2, tTurret3, tTurret4); // Input for Turret
 
-        if (Input.GetKeyDown(KeyCode.A)) //Walk to the left
-        {
-            player.GetComponent<PlayerActions>().State(PlayerState.walk);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S)) //Walk backwards
-        {
-            player.GetComponent<PlayerActions>().State(PlayerState.walk);
-        }
-
-        if (Input.GetKeyDown(KeyCode.D)) //Walk to the right
-        {
-            player.GetComponent<PlayerActions>().State(PlayerState.walk);
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftShift)) //toggles run
-        {
-            player.GetComponent<PlayerActions>().State(PlayerState.run);
-        }
-
-        if (Input.GetKeyDown(KeyCode.I)) //toggles idles
-        {
-            player.GetComponent<PlayerActions>().State(PlayerState.idle);
-        }
-
-        if (Input.GetKeyDown(KeyCode.O)) //toggles init
-        {
-            player.GetComponent<PlayerActions>().State(PlayerState.init);
-        }
-
-        ////Player Actions
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            player.GetComponent<PlayerActions>().Slap();
-        }
-
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            player.GetComponent<PlayerActions>().Shoot();
-        }
-
-
-        ////Turret Controls
-        //Place Turrets
-
-        //Select turret to place
-        if(Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            TurretManager.instance.PlaceTurret();
-        }
-
-
-        ////GameManager Controls
-        if (Input.GetKeyDown(KeyCode.Space))
+        //Game State changes
+        if (Input.GetKeyDown(halfPause))
         {
             /// Pause State Half (Update at Half speed)
             GameManager.instance.Pause(GameManager.PauseState.Half);
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(pause))
         {
-            /// Pause State Full (Update Halted)
             GameManager.instance.Pause(GameManager.PauseState.Full);
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(pause))
         {
-            /// 
-            //GameManager.instance.Transition();
+            GameManager.instance.Pause(GameManager.PauseState.None);
         }
-    }
-        
+
+
+        ////Player States
+        if (Input.GetKeyDown(walkBack)) //Walk forwrad
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
+        }
+
+        if (Input.GetKeyDown(walkBack)) //Walk to the back
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
+        }
+
+        if (Input.GetKeyDown(walkLeft)) //Walk left
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
+        }
+
+        if (Input.GetKeyDown(walkRight)) //Walk to the right
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
+        }
+
+        if (Input.GetKeyDown(toggelRun)) //toggles run on
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.run);
+        }
+        if (Input.GetKeyUp(toggelRun)) //toggles run off
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.walk);
+        }
+
+        if (Input.GetKeyDown(idle)) //toggles idles
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.idle);
+        }
+
+        if (Input.GetKeyDown(init)) //toggles init
+        {
+            player.GetComponent<PlayerActions>().State(PlayerState.init);
+        }
+
+        ////Player turret Selction
+        //if(Input.GetKeyDown(tTurret1))
+        //{
+        //    turret.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
+        //}
+        //if (Input.GetKeyDown(tTurret2))
+        //{
+        //    turret.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
+        //}
+        //if (Input.GetKeyDown(tTurret3))
+        //{
+        //    turret.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
+        //}
+        //if (Input.GetKeyDown(tTurret4))
+        //{
+        //    turret.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
+        //}
+
+        ////Player Actions
+        if (Input.GetKeyDown(slap))
+        {
+            player.GetComponent<PlayerActions>().Slap();
+        }
+
+        if (Input.GetKeyDown(shoot))
+        {
+            player.GetComponent<PlayerActions>().Shoot();
+        }
+
+        if (Input.GetKeyDown(jump))
+        {
+            player.GetComponent<PlayerActions>().Jump();
+        }     
+    }       
 }

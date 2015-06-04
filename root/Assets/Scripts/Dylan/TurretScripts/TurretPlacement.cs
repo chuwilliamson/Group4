@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TurretPlacement : MonoBehaviour 
+public class TurretPlacement : Singleton<TurretPlacement> 
 {
     public GameObject turret1, turret2, turret3, turret4;
     public GameObject dot;
@@ -14,20 +14,18 @@ public class TurretPlacement : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        dot.gameObject.SetActive(false);
+       // dot.gameObject.SetActive(false);
 	}
-
-
 	
-	 //Update is called once per frame
+	// Update is called once per frame
     void Update()
     {
-        TurretSelect();
-        TurretPlace();
-      //  calls in the functions for selecting a turret and placing the turrets
+        //TurretSelect();
+        //TurretPlace();
+        //calls in the functions for selecting a turret and placing the turrets
     }
 
-    void TurretPlace()
+     public void TurretPlace()
     {
         Vector3 pos = transform.position + Camera.main.transform.forward * 3;
         pos.y = 1;
@@ -51,47 +49,36 @@ public class TurretPlacement : MonoBehaviour
         }
     }
 
-    
-    public void TurretSelect(int choice = 0)
+    public void TurretSelect(KeyCode a)
     {
-        if (Input.GetKeyDown("1"))
-        // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
+        if (Input.GetKeyDown(a)) 
+            // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
         {
-            print("1 Turret Selected");
+            print("Turret 1 Selected.");
             // The turret placement will be placed in front of the player by 1 unit.
             turret = turret1;
             isSelected = true;
         }
 
-        if (Input.GetKeyDown("2"))
+        if (Input.GetKeyDown(a))
         {
-            print("2 Turret Selected");
+            print("Turret 2 Selected.");
             turret = turret2;
             isSelected = true;
         }
 
-        if (Input.GetKeyDown("3"))
+        if (Input.GetKeyDown(a))
         {
-            print("3 Turret Selected");
+            print("Turret 3 Selected.");
             turret = turret3;
             isSelected = true;
         }
 
-        if (Input.GetKeyDown("4"))
+        if (Input.GetKeyDown(a))
         {
-            print("4 Turret Selected");
+            print("Turret 4 Selected.");
             turret = turret4;
             isSelected = true;
         }
-        //switch(choice)
-        //{
-        //    case 1:  
-        //        {
-        //            print("1 Turret Selected");
-        //            //The turret placement will be placed in front of the player by 1 unit.
-        //            turret = turret1;
-        //            isSelected = true; break;
-        //        }
-        //}
     }
 }
