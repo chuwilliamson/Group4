@@ -14,7 +14,7 @@ public class TurretPlacement : Singleton<TurretPlacement>
 	// Use this for initialization
 	void Start () 
     {
-       // dot.gameObject.SetActive(false);
+       dot.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -31,12 +31,12 @@ public class TurretPlacement : Singleton<TurretPlacement>
         pos.y = 1;
         //Sets the spawn position that the turret will be placed at
 
-        dot.gameObject.SetActive(true);
+        //dot.gameObject.SetActive(true);
         
 
         if (isSelected == true)
         {
-            dot.gameObject.SetActive(false);
+            dot.gameObject.SetActive(true);
             Instantiate(turret, pos, transform.rotation);
             isSelected = false;
         }

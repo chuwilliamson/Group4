@@ -114,9 +114,9 @@ public class HUDManager : Singleton<HUDManager>
         turrent.GetComponent<Text>().text = tur.ToString();
     }
 
-    public void TurSelectHUD(string tur)
+    public void TurSelectHUD(string turSelect)
     {
-        turrent.GetComponent<Text>().text = tur;
+        turSelcted.GetComponent<Text>().text = turSelect;
     }
     public void stateHUD(PlayerState state)
     {
