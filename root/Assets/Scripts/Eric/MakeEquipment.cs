@@ -8,15 +8,15 @@ public class MakeEquipment : MonoBehaviour
     public ItemDatabase refToDB;
 
 
-    [ContextMenu("Get shit done.")]
-    void MakeTheEquipment()
-    {
-        var newItem = Instantiate(equipment) as GameObject;
-        newItem.gameObject.name = "Item";
-        newItem.GetComponent<EquipmentStats>().Build(1);
+    //[ContextMenu("Get shit done.")]
+    //void MakeTheEquipment()
+    //{
+    //    var newItem = Instantiate(equipment) as GameObject;
+    //    newItem.gameObject.name = "Item";
+    //    //newItem.GetComponent<EquipmentStats>().Build(1);
 
-        ShelbyDatabase.instance.AddSingleItem(newItem, refToDB);
-    }
+    //    ShelbyDatabase.instance.AddSingleItem(newItem, refToDB);
+    //}
 
     void RemoveTheThings()
     {

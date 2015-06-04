@@ -12,10 +12,10 @@ public class EquipmentStats : UniqueID
     public int m_Level, m_Rare, m_RuneSlots, m_RunesEquiped;
     public float m_Attack, m_Dexterity, m_Defence, m_Speed, m_DOT;
 
-    public void Build(int a_Level)
+    public void Build()
     {
         e_type  = (Equipment)Random.Range(0, 5);
-        m_Level = a_Level;
+        m_Level = Random.Range(1, 11);//a_Level;
         m_Rare  = Random.Range(1, 102);
 
         m_Attack = m_Dexterity = m_Defence = m_Speed = m_DOT = 0;   // Defaults stats to 0
@@ -68,7 +68,7 @@ public class EquipmentStats : UniqueID
                 case 2: m_Defence = 5; m_Speed = 5; break; // ChainMail
                 case 3: m_Defence = 6; m_Speed = 4; break; // FullPlate
                 case 4: m_Defence = 7; m_Speed = 3; break; // BattleArmour
-                case 5: m_Defence = 7; m_Speed = 5; break; // DragonScale
+                case 5: m_Defence = 6; m_Speed = 5; break; // DragonScale
             }
             sub_type = r;
             ArmourTypes a = (ArmourTypes)sub_type;

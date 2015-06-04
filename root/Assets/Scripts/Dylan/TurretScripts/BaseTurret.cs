@@ -19,6 +19,8 @@ public class BaseTurret : MonoBehaviour
     public int maxHP = 100;  // max amount of HP the turret can have at any moment
     public int currentHP = 100;   //is decreased by a certain amount when damage is taken and will vary form enemy to enemy how much damage is taken
 
+    public int turretCost = 10;
+
     int looper = 1;
 
     public bool isTargetInRadius = false; //checks to see if the target is in the radius of the turret
@@ -69,7 +71,7 @@ public class BaseTurret : MonoBehaviour
             //Fire mechanics for the MachineGun turret
             //gets the position of the barrel and spawns the 
             //bullet at that barrels position
-            if(gameObject.tag == "One Barrel")
+            if(gameObject.tag == "MG")
             {
                 foreach (Transform theBarrelPos in barrelPos)
                 {
@@ -147,6 +149,12 @@ public class BaseTurret : MonoBehaviour
                 when the target comes into the radius of the turret the turret will begin to rotate till 
              * the target is in its field of view and once it comes into the field of view it will begin to fire
              */
+
+            if(currentHP <= 0)
+            {
+                print("I dead");
+                Destroy(gameObject);
+            }
         }
 
 

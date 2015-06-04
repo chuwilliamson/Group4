@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class PlayerFSM
 {
     bool canSlap, canJump, canShoot, placeTurret;
-    Dictionary<string, bool> ActionDict;
+    public Dictionary<string, bool> ActionDict;
     /// <summary>
     /// on construction we will initialize our action list
     /// </summary>
@@ -23,47 +23,37 @@ public class PlayerFSM
         ActionDict.Add("jump", canJump);
         ActionDict.Add("shoot", canShoot);
         ActionDict.Add("placeTurret", placeTurret);
-        
     }
 
     /// <summary>
     /// what we want to happen when we are in the current state
     /// </summary>
     /// <param name="state"></param>
-    private IEnumerator HandleState(PlayerState state)
-    {
-        yield return null;
-    }
 
     private void HandleTransition(PlayerState state)
     {
-        switch (state)
+        foreach (string Key in new List<string>(ActionDict.Keys))
         {
-            case PlayerState.init: //start up
-                foreach (KeyValuePair<string, bool> entry in ActionDict)
-                {
-                    ActionDict[entry.Key] = false; //cant do anything in the dictionary
-                }
-                break;
+            switch (state)
+            {
+                case PlayerState.init: //start up
+                    ActionDict[Key] = false; //cant do anything in the dictionary
+                    break;
 
-            case PlayerState.idle:
-                foreach (KeyValuePair<string, bool> entry in ActionDict)
-                {
-                    ActionDict[entry.Key] = true; //can do everything in the dictionary
-                }
-                break;
+                case PlayerState.idle:
+                    ActionDict[Key] = true; //can do everything in the dictionary
+                    break;
 
-            case PlayerState.walk:
-                foreach (KeyValuePair<string, bool> entry in ActionDict)
-                {
-                    ActionDict[entry.Key] = true; //can do everything in the dictionary
-                }
-                break;
-
-            case PlayerState.run:
-                ActionDict["slap"] = false; //cant slap but can do everyting else in the dictionary
-                break;
+                case PlayerState.walk:
+                    ActionDict[Key] = true; //can do everything in the dictionary
+                    break;
+                case PlayerState.run:
+                    ActionDict["slap"] = false; //cant slap but can do everyting else in the dictionary
+                    ActionDict["placeTurret"] = false;
+                    break;
+            }
         }
+
     }
 
     protected static PlayerFSM _fsm;
@@ -81,13 +71,13 @@ public class PlayerFSM
     /// </returns>
     private bool CheckTransition(PlayerState from, PlayerState to)
     {
-
         switch (from)
         {
             case PlayerState.init:
                 if (to == PlayerState.idle)
                 {
-                    Debug.Log(to);
+                    cState = to;
+                    HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -95,7 +85,8 @@ public class PlayerFSM
             case PlayerState.idle:
                 if (to == PlayerState.walk)
                 {
-                    Debug.Log(to);
+                    cState = to;
+                    HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -103,7 +94,8 @@ public class PlayerFSM
             case PlayerState.walk:
                 if (to == PlayerState.run || to == PlayerState.idle)
                 {
-                    Debug.Log(to);
+                    cState = to;
+                    HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -111,7 +103,8 @@ public class PlayerFSM
             case PlayerState.run:
                 if (to == PlayerState.walk)
                 {
-                    Debug.Log(to);
+                    cState = to;
+                    HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -134,7 +127,7 @@ public class PlayerFSM
         HandleTransition(to);
     }
 
-    private PlayerState cState;
+    private PlayerState cState = PlayerState.idle;
 
     public PlayerState CurrentState
     {
