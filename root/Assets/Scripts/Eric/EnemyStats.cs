@@ -10,9 +10,6 @@ public class EnemyStats : Stats
 
     void Start()
     {
-        m_Level = 1;
-
-        m_Acc = 1;
         m_MaxHealth = 100;
         m_Health = m_MaxHealth;
 
@@ -26,8 +23,8 @@ public class EnemyStats : Stats
 
     void Update()
     {
-        if (m_PowerLevel)
-            PowerLevel(m_pLvl);
+        //if (m_PowerLevel)
+        //    PowerLevel(m_pLvl);
 
         if (m_Health <= 0)
             Die();
@@ -36,13 +33,13 @@ public class EnemyStats : Stats
             m_Health -= 5;
     }
 
-    void PowerLevel(int lvl)
-    {
-        while (m_Level < lvl)
-            LevelUp();
+    //void PowerLevel(int lvl)
+    //{
+    //    while (m_Level < lvl)
+    //        LevelUp();
 
-        m_PowerLevel = false;
-    }
+    //    m_PowerLevel = false;
+    //}
 
     void Die()
     {
@@ -63,7 +60,7 @@ public class EnemyStats : Stats
             else
                 d = Instantiate(Drop, DropPos, transform.rotation) as GameObject;
 
-            d.GetComponent<Rigidbody>().AddForce(Vector3.up * 100);
+            d.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
         }
 
         Destroy(gameObject);
