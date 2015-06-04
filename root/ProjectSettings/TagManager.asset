@@ -10,7 +10,7 @@ TagManager:
   - AA
   - One Barrel
   - ShotGunShell
-  - Resource
+  - MG
   layers:
   - Default
   - TransparentFX
@@ -20,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Throwable
   - 
   - 
   - 
