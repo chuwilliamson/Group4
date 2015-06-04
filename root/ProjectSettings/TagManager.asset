@@ -10,6 +10,8 @@ TagManager:
   - AA
   - One Barrel
   - ShotGunShell
+  - MG
+  - Resource
   layers:
   - Default
   - TransparentFX
