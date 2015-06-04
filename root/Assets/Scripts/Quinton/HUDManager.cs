@@ -105,6 +105,10 @@ public class HUDManager : Singleton<HUDManager>
     }
     ////////////////////////////////////////////////////////////////////////////////////
     
+
+
+
+
     /// <summary>
     /// Pass in a string to activate promp with that string. Pas in the same string will remove the promp;
     /// </summary>
