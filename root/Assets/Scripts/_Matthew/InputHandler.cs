@@ -6,18 +6,21 @@ public class InputHandler : MonoBehaviour
 {
     private GameObject player;
     private GameObject turret;
+    public GameObject levelLoader; // Test Only
 
-    public KeyCode halfPause = KeyCode.C;
-    public KeyCode pause = KeyCode.X;
-    public KeyCode unpause = KeyCode.Z;
-    public KeyCode slap = KeyCode.F;
-    public KeyCode shoot = KeyCode.V;
+    public KeyCode halfPause =  KeyCode.C;
+    public KeyCode pause     =  KeyCode.X;
+    public KeyCode unpause   =  KeyCode.Z;
+    public KeyCode slap      =  KeyCode.F;
+    public KeyCode shoot     =  KeyCode.V;
 
-    public KeyCode tTurret1 = KeyCode.Alpha1;
-    public KeyCode tTurret2 = KeyCode.Alpha2;
-    public KeyCode tTurret3 = KeyCode.Alpha3;
-    public KeyCode tTurret4 = KeyCode.Alpha4;
-    public KeyCode keyPad = KeyCode.KeypadEnter;
+    public KeyCode tTurret1 =   KeyCode.Alpha1;
+    public KeyCode tTurret2 =   KeyCode.Alpha2;
+    public KeyCode tTurret3 =   KeyCode.Alpha3;
+    public KeyCode tTurret4 =   KeyCode.Alpha4;
+    public KeyCode keyPad   =   KeyCode.KeypadEnter;
+
+    private KeyCode TestDie = KeyCode.F5;
 
 	// Update is called once per frame
     delegate void PauseDelegate();
@@ -103,5 +106,14 @@ public class InputHandler : MonoBehaviour
         {
             player.GetComponent<PlayerActions>().Shoot();
         }     
+
+
+
+        // Test Only [Not in Final]
+        if(Input.GetKeyDown(TestDie))
+        {
+            // 
+            levelLoader.GetComponent<LevelLoader>().loadLevel("Outro");
+        }
     }       
 }

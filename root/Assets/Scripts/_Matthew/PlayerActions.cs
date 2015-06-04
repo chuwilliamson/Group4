@@ -30,7 +30,7 @@ public class PlayerActions : MonoBehaviour, IActions
     {
         if (fsm.CurrentState != PlayerState.run || fsm.CurrentState != PlayerState.init)
         print("turret plae");
-        GetComponent<TurretPlacement>().TurretSelect();
+       // GetComponent<TurretPlacement>().TurretSelect();
     }
 
 
