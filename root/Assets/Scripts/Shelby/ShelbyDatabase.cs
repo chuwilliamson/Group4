@@ -1,70 +1,60 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public  class ShelbyDatabase : Singleton<ShelbyDatabase> 
 {
- 
-    //public Inventory inventory;
-    /*
-    public void ListResources(ItemDatabase inv)
-    {
-       // print("Scraps:         " + inv.scraps);
-        //print("Special Scraps: " + inv.scraps_special);
-    }
+    //public List<GameObject> _databases = new List<GameObject>();
+    //void Awake()
+    //{
+    //    GameObject[] dbs = FindObjectsOfType(typeof(Database)) as GameObject[];
+    //    foreach(GameObject d in dbs)
+    //    {
+    //        _databases.Add(d);
+    //    }        
+    //}
 
-
-    public void ListItemNames(ItemDatabase inv)
-    {
-        for (int i = 0; i < inv.items.Count; ++i)
-            print(inv.items[i].GetComponent<Item>().name);
-    }
-
-    public void ListItemIDs(ItemDatabase inv)
-    {
-        for (int i = 0; i < inv.items.Count; ++i)
-            print(inv.items[i].GetComponent<Item>().id);
-    }
-
-    public void ListItemsAll(ItemDatabase inv)
-    {
-        for (int i = 0; i < inv.items.Count; ++i)
-        {
-            print(inv.items[i].GetComponent<Item>().name);
-            print(inv.items[i].GetComponent<Item>().id);
-        }
-
-        ListResources(inv);
-    }
- */
-
-    /// <summary>
-    /// Query for a database that has names in it
-    /// </summary>
-    /// <param name="db">
-    /// the database to look through
-    /// </param>
-    /// <returns>
-    /// a big ass string of names in the format "name0 name1 name2..."
-    /// </returns>
-    public string SelectAllNames(ItemDatabase db)
+    public string SelectAllNames(Database db)
     {
         string Names = "";
-        for (int i = 0; i < db.database.Count; ++i)
+        print(db.database.Count);
+        if (db.database.Count > 1)
         {
-            Names = db.database[i].GetComponent<Item>().name + ", ";
+            for (int i = 0; i < db.database.Count ; ++i)
+            {
+                Names += db.database[i].GetComponent<EquipmentStats>().name + "\n";
+               
+            }
+            print(Names);
         }
-        Names.Remove(Names.Length - 2);
+        //Names = Names.Remove(Names.Length - 2, 2);
+        else
+        {
+            Names += db.database[0].GetComponent<EquipmentStats>().name;
+        }
+        
+        
         return Names;
     }
 
-    public string SelectAllIDs(ItemDatabase db)
+    public string SelectAllIDs(Database db)
     {
         string IDs = "";
-        for (int i = 0; i < db.database.Count; ++i)
+        for (int i = 0; i < db.database.Count -1; ++i)
         {
-            IDs = db.database[i].GetComponent<Item>().id.ToString() + ", ";
+            IDs += db.database[i].GetComponent<EquipmentStats>().id.ToString() + ",\n";
         }
-        IDs.Remove(IDs.Length - 2);
+        //IDs = IDs.Remove(IDs.Length - 2, 2);
+        IDs += db.database[db.database.Count].GetComponent<EquipmentStats>().id.ToString();
         return IDs;
+    }
+
+    public void AddListToDatabase(Database db)
+    {
+
+    }
+
+    public void AddSingleItem(GameObject o, Database db)
+    {
+        db.database.Add(o);
     }
 }

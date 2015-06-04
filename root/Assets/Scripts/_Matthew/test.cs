@@ -12,7 +12,7 @@ public class test : MonoBehaviour
     {
         string theQuery = "";
         theQuery = ShelbyDatabase.instance.SelectAllNames(refToDB);
-      //sword_0 sword_2
+        //sword_0 sword_2
         nameQueryLabel.text = theQuery;
     }
 
@@ -24,4 +24,22 @@ public class test : MonoBehaviour
         idQueryLabel.text = theQuery;
     }
 
+    void Update ()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+
+             NameQuery();
+             //IDQuery();
+        }
+    }
+
+    //public string blah = "shelby";
+    //[ContextMenu("test string")]
+    //void testSTring()
+    //{
+    //    blah = blah.Remove(blah.Length - 2, 2);
+    //    print(blah);
+  
+    //}
 }
