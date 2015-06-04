@@ -127,28 +127,28 @@ public class InputHandler : MonoBehaviour
             player.GetComponent<PlayerActions>().State(PlayerState.init);
         }
 
-        ////Player turret Selction and placement
-        if (Input.GetKeyDown(tTurret1))
-        {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
-        }
-        if (Input.GetKeyDown(tTurret2))
-        {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
-        }
-        if (Input.GetKeyDown(tTurret3))
-        {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
-        }
-        if (Input.GetKeyDown(tTurret4))
-        {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
-        }
+        //////Player turret Selction and placement
+        //if (Input.GetKeyDown(tTurret1))
+        //{
+        //    turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
+        //}
+        //if (Input.GetKeyDown(tTurret2))
+        //{
+        //    turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
+        //}
+        //if (Input.GetKeyDown(tTurret3))
+        //{
+        //    turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
+        //}
+        //if (Input.GetKeyDown(tTurret4))
+        //{
+        //    turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
+        //}
 
-        if(Input.GetKeyDown(place))
-        {
-            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
-        }
+        //if(Input.GetKeyDown(place))
+        //{
+        //    turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
+        //}
 
         ////Player Actions
         if (Input.GetKeyDown(slap))
@@ -170,7 +170,7 @@ public class InputHandler : MonoBehaviour
         /////Dev Controls
         if(Input.GetKeyDown(killTurret))
         {
-            turret.GetComponent<BaseTurret>().currentHP -= 101;
+            turret.GetComponent<BaseTurret>().m_Health -= 101;
         }
     }       
 }

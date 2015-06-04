@@ -6,11 +6,11 @@ public class OnCollisionPickUp : MonoBehaviour
 {
     public ItemDatabase pInventory;
 
-    //void Start()
-    //{
-    //    pInventory = GameObject.Find("PlayerInventory").GetComponent<ItemDatabase>();
-    //    //DontDestroyOnLoad(gameObject);
-    //}
+    void Start()
+    {
+        pInventory = GameObject.Find("PlayerInventory").GetComponent<ItemDatabase>();
+        //DontDestroyOnLoad(gameObject);
+    }
 
 
     void OnTriggerEnter(Collider other)
