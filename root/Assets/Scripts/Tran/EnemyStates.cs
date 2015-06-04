@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyStates : MonoBehaviour {
 
     NavMeshAgent enemy;
-    public GameObject target;
+    private GameObject target;
 
     public enum States { Idle, Patroll, Chase };
     public States enemyStates = States.Idle;
@@ -19,6 +19,8 @@ public class EnemyStates : MonoBehaviour {
     {
         enemy = GetComponent<NavMeshAgent>();
         enemy.autoBraking = false;
+        target = gameObject;
+       
 	}
 	
     void GoToNextPoint()
@@ -27,7 +29,6 @@ public class EnemyStates : MonoBehaviour {
         if (points.Length == 0) { return; }
         enemy.destination = points[destPoint].position;
         destPoint = (destPoint + 1) % points.Length;
-
     }
 
     void OnTriggerStay(Collider other)
@@ -42,7 +43,7 @@ public class EnemyStates : MonoBehaviour {
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject == target)
-            target = null;
+            target = gameObject;
     }
 
 	void Update () 
@@ -54,7 +55,7 @@ public class EnemyStates : MonoBehaviour {
 
                 enemy.velocity = new Vector3(0, 0, 0);
 
-                if (target)//(Vector3.Distance(enemy.transform.position, target.transform.position) <= enemy.radius)
+                if (target != gameObject)//(Vector3.Distance(enemy.transform.position, target.transform.position) <= enemy.radius)
                 { enemyStates = States.Chase; }
 
                 if(timer > delay)
@@ -66,7 +67,7 @@ public class EnemyStates : MonoBehaviour {
                 if(enemy.remainingDistance < .5f)
                 { GoToNextPoint(); }
 
-                if (target) //(Vector3.Distance(enemy.transform.position, target.transform.position) <= enemy.radius)
+                if (target != gameObject) //(Vector3.Distance(enemy.transform.position, target.transform.position) <= enemy.radius)
                 { enemyStates = States.Chase; }
                 break;
 
@@ -74,9 +75,10 @@ public class EnemyStates : MonoBehaviour {
                
                 enemy.destination = target.transform.position;
 
-                if (target) //(Vector3.Distance(enemy.transform.position, target.transform.position) > 6)
+                if (target == gameObject) //(Vector3.Distance(enemy.transform.position, target.transform.position) > 6)
                 { timer = 0; enemyStates = States.Idle; }
                 break;
+
         }
 
 	}
