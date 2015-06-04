@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11480240}
   - 54: {fileID: 5481414}
   m_Layer: 0
-  m_Name: Scrap
+  m_Name: SpecialScrap
   m_TagString: Resource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4793a5c28c8e63640894f0479bf68dc1, type: 2}
+  - {fileID: 2100000, guid: 3682f7747d485db4586750a832808b31, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96728be24a07024eb510b006a74cdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 10
+  value: 11
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
