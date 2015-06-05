@@ -16,48 +16,43 @@ public class TurretPlacement : Singleton<TurretPlacement>
 	// Use this for initialization
 	void Start () 
     {
-       dot.gameObject.SetActive(false); // Make dot disppear in the start of the game
-	}
+        dot.gameObject.SetActive(false);
+        turret = turret1;
+        if (!isSelected)
+        {
+            dot.gameObject.SetActive(false);
+        }
+        // Make dot disppear in the start of the game
+    }
 	
 	// Update is called once per frame
     void Update()
-    {
-       
-    }
+    {}
 
      public void TurretWasPlaced()
     {
         Vector3 pos = transform.position + Camera.main.transform.forward * 3;
-        pos.y = 1;
+        pos.y = 0;
 
         dot.gameObject.SetActive(false);
         Instantiate(turret, pos, transform.rotation);
+        isSelected = true;
     }
 
      public void TurretPlace()
     {
-        
         //Sets the spawn position that the turret will be placed at
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && isSelected)
         {
             dot.gameObject.SetActive(true);
             isSelected = false;
         }
 
-   
- 
-        //if (Input.GetMouseButton(0))
-        //{ }
-
-
-
-
-        //ScoreManager.instance.Turret(turretCount);
-
     }
 
     public void TurretSelect(KeyCode a)
     {
+        
         if (a == KeyCode.Alpha1) 
             // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
         {
