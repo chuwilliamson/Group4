@@ -152,15 +152,7 @@ public class HUDManager : Singleton<HUDManager>
         // Debug.Log("Settings");
 
     }
-    /// <summary>
-    /// 
-    /// </summary>
-    public void PrompClear()
-    {
-
-        // promp.SetActive(false);
-
-    }
+ 
 
     /// <summary>
     /// 
@@ -260,12 +252,7 @@ public class HUDManager : Singleton<HUDManager>
             //Log[0].GetComponent<Text>().text = strng;
         
     }
-    public void Awake()
-    {
-       //GUIManager.instance.SetState(promp, false);
-      
-        
-    }
+   
     /// <summary>
     /// GameObect "go" must be the InputField.
     /// Uses the LogUp fucntion to add what is typed in the InputField into the Log.
@@ -296,7 +283,10 @@ public class HUDManager : Singleton<HUDManager>
      Log.Add(LogText);
      NewLogSize(5);
      }
-
+     public void Awake()
+     {
+       //GUIManager.instance.SetState(promp, false);
+     }
      public void SetState(string item, bool state)
      {
          switch (item)
