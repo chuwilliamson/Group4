@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11486242}
   - 114: {fileID: 11453824}
   - 114: {fileID: 11478022}
+  - 114: {fileID: 11422426}
   m_Layer: 0
   m_Name: Player_BasePrefab
   m_TagString: Player
@@ -233,6 +234,21 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &11422426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77bf40f039f5584e92f76018d64cf7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxHealth: 100
+  m_Health: 0
+  m_HealthRegen: 0
+  m_reginDelay: 0
 --- !u!114 &11449026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410b7ea3dc0d98c4797853792459eaa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Grenade: {fileID: 181162, guid: ef78795dde7ecbf40b0c7e2a838a4fc5, type: 2}
 --- !u!114 &11460802
 MonoBehaviour:
   m_ObjectHideFlags: 1
