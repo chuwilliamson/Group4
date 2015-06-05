@@ -179,7 +179,14 @@ public class InputHandler : MonoBehaviour
         }
         if (Input.GetKeyDown(killEnemy))
         {
-            Enemy.GetComponent<EnemyStats>().m_Health -= 101;
+            try
+            {
+                Enemy.GetComponent<EnemyStats>().m_Health -= 101;
+            }
+            catch
+            {
+                Debug.LogWarning("ther is no enemies :( ");
+            }
         }
         if (Input.GetKeyDown(endGame))
         {
