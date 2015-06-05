@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 public class GameManager : Singleton<GameManager>
 {
+    public LevelLoader levelLoader;
     // Game State possible  : <Enum>
     public enum StateManager
     {
@@ -42,11 +43,15 @@ public class GameManager : Singleton<GameManager>
     }
 
     /// usage: GameManager.instance.Transition("Combat")
-    public void Transition(string lev)
+    public void Transition(string lev, StateManager transState)
     {
-
-        print("hit");   // test
-        print(Application.loadedLevelName);
+        if (CheckTransition(transState) == true)
+        {
+            levelLoader.loadLevel(lev);
+            print("hit");   // test
+            print(Application.loadedLevelName);
+        }
+        
     }
 
     private bool CheckTransition(StateManager stateB)
