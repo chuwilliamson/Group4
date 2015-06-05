@@ -10,7 +10,6 @@ public class InputHandler : MonoBehaviour
     private GameObject Enemy;
     private GameObject goal;
 
-
     //Stores all the keys for each input that should perform an action
     //GameStates
     public KeyCode halfPause = KeyCode.C;
@@ -54,7 +53,6 @@ public class InputHandler : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         goal = GameObject.FindGameObjectWithTag("Goal");
 
     }
@@ -62,6 +60,7 @@ public class InputHandler : MonoBehaviour
     {
         turret = GameObject.FindGameObjectWithTag("MG");
         Enemy = GameObject.FindGameObjectWithTag("Enemy");
+        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
 
         //Game State changes
         if (Input.GetKeyDown(halfPause))

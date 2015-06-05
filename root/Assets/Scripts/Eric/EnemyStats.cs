@@ -28,7 +28,7 @@ public class EnemyStats : Stats
         //    PowerLevel(m_pLvl);
 
         if (m_Health <= 0)
-        {
+        {   
             Die();
         }
     }
@@ -55,11 +55,8 @@ public class EnemyStats : Stats
             GameObject d;
 
             if (j == 7)
-            {
                 d = Instantiate(sDrop, DropPos, transform.rotation) as GameObject;
-                print("too many times...");
-            }
-
+            
             else
                 d = Instantiate(Drop, DropPos, transform.rotation) as GameObject;
 
@@ -67,7 +64,6 @@ public class EnemyStats : Stats
                 d.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
         }
 
-        print("died...");
         Destroy(gameObject);
     }
 }
