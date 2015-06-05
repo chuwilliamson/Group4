@@ -1134,9 +1134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc8adaac314c2847ac84a2820475e72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refToDB: {fileID: 0}
-  nameQueryLabel: {fileID: 0}
-  idQueryLabel: {fileID: 0}
 --- !u!1001 &1328386108
 Prefab:
   m_ObjectHideFlags: 0
