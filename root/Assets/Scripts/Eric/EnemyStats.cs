@@ -78,13 +78,10 @@ public class EnemyStats : Stats
                 _regDrop.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
                 _regDrop.name = "defaultScrak" + j.ToString();
             }
-
-             
-              
-
-            
         }
 
-        Destroy(gameObject);
+        GetComponent<NavMeshAgent>().enabled = false;
+
+        //Destroy(gameObject);
     }
 }
