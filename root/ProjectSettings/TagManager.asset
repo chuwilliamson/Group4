@@ -14,7 +14,8 @@ TagManager:
   - TurretManager
   - Enemy
   - Goal
-  - PlayerInv
+  - Resource
+  - Turret
   layers:
   - Default
   - TransparentFX
