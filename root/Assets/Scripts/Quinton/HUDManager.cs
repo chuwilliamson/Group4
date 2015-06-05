@@ -6,28 +6,7 @@ using UnityEngine.UI;
 
 public class HUDManager : Singleton<HUDManager>
 {
-    [SerializeField]
-    GameObject hp;
-    [SerializeField]
-    GameObject turrent;
-    [SerializeField]
-    GameObject scrap;
-    [SerializeField]
-    GameObject promp;
-    /*s
-     
-     Gameobjecct 
-     
-     */
-
-
    
-    [SerializeField]
-    GameObject LogText;
-    List<GameObject> Log = new List<GameObject>();
-    
-    private int MaxCharInNodes = 40;
-    private int LogNodeNum;
 
 
 
@@ -107,6 +86,12 @@ public class HUDManager : Singleton<HUDManager>
     {
         turrent.GetComponent<Text>().text = tur.ToString();
     }
+    public void CurTur(int ctur)
+    {
+        curTurrent.GetComponent<Text>().text = ctur.ToString(); 
+    }
+
+ 
     ////////////////////////////////////////////////////////////////////////////////////
     
 
@@ -133,15 +118,7 @@ public class HUDManager : Singleton<HUDManager>
         // Debug.Log("Settings");
 
     }
-    /// <summary>
-    /// 
-    /// </summary>
-    public void PrompClear()
-    {
-
-        // promp.SetActive(false);
-
-    }
+ 
 
     /// <summary>
     /// 
@@ -241,12 +218,7 @@ public class HUDManager : Singleton<HUDManager>
             //Log[0].GetComponent<Text>().text = strng;
         
     }
-    public void Awake()
-    {
-       //GUIManager.instance.SetState(promp, false);
-      
-        
-    }
+   
     /// <summary>
     /// GameObect "go" must be the InputField.
     /// Uses the LogUp fucntion to add what is typed in the InputField into the Log.
@@ -277,24 +249,46 @@ public class HUDManager : Singleton<HUDManager>
      Log.Add(LogText);
      NewLogSize(5);
      }
+     public void Awake()
+     {
+       //GUIManager.instance.SetState(promp, false);
+     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="item"> Lower Case</param>
+    /// <param name="state"></param>
      public void SetState(string item, bool state)
      {
          switch (item)
          {
              case "menu": 
-                 _menu.SetActive(state);             
+                 _menu.SetActive(state); 
                  break;
-             case "buttons":
-                 _buttons.SetActive(state);
+             case "start":
+                 _start.SetActive(state);
                  break;
              case "finish":
                  _finish.SetActive(state);
+                 break;
+             case "panel":
+                 _panel.SetActive(state);
                  break;
              default:
                  break;
          }
      }
+
+
+    public void OnMenuPress()
+    {
+        if(_menu.activeSelf == true)
+        HUDManager.instance.SetState("menu", false);
+
+        else
+        HUDManager.instance.SetState("menu", true);
+    }
 
      public void SetInfoLeft(string t)
      {
@@ -303,7 +297,27 @@ public class HUDManager : Singleton<HUDManager>
 
  
      public GameObject _menu;
-     public GameObject _buttons;
-     public GameObject _finish;
+     public GameObject _start;
+     public GameObject _finish; 
+     public GameObject _panel;     
      public Text _info;
+
+     [SerializeField]    GameObject hp;
+     [SerializeField]    GameObject turrent;
+     [SerializeField]    GameObject scrap;
+     [SerializeField]    GameObject curTurrent;
+     [SerializeField]    GameObject promp;
+   
+     
+
+
+     [SerializeField]    GameObject LogText;
+     List<GameObject> Log = new List<GameObject>();
+
+     private int MaxCharInNodes = 40;
+     private int LogNodeNum;
+   /*
+    * 994 559
+    */
+
 }
