@@ -8,6 +8,8 @@ public class TurretPlacement : Singleton<TurretPlacement>
     private GameObject turret;
     private GameObject pInventory;
 
+    private int turretCount = 0;
+
     public bool isSelected = false; //checks to see if a turret is selected
 
     public int turCost = 10;
@@ -27,13 +29,13 @@ public class TurretPlacement : Singleton<TurretPlacement>
         //calls in the functions for selecting a turret and placing the turrets
     }
 
-     public void TurretPlacePoint()
+     public void TurretPlace()
     {
         Vector3 pos = transform.position + Camera.main.transform.forward * 3;
         pos.y = 1;
         //Sets the spawn position that the turret will be placed at
 
-        //dot.gameObject.SetActive(true);
+        dot.gameObject.SetActive(true);
         
 
         if (isSelected == true && pInventory.GetComponent<ItemDatabase>().scraps >= turCost)
@@ -43,6 +45,13 @@ public class TurretPlacement : Singleton<TurretPlacement>
             pInventory.GetComponent<ItemDatabase>().scraps -= turCost;
             isSelected = false;
         }
+
+            dot.gameObject.SetActive(false);
+            turretCount++;          
+
+  
+         //ScoreManager.instance.Turret(turretCount);
+
     }
 
     public void TurretSelect(KeyCode a)
@@ -73,4 +82,9 @@ public class TurretPlacement : Singleton<TurretPlacement>
             isSelected = true;
         }
     }
+
+    //internal void TurretSelect()
+    //{
+    //    throw new System.NotImplementedException();
+    //}
 }

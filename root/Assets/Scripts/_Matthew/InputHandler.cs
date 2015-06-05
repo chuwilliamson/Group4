@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class InputHandler : MonoBehaviour 
+public class InputHandler : MonoBehaviour
 {
     private GameObject player;
     private GameObject turretManager;
@@ -45,13 +45,13 @@ public class InputHandler : MonoBehaviour
     public KeyCode endGame = KeyCode.G;
     public KeyCode killEnemy = KeyCode.V;
 
-	// Update is called once per frame
+    // Update is called once per frame
     delegate void PauseDelegate();
     delegate void NumberDelegate(int n);
     public int num = 0;
     public bool paused = false;
     NumberDelegate numMultiDel;
-    
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -91,7 +91,7 @@ public class InputHandler : MonoBehaviour
             }
         }
 
-        
+
 
 
         ////Player States
@@ -152,9 +152,9 @@ public class InputHandler : MonoBehaviour
             turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
         }
 
-        if(Input.GetKeyDown(place))
+        if (Input.GetKeyDown(place))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
+            turretManager.GetComponent<TurretPlacement>().TurretPlace();
         }
 
         ////Player Actions
@@ -171,11 +171,11 @@ public class InputHandler : MonoBehaviour
         if (Input.GetKeyDown(jump))
         {
             player.GetComponent<PlayerActions>().Jump();
-        }     
+        }
 
 
         /////Dev Controls
-        if(Input.GetKeyDown(killTurret))
+        if (Input.GetKeyDown(killTurret))
         {
             turret.GetComponent<BaseTurret>().m_Health -= 101;
         }
@@ -187,5 +187,5 @@ public class InputHandler : MonoBehaviour
         {
             goal.GetComponent<GoalPoint>().m_Health -= 101;
         }
-    }       
+    }
 }
