@@ -49,7 +49,12 @@ public class PlayerActions : MonoBehaviour, IActions
         HUDManager.instance.SetInfoLeft("FPS: " + Time.deltaTime.ToString() + "\n" +
                                         "Player State: " + fsm.CurrentState.ToString() + "\n" +
                                         "Player Action: " + action);
+
+        //consistenet check until i can get zack to change the gamemanager
+      //  ShelbyDatabase.instance.sel
     }
+
+
 
     protected static  PlayerActions _instance;
     private PlayerFSM fsm;

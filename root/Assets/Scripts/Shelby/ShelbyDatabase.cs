@@ -3,16 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 public  class ShelbyDatabase : Singleton<ShelbyDatabase> 
 {
-    //public List<GameObject> _databases = new List<GameObject>();
-    //void Awake()
-    //{
-    //    GameObject[] dbs = FindObjectsOfType(typeof(Database)) as GameObject[];
-    //    foreach(GameObject d in dbs)
-    //    {
-    //        _databases.Add(d);
-    //    }        
-    //}
-
     public string SelectAllNames(Database db)
     {
         string Names = "";
