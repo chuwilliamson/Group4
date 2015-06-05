@@ -16,8 +16,8 @@ public class BaseTurret : Stats
 
     public int maxAmmo = 100; //how mmuch ammo the turret can hold
     public int currentAmmo = 100; //how many shots the turret has is decressed by one for every shot unless the turret has multiple barrels
-    //public int maxHP = 100;  // max amount of HP the turret can have at any moment
-    //public int m_Health = 100;   //is decreased by a certain amount when damage is taken and will vary form enemy to enemy how much damage is taken
+
+    public int damage = 5;
 
     public int turretCost = 10;
 
@@ -35,7 +35,7 @@ public class BaseTurret : Stats
 
     public void OnTriggerEnter(Collider c)
     {
-        if (c.gameObject.tag == "Target")
+        if (c.gameObject.tag == "Enemy")
         {
             validTarget = true;
             target = c.gameObject;
@@ -52,11 +52,11 @@ public class BaseTurret : Stats
     void distanceToTarget(Vector3 targetPos)
     {
         Vector3 aimPoint = new Vector3(targetPos.x, targetPos.y, targetPos.z);
-        aimPoint.y += target.transform.localScale.y / 2;
+        aimPoint.y = target.transform.localScale.y - .5f;
         rotationToGoal = Quaternion.LookRotation(aimPoint - transform.position);
         /*
             used to calculate the distance the turret must rotate till it reaches its targets position
-         */
+        */
     }
 
     void bulletFire()
@@ -131,7 +131,7 @@ public class BaseTurret : Stats
     }
 
     // Use this for initialization
-    void Start()
+    void Start() 
     {
         m_Health = 100;
     }
@@ -152,14 +152,13 @@ public class BaseTurret : Stats
                 when the target comes into the radius of the turret the turret will begin to rotate till 
              * the target is in its field of view and once it comes into the field of view it will begin to fire
              */
-
-            if(m_Health <= 0)
-            {
-                print("I dead");
-                Destroy(gameObject);
-            }
         }
 
+        if (m_Health <= 0)
+        {
+            print("I dead");
+            Destroy(gameObject);
+        }
 
         if (isReloading == true)
         {

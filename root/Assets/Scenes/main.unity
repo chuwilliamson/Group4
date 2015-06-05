@@ -1103,6 +1103,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1307634184}
+  - 114: {fileID: 1307634185}
   m_Layer: 0
   m_Name: GameObject 1
   m_TagString: Untagged
@@ -1122,6 +1123,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &1307634185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307634183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc8adaac314c2847ac84a2820475e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refToDB: {fileID: 0}
+  nameQueryLabel: {fileID: 0}
+  idQueryLabel: {fileID: 0}
 --- !u!1001 &1328386108
 Prefab:
   m_ObjectHideFlags: 0

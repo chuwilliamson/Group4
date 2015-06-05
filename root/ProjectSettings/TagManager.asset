@@ -12,6 +12,8 @@ TagManager:
   - ShotGunShell
   - MG
   - TurretManager
+  - Enemy
+  - Goal
   layers:
   - Default
   - TransparentFX
