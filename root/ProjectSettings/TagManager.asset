@@ -11,6 +11,9 @@ TagManager:
   - One Barrel
   - ShotGunShell
   - MG
+  - TurretManager
+  - Enemy
+  - Goal
   layers:
   - Default
   - TransparentFX
