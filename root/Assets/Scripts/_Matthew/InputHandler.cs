@@ -23,7 +23,7 @@ public class InputHandler : MonoBehaviour
     public KeyCode tTurret2 = KeyCode.Alpha2;
     public KeyCode tTurret3 = KeyCode.Alpha3;
     public KeyCode tTurret4 = KeyCode.Alpha4;
-    public KeyCode place = KeyCode.Mouse0;
+    public KeyCode place = KeyCode.Mouse0; // Primary mouse button to place turrets
 
     //player movement controls
     public KeyCode walkForward = KeyCode.W;
@@ -54,23 +54,23 @@ public class InputHandler : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         goal = GameObject.FindGameObjectWithTag("Goal");
 
     }
     void Update()
     {
+        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         turret = GameObject.FindGameObjectWithTag("MG");
         Enemy = GameObject.FindGameObjectWithTag("Enemy");
 
         //Game State changes
-        if (Input.GetKeyDown(halfPause))
+        if (Input.GetKeyDown(halfPause)) // Press C
         {
             /// Pause State Half (Update at Half speed)
             GameManager.instance.Pause(GameManager.PauseState.Half);
         }
 
-        if (Input.GetKeyDown(pause))
+        if (Input.GetKeyDown(pause)) // Press X
         {
             if (!paused)
             {
@@ -82,7 +82,7 @@ public class InputHandler : MonoBehaviour
             }
             else
             {
-                GameManager.instance.Pause(GameManager.PauseState.None);
+                GameManager.instance.Pause(GameManager.PauseState.None); // Press Z
                 print("unpause");
                 paused = !paused;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
@@ -94,22 +94,22 @@ public class InputHandler : MonoBehaviour
 
 
         ////Player States
-        if (Input.GetKeyDown(walkForward)) //Walk forwrad
+        if (Input.GetKeyDown(walkForward)) //Walk forwrad = W
         {
             player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
 
-        if (Input.GetKeyDown(walkBack)) //Walk to the back
+        if (Input.GetKeyDown(walkBack)) //Walk to the back = S
         {
             player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
 
-        if (Input.GetKeyDown(walkLeft)) //Walk left
+        if (Input.GetKeyDown(walkLeft)) //Walk left = A
         {
             player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
 
-        if (Input.GetKeyDown(walkRight)) //Walk to the right
+        if (Input.GetKeyDown(walkRight)) //Walk to the right = D
         {
             player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
@@ -136,24 +136,28 @@ public class InputHandler : MonoBehaviour
         ////Player turret Selction and placement
         if (Input.GetKeyDown(tTurret1))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect();
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
         }
         if (Input.GetKeyDown(tTurret2))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect();
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
         }
         if (Input.GetKeyDown(tTurret3))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect();
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
         }
         if (Input.GetKeyDown(tTurret4))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect();
+            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
         }
 
         if(Input.GetKeyDown(place))
         {
             turretManager.GetComponent<TurretPlacement>().TurretPlace();
+        }
+        if(Input.GetKeyUp(place))
+        {
+            turretManager.GetComponent<TurretPlacement>().TurretWasPlaced();
         }
 
         ////Player Actions
@@ -177,8 +181,6 @@ public class InputHandler : MonoBehaviour
         if(Input.GetKeyDown(killTurret))
         {
             turret.GetComponent<BaseTurret>().m_Health -= 101;
-<<<<<<< HEAD
-=======
         }
         if (Input.GetKeyDown(killEnemy))
         {
@@ -187,7 +189,6 @@ public class InputHandler : MonoBehaviour
         if (Input.GetKeyDown(endGame))
         {
             goal.GetComponent<GoalPoint>().m_Health -= 101;
->>>>>>> chuwilliamson/master
         }
     }       
 }

@@ -19,12 +19,8 @@ public class PlayerActions : MonoBehaviour, IActions
         print("slap");
 
         if (fsm.ActionDict["slap"] == true)
-<<<<<<< HEAD
-            HUDManager.instance.actionHUD("Slap");
-
-=======
             action = "slap";
->>>>>>> chuwilliamson/master
+
     }
 
     public void Jump()
@@ -33,12 +29,7 @@ public class PlayerActions : MonoBehaviour, IActions
         print("jump");
 
         if (fsm.ActionDict["jump"] == true)
-<<<<<<< HEAD
-            HUDManager.instance.actionHUD("Jump");
-
-=======
             action = "jump";
->>>>>>> chuwilliamson/master
     }
 
     public void Shoot()
@@ -47,12 +38,7 @@ public class PlayerActions : MonoBehaviour, IActions
         print("shoot");
 
         if (fsm.ActionDict["shoot"] == true)
-<<<<<<< HEAD
-            HUDManager.instance.actionHUD("Shoot");
-
-=======
             action = "shoot";
->>>>>>> chuwilliamson/master
     }
 
     public void PlaceTurret()

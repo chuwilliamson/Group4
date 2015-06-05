@@ -4,19 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Item
-  - Fire
-  - Target
-  - AA
-  - One Barrel
-  - ShotGunShell
-  - MG
   - TurretManager
-<<<<<<< HEAD
-=======
-  - Enemy
+  - ShotGunShell
+  - One Barrel
+  - MG
   - Goal
->>>>>>> chuwilliamson/master
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -26,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - Throwable
+  - 
   - 
   - 
   - 
