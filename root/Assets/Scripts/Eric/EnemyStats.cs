@@ -5,14 +5,13 @@ public class EnemyStats : Stats
 {
     public GameObject Drop;
     public GameObject sDrop;
+    public GameObject Item;
     public bool m_PowerLevel;
     public int m_pLvl;
 
+
     void Start()
     {
-        m_Level = 1;
-
-        m_Acc = 1;
         m_MaxHealth = 100;
         m_Health = m_MaxHealth;
 
@@ -26,23 +25,22 @@ public class EnemyStats : Stats
 
     void Update()
     {
-        if (m_PowerLevel)
-            PowerLevel(m_pLvl);
+        //if (m_PowerLevel)
+        //    PowerLevel(m_pLvl);
 
         if (m_Health <= 0)
+        {   
             Die();
-
-        if (Input.GetKey(KeyCode.Return))
-            m_Health -= 5;
+        }
     }
 
-    void PowerLevel(int lvl)
-    {
-        while (m_Level < lvl)
-            LevelUp();
+    //void PowerLevel(int lvl)
+    //{
+    //    while (m_Level < lvl)
+    //        LevelUp();
 
-        m_PowerLevel = false;
-    }
+    //    m_PowerLevel = false;
+    //}
 
     void Die()
     {
@@ -53,19 +51,37 @@ public class EnemyStats : Stats
         {
             DropPos.x += Random.Range(-.5f, .51f);
             DropPos.z += Random.Range(-.5f, .51f);
-            DropPos.y = 0.5f;
+            DropPos.y = gameObject.transform.position.y;
 
-            GameObject d;
 
+            GameObject _specialDrop, _item, _regDrop;
+
+            //rolled 7 spawn an enemy
             if (j == 7)
-               d = Instantiate(sDrop, DropPos, transform.rotation) as GameObject;
+            {
+               _specialDrop = Instantiate(sDrop, DropPos, transform.rotation) as GameObject;
+               _specialDrop.name = "enemy";
+            }
+            //rolled a 10 spawn an item
+            else if (j == 10)
+            {
+                _item = Instantiate(Item, DropPos, transform.rotation) as GameObject;
+                _item.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+                //_item.name = _item.GetComponent<EquipmentStats>().name;
+                
+
+            }
 
             else
-                d = Instantiate(Drop, DropPos, transform.rotation) as GameObject;
-
-            d.GetComponent<Rigidbody>().AddForce(Vector3.up * 100);
+            {
+                _regDrop = Instantiate(Drop, DropPos, transform.rotation) as GameObject;
+                _regDrop.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+                _regDrop.name = "defaultScrak" + j.ToString();
+            }
         }
 
-        Destroy(gameObject);
+        GetComponent<NavMeshAgent>().enabled = false;
+
+        //Destroy(gameObject);
     }
 }

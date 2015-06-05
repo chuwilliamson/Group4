@@ -10,7 +10,6 @@ public class InputHandler : MonoBehaviour
     private GameObject Enemy;
     private GameObject goal;
 
-
     //Stores all the keys for each input that should perform an action
     //GameStates
     public KeyCode halfPause = KeyCode.C;
@@ -54,7 +53,6 @@ public class InputHandler : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         goal = GameObject.FindGameObjectWithTag("Goal");
 
     }
@@ -62,6 +60,7 @@ public class InputHandler : MonoBehaviour
     {
         turret = GameObject.FindGameObjectWithTag("MG");
         Enemy = GameObject.FindGameObjectWithTag("Enemy");
+        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
 
         //Game State changes
         if (Input.GetKeyDown(halfPause))
@@ -136,24 +135,24 @@ public class InputHandler : MonoBehaviour
         ////Player turret Selction and placement
         if (Input.GetKeyDown(tTurret1))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect();
         }
         if (Input.GetKeyDown(tTurret2))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect();
         }
         if (Input.GetKeyDown(tTurret3))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect();
         }
         if (Input.GetKeyDown(tTurret4))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect();
         }
 
         if(Input.GetKeyDown(place))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
+            turretManager.GetComponent<TurretPlacement>().TurretPlace();
         }
 
         ////Player Actions
@@ -180,7 +179,14 @@ public class InputHandler : MonoBehaviour
         }
         if (Input.GetKeyDown(killEnemy))
         {
-            Enemy.GetComponent<EnemyStats>().m_Health -= 101;
+            try
+            {
+                Enemy.GetComponent<EnemyStats>().m_Health -= 101;
+            }
+            catch
+            {
+                Debug.LogWarning("ther is no enemies :( ");
+            }
         }
         if (Input.GetKeyDown(endGame))
         {
