@@ -37,7 +37,6 @@ public class LevelLoader : Singleton<LevelLoader>
     {
         if (lvl == "quit" || lvl == "Quit")
         {
-
             print("quit it ");
             Application.Quit();
         }
@@ -48,20 +47,17 @@ public class LevelLoader : Singleton<LevelLoader>
         }
         
     }
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
+        // User can just pass in Quit to th level loader to quit out of the application 
+    //public void ExitGame()
+    //{
+    //    Application.Quit();
+    //}
     Stack<string> lvlStack = new Stack<string>();
     void OnLevelWasLoaded(int lvl)
-    { 
-        
+    {
         lastLevel = lvlStack.Peek();
         currentLevel = Application.loadedLevelName;
         lvlStack.Push(currentLevel);
-        
-       
-
     }
 
     [SerializeField]

@@ -43,45 +43,42 @@ public class TurretPlacement : Singleton<TurretPlacement>
             isSelected = false;
         }
 
-
-        if(Input.GetMouseButtonUp(0))
-        {
             dot.gameObject.SetActive(false);
             turretCount++;          
-        }
+
   
-         ScoreManager.instance.Turret(turretCount);
+         //ScoreManager.instance.Turret(turretCount);
 
     }
 
-    public void TurretSelect(KeyCode a, KeyCode b, KeyCode c, KeyCode d)
+    public void TurretSelect(KeyCode a)
     {
         if (a == KeyCode.Alpha1) 
             // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
         {
-            HUDManager.instance.TurSelectHUD("Turret 1");
+            //HUDManager.instance.TurSelectHUD("Turret 1");
             // The turret placement will be placed in front of the player by 1 unit.
             turret = turret1;
             isSelected = true;
         }
 
-        if (b == KeyCode.Alpha2)
+        if (a == KeyCode.Alpha2)
         {
-            HUDManager.instance.TurSelectHUD("Turret 2");
+            //HUDManager.instance.TurSelectHUD("Turret 2");
             turret = turret2;
             isSelected = true;
         }
 
-        if (c == KeyCode.Alpha3)
+        if (a == KeyCode.Alpha3)
         {
-            HUDManager.instance.TurSelectHUD("Turret 3");
+            //HUDManager.instance.TurSelectHUD("Turret 3");
             turret = turret3;
             isSelected = true;
         }
 
-        if (d == KeyCode.Alpha4)
+        if (a == KeyCode.Alpha4)
         {
-            HUDManager.instance.TurSelectHUD("Turret 4");
+            //HUDManager.instance.TurSelectHUD("Turret 4");
             turret = turret4;
             isSelected = true;
         }
