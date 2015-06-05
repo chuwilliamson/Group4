@@ -78,7 +78,6 @@ public class PlayerFSM
                 if (to == PlayerState.idle)
                 {
                     cState = to;
-                   // HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -87,7 +86,6 @@ public class PlayerFSM
                 if (to == PlayerState.walk)
                 {
                     cState = to;
-                    //HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -96,7 +94,6 @@ public class PlayerFSM
                 if (to == PlayerState.run || to == PlayerState.idle)
                 {
                     cState = to;
-                  //  HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
@@ -105,7 +102,6 @@ public class PlayerFSM
                 if (to == PlayerState.walk)
                 {
                     cState = to;
-                  //  HUDManager.instance.stateHUD(cState);
                     return true;
                 }
                 break;
