@@ -44,12 +44,7 @@ public class EnemyStats : Stats
             }
             else
             {
-                print("broke the check");
-                //GetComponent<EnemyStats>().enabled = false;
-                //foreach (MonoBehaviour m in transform)
-                //{
-                //    m.enabled = false;
-                //}
+               
             }
         }
     }
@@ -101,6 +96,7 @@ public class EnemyStats : Stats
         }
 
 
+        GetComponent<Animator>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl>().enabled = false;
         tag = "Dead";
