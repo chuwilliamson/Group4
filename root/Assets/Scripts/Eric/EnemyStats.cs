@@ -5,6 +5,7 @@ public class EnemyStats : Stats
 {
     public GameObject Drop;
     public GameObject sDrop;
+    public GameObject Item;
     public bool m_PowerLevel;
     public int m_pLvl;
 
@@ -52,18 +53,35 @@ public class EnemyStats : Stats
             DropPos.z += Random.Range(-.5f, .51f);
             DropPos.y = gameObject.transform.position.y;
 
-            GameObject d;
 
+            GameObject _specialDrop, _item, _regDrop;
+
+            //rolled 7 spawn an enemy
             if (j == 7)
-                d = Instantiate(sDrop, DropPos, transform.rotation) as GameObject;
-            
-            else
-                d = Instantiate(Drop, DropPos, transform.rotation) as GameObject;
+            {
+               _specialDrop = Instantiate(sDrop, DropPos, transform.rotation) as GameObject;
+               _specialDrop.name = "enemy";
+            }
+            //rolled a 10 spawn an item
+            else if (j == 10)
+            {
+                _item = Instantiate(Item, DropPos, transform.rotation) as GameObject;
+                _item.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+                //_item.name = _item.GetComponent<EquipmentStats>().name;
+                
 
-            if (d.GetComponent<Rigidbody>())
-                d.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+            }
+
+            else
+            {
+                _regDrop = Instantiate(Drop, DropPos, transform.rotation) as GameObject;
+                _regDrop.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+                _regDrop.name = "defaultScrak" + j.ToString();
+            }
         }
 
-        Destroy(gameObject);
+        GetComponent<NavMeshAgent>().enabled = false;
+
+        //Destroy(gameObject);
     }
 }

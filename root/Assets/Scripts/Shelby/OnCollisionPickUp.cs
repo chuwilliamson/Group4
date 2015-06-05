@@ -30,6 +30,8 @@ public class OnCollisionPickUp : MonoBehaviour
                 break;
             case "Item":
                 ShelbyDatabase.instance.AddSingleItem(other.gameObject, pInventory);
+                other.transform.parent = pInventory.transform;
+                other.transform.localPosition = Vector3.zero;
                 other.gameObject.GetComponent<IPickup>().PickUp();
 
                 break;
