@@ -12,6 +12,11 @@ TagManager:
   - ShotGunShell
   - MG
   - TurretManager
+<<<<<<< HEAD
+=======
+  - Enemy
+  - Goal
+>>>>>>> chuwilliamson/master
   layers:
   - Default
   - TransparentFX

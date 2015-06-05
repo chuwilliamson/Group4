@@ -4,6 +4,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerActions : MonoBehaviour, IActions
 {
+    string action;
     private Vector3 lastFramePosition;
 
     void Awake()
@@ -18,8 +19,12 @@ public class PlayerActions : MonoBehaviour, IActions
         print("slap");
 
         if (fsm.ActionDict["slap"] == true)
+<<<<<<< HEAD
             HUDManager.instance.actionHUD("Slap");
 
+=======
+            action = "slap";
+>>>>>>> chuwilliamson/master
     }
 
     public void Jump()
@@ -28,8 +33,12 @@ public class PlayerActions : MonoBehaviour, IActions
         print("jump");
 
         if (fsm.ActionDict["jump"] == true)
+<<<<<<< HEAD
             HUDManager.instance.actionHUD("Jump");
 
+=======
+            action = "jump";
+>>>>>>> chuwilliamson/master
     }
 
     public void Shoot()
@@ -38,8 +47,12 @@ public class PlayerActions : MonoBehaviour, IActions
         print("shoot");
 
         if (fsm.ActionDict["shoot"] == true)
+<<<<<<< HEAD
             HUDManager.instance.actionHUD("Shoot");
 
+=======
+            action = "shoot";
+>>>>>>> chuwilliamson/master
     }
 
     public void PlaceTurret()
@@ -54,8 +67,12 @@ public class PlayerActions : MonoBehaviour, IActions
 
     public void State(PlayerState state)
     {        
-        //if(gameObject.GetComponent<FirstPersonController>().)
         fsm.ChangeState(state);
+    }
+
+    void Update()
+    {
+        HUDManager.instance.SetInfoLeft(fsm.CurrentState.ToString() + "\n" + action);
     }
 
     protected static  PlayerActions _instance;

@@ -15,10 +15,6 @@ public class HUDManager : Singleton<HUDManager>
     [SerializeField]
     GameObject promp;
     [SerializeField]
-    GameObject pState;
-    [SerializeField]
-    GameObject pActions;
-    [SerializeField]
     GameObject turSelcted;
     /*s
      
@@ -117,14 +113,6 @@ public class HUDManager : Singleton<HUDManager>
     public void TurSelectHUD(string turSelect)
     {
         turSelcted.GetComponent<Text>().text = turSelect;
-    }
-    public void stateHUD(PlayerState state)
-    {
-        pState.GetComponent<Text>().text = state.ToString(); ;
-    }
-    public void actionHUD(string action)
-    {
-        pActions.GetComponent<Text>().text = action;
     }
     ////////////////////////////////////////////////////////////////////////////////////
     

@@ -86,8 +86,11 @@ public class PlayerFSM
                     Debug.Log(to);
 
                     cState = to;
+<<<<<<< HEAD
                     HUDManager.instance.stateHUD(cState);
 
+=======
+>>>>>>> chuwilliamson/master
                     return true;
                 }
                 break;
@@ -99,8 +102,11 @@ public class PlayerFSM
                     Debug.Log(to);
 
                     cState = to;
+<<<<<<< HEAD
                     HUDManager.instance.stateHUD(cState);
 
+=======
+>>>>>>> chuwilliamson/master
                     return true;
                 }
                 break;
@@ -112,8 +118,11 @@ public class PlayerFSM
                     Debug.Log(to);
 
                     cState = to;
+<<<<<<< HEAD
                     HUDManager.instance.stateHUD(cState);
 
+=======
+>>>>>>> chuwilliamson/master
                     return true;
                 }
                 break;
@@ -125,8 +134,11 @@ public class PlayerFSM
                     Debug.Log(to);
 
                     cState = to;
+<<<<<<< HEAD
                     HUDManager.instance.stateHUD(cState);
 
+=======
+>>>>>>> chuwilliamson/master
                     return true;
                 }
                 break;
