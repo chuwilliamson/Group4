@@ -8,6 +8,7 @@ public class EnemyStats : Stats
     public bool m_PowerLevel;
     public int m_pLvl;
 
+
     void Start()
     {
         m_MaxHealth = 100;
@@ -27,7 +28,9 @@ public class EnemyStats : Stats
         //    PowerLevel(m_pLvl);
 
         if (m_Health <= 0)
+        {
             Die();
+        }
     }
 
     //void PowerLevel(int lvl)
@@ -47,19 +50,24 @@ public class EnemyStats : Stats
         {
             DropPos.x += Random.Range(-.5f, .51f);
             DropPos.z += Random.Range(-.5f, .51f);
-            DropPos.y = 0.5f;
+            DropPos.y = gameObject.transform.position.y;
 
             GameObject d;
 
             if (j == 7)
-               d = Instantiate(sDrop, DropPos, transform.rotation) as GameObject;
+            {
+                d = Instantiate(sDrop, DropPos, transform.rotation) as GameObject;
+                print("too many times...");
+            }
 
             else
                 d = Instantiate(Drop, DropPos, transform.rotation) as GameObject;
 
-            d.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
+            if (d.GetComponent<Rigidbody>())
+                d.GetComponent<Rigidbody>().AddForce(Vector3.up * 300);
         }
 
+        print("died...");
         Destroy(gameObject);
     }
 }
