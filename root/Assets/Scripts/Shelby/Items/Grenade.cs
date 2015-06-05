@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Grenade : EquipmentStats, IPickup{
+public class Grenade : EquipmentStats
+{
 
     protected Rigidbody rb;
     [SerializeField]
@@ -11,7 +12,7 @@ public class Grenade : EquipmentStats, IPickup{
     float impactRadius;
     int damage;
 
-    public void PickUp()
+    public void OnTriggerEnter()
     {
         //print("Picked up a grenade");
         //inventory.items.Add(gameObject);

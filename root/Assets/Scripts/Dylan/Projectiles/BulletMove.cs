@@ -5,6 +5,9 @@ public class BulletMove : MonoBehaviour
 {
     GameObject[] BB; // shots inside of a shot
     public GameObject enemy;
+
+    public float throwPower = 25f;
+    
     private float mySpeed = 1f;
     private float maxDistance = 4f;
 
@@ -57,6 +60,21 @@ public class BulletMove : MonoBehaviour
             }
         }
 
+        if(gameObject.tag=="Grenade" && isFired==true)
+        {
+            Vector3 forward = transform.TransformDirection(Vector3.forward*throwPower);
+            transform.Translate(forward * Time.deltaTime * mySpeed);
+                        myDist += Time.deltaTime * mySpeed;
+
+            //moves the bullet across the screen when the turret fire
+
+            if (myDist > maxDistance)
+            {
+                Destroy(gameObject);
+                    //checks to see if the bullet has passed the maximum distance it can travel
+                    //and if it dis destroy the object
+            } 
+        }
 
 
         if (gameObject.tag == "ShotGunShell" && isFired == true)

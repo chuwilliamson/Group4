@@ -54,15 +54,13 @@ public class InputHandler : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         goal = GameObject.FindGameObjectWithTag("Goal");
-
     }
     void Update()
     {
         turret = GameObject.FindGameObjectWithTag("MG");
         Enemy = GameObject.FindGameObjectWithTag("Enemy");
-
+        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         //Game State changes
         if (Input.GetKeyDown(halfPause))
         {
