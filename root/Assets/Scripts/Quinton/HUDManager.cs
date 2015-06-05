@@ -14,8 +14,6 @@ public class HUDManager : Singleton<HUDManager>
     GameObject scrap;
     [SerializeField]
     GameObject promp;
-    [SerializeField]
-    GameObject turSelcted;
     /*s
      
      Gameobjecct 
@@ -108,11 +106,6 @@ public class HUDManager : Singleton<HUDManager>
     public void TurHUD(int tur)
     {
         turrent.GetComponent<Text>().text = tur.ToString();
-    }
-
-    public void TurSelectHUD(string turSelect)
-    {
-        turSelcted.GetComponent<Text>().text = turSelect;
     }
     ////////////////////////////////////////////////////////////////////////////////////
     

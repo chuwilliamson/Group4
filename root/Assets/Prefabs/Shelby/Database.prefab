@@ -27,7 +27,7 @@ GameObject:
   - 114: {fileID: 11443264}
   m_Layer: 0
   m_Name: PlayerInventory
-  m_TagString: Untagged
+  m_TagString: PlayerInv
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   database: []
-  scraps: 0
+  scraps: 20
   scraps_special: 0
 --- !u!1001 &100100000
 Prefab:

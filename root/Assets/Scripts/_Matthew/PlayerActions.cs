@@ -46,7 +46,9 @@ public class PlayerActions : MonoBehaviour, IActions
 
     void Update()
     {
-        HUDManager.instance.SetInfoLeft(fsm.CurrentState.ToString() + "\n" + action);
+        HUDManager.instance.SetInfoLeft("FPS: " + Time.deltaTime.ToString() + "\n" +
+                                        "Player State: " + fsm.CurrentState.ToString() + "\n" +
+                                        "Player Action: " + action);
     }
 
     protected static  PlayerActions _instance;

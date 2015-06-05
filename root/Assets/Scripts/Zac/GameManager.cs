@@ -45,8 +45,10 @@ public class GameManager : Singleton<GameManager>
     public void Transition(string lev)
     {
 
-        print("hit");   // test
-        print(Application.loadedLevelName);
+            print("hit");   // test
+            print(Application.loadedLevelName);
+
+
     }
 
     private bool CheckTransition(StateManager stateB)

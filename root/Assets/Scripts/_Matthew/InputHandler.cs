@@ -6,6 +6,7 @@ public class InputHandler : MonoBehaviour
 {
     private GameObject player;
     private GameObject turretManager;
+    [SerializeField]
     private GameObject turret;
     private GameObject Enemy;
     private GameObject goal;
@@ -23,7 +24,7 @@ public class InputHandler : MonoBehaviour
     public KeyCode tTurret2 = KeyCode.Alpha2;
     public KeyCode tTurret3 = KeyCode.Alpha3;
     public KeyCode tTurret4 = KeyCode.Alpha4;
-    public KeyCode place = KeyCode.Mouse0;
+    public KeyCode place = KeyCode.Mouse1;
 
     //player movement controls
     public KeyCode walkForward = KeyCode.W;
@@ -54,12 +55,12 @@ public class InputHandler : MonoBehaviour
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         goal = GameObject.FindGameObjectWithTag("Goal");
 
     }
     void Update()
     {
+        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         turret = GameObject.FindGameObjectWithTag("MG");
         Enemy = GameObject.FindGameObjectWithTag("Enemy");
 
