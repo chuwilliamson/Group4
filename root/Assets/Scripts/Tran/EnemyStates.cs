@@ -8,6 +8,9 @@ public class EnemyStates : MonoBehaviour {
 
     public enum States { Idle, Goal, Chase };
     public States enemyStates = States.Idle;
+    /// <summary>
+    /// user must set this or dude wont move... this is tran prmse
+    /// </summary>
     public Transform goal;
     public float delay;
 
