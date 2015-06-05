@@ -7,7 +7,7 @@ public class EnemyStats : Stats
     public GameObject sDrop;
     public bool m_PowerLevel;
     public int m_pLvl;
-
+    
     void Start()
     {
         m_MaxHealth = 100;
@@ -25,7 +25,6 @@ public class EnemyStats : Stats
     {
         //if (m_PowerLevel)
         //    PowerLevel(m_pLvl);
-
         if (m_Health <= 0)
             Die();
     }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerStates : MonoBehaviour
 {
+   
+
    public enum eStates
     {   
        Init,
@@ -33,7 +35,8 @@ public class PlayerStates : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.N))
                     cState = eStates.Slapping;
                 if (Input.GetKeyDown(KeyCode.M))
-                    cState = eStates.Attacking;
+                { cState = eStates.Attacking; }
+                
                 break;
 
             case eStates.Walking:
