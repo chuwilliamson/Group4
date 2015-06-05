@@ -28,9 +28,6 @@ public class EnemyStats : Stats
 
         if (m_Health <= 0)
             Die();
-
-        if (Input.GetKey(KeyCode.Return))
-            m_Health -= 5;
     }
 
     //void PowerLevel(int lvl)

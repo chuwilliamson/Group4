@@ -136,24 +136,24 @@ public class InputHandler : MonoBehaviour
         ////Player turret Selction and placement
         if (Input.GetKeyDown(tTurret1))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret1);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect();
         }
         if (Input.GetKeyDown(tTurret2))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret2);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect();
         }
         if (Input.GetKeyDown(tTurret3))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret3);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect();
         }
         if (Input.GetKeyDown(tTurret4))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretSelect(tTurret4);
+            turretManager.GetComponent<TurretPlacement>().TurretSelect();
         }
 
         if(Input.GetKeyDown(place))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
+            turretManager.GetComponent<TurretPlacement>().TurretPlace();
         }
 
         ////Player Actions
