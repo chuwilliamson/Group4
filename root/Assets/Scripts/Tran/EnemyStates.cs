@@ -21,7 +21,7 @@ public class EnemyStates : MonoBehaviour {
         enemy = GetComponent<NavMeshAgent>();
         enemy.autoBraking = false;
         target = gameObject;
-       
+        goal = GameObject.FindGameObjectWithTag("Goal").transform;
 	}
 
     void OnTriggerStay(Collider other)
