@@ -49,9 +49,9 @@ public class qTest : MonoBehaviour
 
     //}
 
-    private void Start()
-    {
-        Application.LoadLevelAdditive("gui");
-    }
+    //private void Start()
+    //{
+    //    Application.LoadLevelAdditive("gui");
+    //}
 
 }
