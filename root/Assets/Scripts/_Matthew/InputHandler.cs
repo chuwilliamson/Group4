@@ -2,10 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
+<<<<<<< HEAD
 public class InputHandler : MonoBehaviour 
+=======
+public class InputHandler : MonoBehaviour
+>>>>>>> chuwilliamson/master
 {
     private GameObject player;
     private GameObject turretManager;
+    [SerializeField]
     private GameObject turret;
     private GameObject Enemy;
     private GameObject goal;
@@ -23,7 +28,11 @@ public class InputHandler : MonoBehaviour
     public KeyCode tTurret2 = KeyCode.Alpha2;
     public KeyCode tTurret3 = KeyCode.Alpha3;
     public KeyCode tTurret4 = KeyCode.Alpha4;
+<<<<<<< HEAD
     public KeyCode place = KeyCode.Mouse0; // Primary mouse button to place turrets
+=======
+    public KeyCode place = KeyCode.Mouse1;
+>>>>>>> chuwilliamson/master
 
     //player movement controls
     public KeyCode walkForward = KeyCode.W;
@@ -44,33 +53,50 @@ public class InputHandler : MonoBehaviour
     public KeyCode endGame = KeyCode.G;
     public KeyCode killEnemy = KeyCode.V;
 
+<<<<<<< HEAD
 	// Update is called once per frame
+=======
+    // Update is called once per frame
+>>>>>>> chuwilliamson/master
     delegate void PauseDelegate();
     delegate void NumberDelegate(int n);
     public int num = 0;
     public bool paused = false;
     NumberDelegate numMultiDel;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> chuwilliamson/master
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         goal = GameObject.FindGameObjectWithTag("Goal");
-
     }
     void Update()
     {
         turretManager = GameObject.FindGameObjectWithTag("TurretManager");
         turret = GameObject.FindGameObjectWithTag("MG");
         Enemy = GameObject.FindGameObjectWithTag("Enemy");
+<<<<<<< HEAD
 
         //Game State changes
         if (Input.GetKeyDown(halfPause)) // Press C
+=======
+        turretManager = GameObject.FindGameObjectWithTag("TurretManager");
+        //Game State changes
+        if (Input.GetKeyDown(halfPause))
+>>>>>>> chuwilliamson/master
         {
             /// Pause State Half (Update at Half speed)
             GameManager.instance.Pause(GameManager.PauseState.Half);
         }
 
+<<<<<<< HEAD
         if (Input.GetKeyDown(pause)) // Press X
+=======
+        if (Input.GetKeyDown(pause))
+>>>>>>> chuwilliamson/master
         {
             if (!paused)
             {
@@ -90,11 +116,19 @@ public class InputHandler : MonoBehaviour
             }
         }
 
+<<<<<<< HEAD
         
 
 
         ////Player States
         if (Input.GetKeyDown(walkForward)) //Walk forwrad = W
+=======
+
+
+
+        ////Player States
+        if (Input.GetKeyDown(walkForward)) //Walk forwrad
+>>>>>>> chuwilliamson/master
         {
             player.GetComponent<PlayerActions>().State(PlayerState.walk);
         }
@@ -153,12 +187,15 @@ public class InputHandler : MonoBehaviour
 
         if(Input.GetKeyDown(place))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretPlace();
+            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
         }
+<<<<<<< HEAD
         if(Input.GetKeyUp(place))
         {
             turretManager.GetComponent<TurretPlacement>().TurretWasPlaced();
         }
+=======
+>>>>>>> chuwilliamson/master
 
         ////Player Actions
         if (Input.GetKeyDown(slap))
@@ -184,11 +221,22 @@ public class InputHandler : MonoBehaviour
         }
         if (Input.GetKeyDown(killEnemy))
         {
-            Enemy.GetComponent<EnemyStats>().m_Health -= 101;
+            try
+            {
+                Enemy.GetComponent<EnemyStats>().m_Health -= 101;
+            }
+            catch
+            {
+                Debug.LogWarning("ther is no enemies :( ");
+            }
         }
         if (Input.GetKeyDown(endGame))
         {
             goal.GetComponent<GoalPoint>().m_Health -= 101;
         }
+<<<<<<< HEAD
     }       
+=======
+    }
+>>>>>>> chuwilliamson/master
 }

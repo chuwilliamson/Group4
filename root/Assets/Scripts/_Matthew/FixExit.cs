@@ -5,8 +5,10 @@ public class FixExit : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        HUDManager.instance.SetState("start",  false);
+        HUDManager.instance.SetState("panel",  false);
+        HUDManager.instance.SetState("menu",   false);
         HUDManager.instance.SetState("finish", true);
-        HUDManager.instance.SetState("buttons", false);
         print("fix exit");
 	
 	}

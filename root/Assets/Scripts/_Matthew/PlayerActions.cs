@@ -4,6 +4,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerActions : MonoBehaviour, IActions
 {
+    [SerializeField]
+    public GameObject Grenade;
     string action;
     private Vector3 lastFramePosition;
 
@@ -15,41 +17,39 @@ public class PlayerActions : MonoBehaviour, IActions
     }
     public void Slap()
     {
-
-        print("slap");
-
         if (fsm.ActionDict["slap"] == true)
             action = "slap";
+<<<<<<< HEAD
 
+=======
+>>>>>>> chuwilliamson/master
     }
 
     public void Jump()
     {
-
-        print("jump");
-
         if (fsm.ActionDict["jump"] == true)
             action = "jump";
     }
 
     public void Shoot()
     {
-
-        print("shoot");
-
         if (fsm.ActionDict["shoot"] == true)
             action = "shoot";
+<<<<<<< HEAD
+=======
+
+        Grenade.GetComponent<BulletMove>().isFired = true;       
+        Instantiate(Grenade, transform.position, transform.rotation);
+>>>>>>> chuwilliamson/master
     }
 
     public void PlaceTurret()
     {
-
-        print("place turret");
-
         if (fsm.ActionDict["placeTurret"] == true)
         print("turret placed");
-
     }
+
+
 
     public void State(PlayerState state)
     {        
@@ -58,8 +58,15 @@ public class PlayerActions : MonoBehaviour, IActions
 
     void Update()
     {
-        HUDManager.instance.SetInfoLeft(fsm.CurrentState.ToString() + "\n" + action);
+        HUDManager.instance.SetInfoLeft("FPS: " + Time.deltaTime.ToString() + "\n" +
+                                        "Player State: " + fsm.CurrentState.ToString() + "\n" +
+                                        "Player Action: " + action);
+
+        //consistenet check until i can get zack to change the gamemanager
+      //  ShelbyDatabase.instance.sel
     }
+
+
 
     protected static  PlayerActions _instance;
     private PlayerFSM fsm;

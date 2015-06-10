@@ -6,11 +6,11 @@ public class OnCollisionPickUp : MonoBehaviour
 {
     public ItemDatabase pInventory;
 
-    //void Start()
-    //{
-    //    pInventory = GameObject.Find("PlayerInventory").GetComponent<ItemDatabase>();
-    //    //DontDestroyOnLoad(gameObject);
-    //}
+    void Start()
+    {
+        pInventory = GameObject.Find("PlayerInventory").GetComponent<ItemDatabase>();
+        //DontDestroyOnLoad(gameObject);
+    }
 
 
     void OnTriggerEnter(Collider other)
@@ -30,6 +30,8 @@ public class OnCollisionPickUp : MonoBehaviour
                 break;
             case "Item":
                 ShelbyDatabase.instance.AddSingleItem(other.gameObject, pInventory);
+                other.transform.parent = pInventory.transform;
+                other.transform.localPosition = Vector3.zero;
                 other.gameObject.GetComponent<IPickup>().PickUp();
 
                 break;

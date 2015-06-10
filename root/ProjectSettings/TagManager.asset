@@ -8,10 +8,21 @@ TagManager:
   - ShotGunShell
   - One Barrel
   - MG
+<<<<<<< HEAD
   - Goal
   - Enemy
   - Resource
   - Item
+=======
+  - TurretManager
+  - Enemy
+  - Goal
+  - PlayerInv
+  - Resource
+  - Turret
+  - Grenade
+  - Dead
+>>>>>>> chuwilliamson/master
   layers:
   - Default
   - TransparentFX
