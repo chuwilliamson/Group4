@@ -17,7 +17,7 @@ public class EnemyStats : Stats
         m_Health = m_MaxHealth;
 
         dieTimer = 0;
-        dieDelay = 5;
+        dieDelay = 3;
 
         m_PowerLevel = false;
     }
