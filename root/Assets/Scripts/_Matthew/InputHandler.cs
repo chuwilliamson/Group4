@@ -154,7 +154,7 @@ public class InputHandler : MonoBehaviour
 
         if (Input.GetKeyDown(place))
         {
-            turretManager.GetComponent<TurretPlacement>().TurretPlace();
+            turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
         }
 
         ////Player Actions
