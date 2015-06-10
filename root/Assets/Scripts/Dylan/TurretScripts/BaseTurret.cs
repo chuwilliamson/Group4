@@ -19,8 +19,6 @@ public class BaseTurret : Stats
 
     public int damage = 5;
 
-    public int turretCost = 10;
-
     int looper = 1;
 
     public bool isTargetInRadius = false; //checks to see if the target is in the radius of the turret
