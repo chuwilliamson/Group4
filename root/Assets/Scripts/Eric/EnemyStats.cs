@@ -9,9 +9,7 @@ public class EnemyStats : Stats
     public bool m_PowerLevel;
     public int m_pLvl;
 
-    float dieTimer;
-    float dieDelay;
-
+    float dieDelay, dieTimer;
 
     void Start()
     {
@@ -44,9 +42,7 @@ public class EnemyStats : Stats
         {
             if (transform.eulerAngles.x < 80)
             {
-               // print(transform.rotation.x);
                 transform.Rotate(Vector3.right * Time.deltaTime * 50);
-                //transform.Rotate(Vector3.right, 25.0f);
             }
             else
             {
