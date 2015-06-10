@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerAttack : MonoBehaviour
 {
     public int playerDamage = 1;
-    public float timeBetweenThrows = 3f;
+    public float timeBetweenThrows = 0.5f;
     public float range = 50f;
 
     float timer;

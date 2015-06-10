@@ -173,7 +173,7 @@ GameObject:
   - 114: {fileID: 113565975}
   - 95: {fileID: 113565974}
   m_Layer: 5
-  m_Name: HUDCanvas
+  m_Name: GameOverScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,11 +488,9 @@ MonoBehaviour:
   m_MaxHealth: 0
   m_Health: 0
   m_HealthRegen: 0
-  m_Def: 0
-  m_Speed: 0
   m_Acc: 0
-  m_Dam: 0
   cGrowthType: 0
+  Drop: {fileID: 0}
   m_PowerLevel: 0
   m_pLvl: 0
 --- !u!23 &1152720840
@@ -900,10 +898,7 @@ MonoBehaviour:
   m_MaxHealth: 0
   m_Health: 0
   m_HealthRegen: 0
-  m_Def: 0
-  m_Speed: 0
   m_Acc: 0
-  m_Dam: 0
   cGrowthType: 0
   m_reginDelay: 0
 --- !u!1 &1805437624

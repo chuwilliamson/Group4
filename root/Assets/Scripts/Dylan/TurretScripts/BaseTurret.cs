@@ -52,7 +52,7 @@ public class BaseTurret : Stats
     void distanceToTarget(Vector3 targetPos)
     {
         Vector3 aimPoint = new Vector3(targetPos.x, targetPos.y, targetPos.z);
-        aimPoint.y = target.transform.localScale.y - .5f;
+        aimPoint.y = target.transform.localScale.y /2;
         rotationToGoal = Quaternion.LookRotation(aimPoint - transform.position);
         /*
             used to calculate the distance the turret must rotate till it reaches its targets position

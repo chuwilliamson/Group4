@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11445878}
   - 114: {fileID: 11460360}
   - 114: {fileID: 11466934}
+  - 136: {fileID: 13669546}
   m_Layer: 0
   m_Name: Player_BasePrefab
   m_TagString: Player
@@ -348,10 +349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871e084e450dbd489330b18fbcc6d63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turret1: {fileID: 163506, guid: 8c0e7926480bc7f468756dc0a10a6a87, type: 2}
+  turret1: {fileID: 188818, guid: 8c0e7926480bc7f468756dc0a10a6a87, type: 2}
   turret2: {fileID: 135458, guid: a0d680bd260a9514fa4a88743269d32a, type: 2}
-  turret3: {fileID: 0}
-  turret4: {fileID: 130058, guid: 3969cc3c3c4de0348b70568c455ff16f, type: 2}
+  turret3: {fileID: 130058, guid: 3969cc3c3c4de0348b70568c455ff16f, type: 2}
+  turret4: {fileID: 0}
   dot: {fileID: 125280, guid: a1d18c0ff0fe5d44299734c37330afd0, type: 2}
   isSelected: 0
 --- !u!114 &11460360
@@ -377,6 +378,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pInventory: {fileID: 0}
+--- !u!136 &13669546
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 146288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: .699999988
+  m_Height: 2.20000005
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &14351614
 CharacterController:
   m_ObjectHideFlags: 1
