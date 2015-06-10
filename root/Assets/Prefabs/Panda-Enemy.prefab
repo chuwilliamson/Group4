@@ -647,6 +647,7 @@ GameObject:
   - 114: {fileID: 11480212}
   - 114: {fileID: 11429296}
   - 114: {fileID: 11476708}
+  - 136: {fileID: 13622306}
   m_Layer: 0
   m_Name: Panda-Enemy
   m_TagString: Enemy
@@ -1474,7 +1475,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10.7200003}
+  m_LocalPosition: {x: 2.53533578, y: -2.51153872e-17, z: 11.3109636}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 457212}
@@ -1783,6 +1784,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!136 &13622306
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!136 &13671988
 CapsuleCollider:
   m_ObjectHideFlags: 1
