@@ -543,7 +543,7 @@ GameObject:
   - 135: {fileID: 422620720}
   - 23: {fileID: 422620719}
   m_Layer: 0
-  m_Name: destination 3
+  m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
