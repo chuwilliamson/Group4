@@ -9,11 +9,17 @@ public class EnemyStats : Stats
     public bool m_PowerLevel;
     public int m_pLvl;
 
+    float dieTimer;
+    float dieDelay;
+
 
     void Start()
     {
         m_MaxHealth = 100;
         m_Health = m_MaxHealth;
+
+        dieTimer = 0;
+        dieDelay = 5;
 
         m_PowerLevel = false;
     }
@@ -44,7 +50,12 @@ public class EnemyStats : Stats
             }
             else
             {
-               
+                dieTimer += Time.deltaTime;
+            }
+
+            if (dieTimer >= dieDelay)
+            {
+                Destroy(gameObject);
             }
         }
     }
