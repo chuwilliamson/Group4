@@ -28,7 +28,7 @@ public class TurretPlacement : Singleton<TurretPlacement>
      public void TurretPlacePoint()
     {
         Vector3 pos = transform.position + Camera.main.transform.forward * 3;
-        pos.y = 1;
+        pos.y = 0;
         //Sets the spawn position that the turret will be placed at
 
         //dot.gameObject.SetActive(true);

@@ -28,9 +28,24 @@ public class EnemyStats : Stats
         //if (m_PowerLevel)
         //    PowerLevel(m_pLvl);
 
-        if (m_Health <= 0)
-        {   
+        if (m_Health < 0)
+        {
+            m_Health = 1;
             Die();
+        }
+
+        if(gameObject.CompareTag("Dead"))
+        {
+            if (transform.eulerAngles.x < 80)
+            {
+               // print(transform.rotation.x);
+                transform.Rotate(Vector3.right * Time.deltaTime * 50);
+                //transform.Rotate(Vector3.right, 25.0f);
+            }
+            else
+            {
+               
+            }
         }
     }
 
@@ -80,7 +95,12 @@ public class EnemyStats : Stats
             }
         }
 
+
+        GetComponent<Animator>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
+        GetComponent<UnityStandardAssets.Characters.ThirdPerson.AICharacterControl>().enabled = false;
+        tag = "Dead";
+        
 
         //Destroy(gameObject);
     }

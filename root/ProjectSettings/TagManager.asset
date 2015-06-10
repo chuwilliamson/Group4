@@ -17,6 +17,8 @@ TagManager:
   - PlayerInv
   - Resource
   - Turret
+  - Grenade
+  - Dead
   layers:
   - Default
   - TransparentFX

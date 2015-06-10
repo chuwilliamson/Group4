@@ -4,6 +4,8 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerActions : MonoBehaviour, IActions
 {
+    [SerializeField]
+    public GameObject Grenade;
     string action;
     private Vector3 lastFramePosition;
 
@@ -29,6 +31,9 @@ public class PlayerActions : MonoBehaviour, IActions
     {
         if (fsm.ActionDict["shoot"] == true)
             action = "shoot";
+
+        Grenade.GetComponent<BulletMove>().isFired = true;       
+        Instantiate(Grenade, transform.position, transform.rotation);
     }
 
     public void PlaceTurret()
