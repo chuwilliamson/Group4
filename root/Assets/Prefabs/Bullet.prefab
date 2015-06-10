@@ -120,7 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
-  bDamage: 10
+  throwPower: 25
+  bDamage: 9000
   isFired: 1
   doDmg: 0
 --- !u!135 &13524286

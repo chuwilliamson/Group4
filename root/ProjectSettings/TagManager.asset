@@ -14,8 +14,13 @@ TagManager:
   - TurretManager
   - Enemy
   - Goal
+  - PlayerInv
   - Resource
   - Turret
+<<<<<<< HEAD
+=======
+  - Grenade
+>>>>>>> chuwilliamson/master
   - Dead
   layers:
   - Default

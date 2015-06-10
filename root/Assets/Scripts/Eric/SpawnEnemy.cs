@@ -11,7 +11,7 @@ public class SpawnEnemy : MonoBehaviour
     void Start()
     {
         m_Timer = 0;
-        SpawnDelay = 3;
+        //SpawnDelay = 3;
     }
 
 	void Update ()
