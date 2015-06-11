@@ -13,9 +13,9 @@ public class EnemyMovementToGoal : MonoBehaviour
 
 	void Awake () 
     {
-        goal = GameObject.FindGameObjectWithTag("Goal").transform;
-        goal1 = GameObject.FindGameObjectWithTag("Player").transform;
-        goal2 = GameObject.FindGameObjectWithTag("Turret").transform;
+        goal = GameObject.FindGameObjectWithTag("Target").transform;
+        goal1 = GameObject.FindGameObjectWithTag("Target1").transform;
+        goal2 = GameObject.FindGameObjectWithTag("Target2").transform;
 
         goalHealth = goal.GetComponent<GoalHealth>();
         nav = GetComponent<NavMeshAgent>();
@@ -44,8 +44,6 @@ public class EnemyMovementToGoal : MonoBehaviour
 
 	void Update () 
     {
-
-
 	    if(goalHealth.currentHealth>0)
         {
             nav.SetDestination(goal.position);
