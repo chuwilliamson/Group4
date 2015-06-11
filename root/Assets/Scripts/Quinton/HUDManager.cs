@@ -18,25 +18,25 @@ public class HUDManager : Singleton<HUDManager>
     /// 
 
     //Displays the amount of health the player has next to the max health the player can have
-    //public void HpHUD(float curHp, float maxHp)
-    //{
-    //    string curString = curHp.ToString();
-    //    string maxString = maxHp.ToString();
+    public void HpHUD(float curHp, float maxHp)
+    {
+        string curString = curHp.ToString();
+        string maxString = maxHp.ToString();
 
-    //    if (curHp >= 10000)
-    //    {
-    //        curHp /= 1000;
-    //        curString = curHp.ToString("#.#") + 'K';
-    //    }
-    //    if (maxHp >= 10000)
-    //    {
-    //        maxHp /= 1000;
-    //        maxString = curHp.ToString("#.#") + 'K';
-    //    }
+        if (curHp >= 10000)
+        {
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            maxString = curHp.ToString("#.#") + 'K';
+        }
 
 
-    //    hp.GetComponent<Text>().text = curString + '/' + maxString;
-    //}
+        hp.GetComponent<Text>().text = curString + '/' + maxString;
+    }
     public void HpHUD(int curHp, int maxHp)
     {
         string curString = curHp.ToString();
