@@ -7,48 +7,31 @@ public class TurretPlacement : Singleton<TurretPlacement>
     public GameObject dot;
     private GameObject turret;
 
-<<<<<<< HEAD
-    private int turretCount = 0;
+    private int turretPlaced = 0;
 
-    public bool isSelected = false; //checks to see if a turret is selected so it doesn't crash
-=======
+    private int turretCost = 0;
     public bool isSelected = false; //checks to see if a turret is selected
->>>>>>> chuwilliamson/master
 
 
 
 	// Use this for initialization
 	void Start () 
     {
-        dot.gameObject.SetActive(false);
-        turret = turret1;
-        if (!isSelected)
-        {
-            dot.gameObject.SetActive(false);
-        }
-        // Make dot disppear in the start of the game
-    }
+       dot.gameObject.SetActive(false);
+	}
 	
 	// Update is called once per frame
     void Update()
-    {}
-
-     public void TurretWasPlaced()
     {
-        Vector3 pos = transform.position + Camera.main.transform.forward * 3;
-        pos.y = 0;
+        //TurretSelect();
+        //TurretPlace();
+        //calls in the functions for selecting a turret and placing the turrets
 
-        dot.gameObject.SetActive(false);
-        Instantiate(turret, pos, transform.rotation);
-        isSelected = true;
+        HUDManager.instance.TurHUD(turretPlaced);
     }
 
      public void TurretPlacePoint()
     {
-<<<<<<< HEAD
-        //Sets the spawn position that the turret will be placed at
-        if (Input.GetMouseButton(0) && isSelected)
-=======
         Vector3 pos = transform.position + Camera.main.transform.forward * 3;
         pos.y = 0;
         //Sets the spawn position that the turret will be placed at
@@ -57,63 +40,49 @@ public class TurretPlacement : Singleton<TurretPlacement>
         
 
         if (isSelected == true)
->>>>>>> chuwilliamson/master
         {
             dot.gameObject.SetActive(true);
+            Instantiate(turret, pos, transform.rotation);
             isSelected = false;
-        }
-<<<<<<< HEAD
+            turretPlaced = turretPlaced + 1;
+            
 
-=======
->>>>>>> chuwilliamson/master
+        }
     }
 
     public void TurretSelect(KeyCode a)
     {
-        
         if (a == KeyCode.Alpha1) 
             // Player will press #1 - 4 keys to select which type of turret they would like to choose.  
         {
-<<<<<<< HEAD
-            //HUDManager.instance.TurSelectHUD("Turret 1");
-=======
 
->>>>>>> chuwilliamson/master
             // The turret placement will be placed in front of the player by 1 unit.
             turret = turret1;
+            turretCost = 10;
             isSelected = true;
         }
 
         if (a == KeyCode.Alpha2)
         {
-<<<<<<< HEAD
-            //HUDManager.instance.TurSelectHUD("Turret 2");
-=======
             
->>>>>>> chuwilliamson/master
             turret = turret2;
+            turretCost = 20;
             isSelected = true;
         }
 
         if (a == KeyCode.Alpha3)
         {
-<<<<<<< HEAD
-            //HUDManager.instance.TurSelectHUD("Turret 3");
-=======
             
->>>>>>> chuwilliamson/master
             turret = turret3;
+            turretCost = 30;
             isSelected = true;
         }
 
         if (a == KeyCode.Alpha4)
         {
-<<<<<<< HEAD
-            //HUDManager.instance.TurSelectHUD("Turret 4");
-=======
            
->>>>>>> chuwilliamson/master
             turret = turret4;
+            turretCost = 40;
             isSelected = true;
         }
     }
