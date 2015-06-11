@@ -9,15 +9,11 @@ public class EnemyStats : Stats
     public bool m_PowerLevel;
     public int m_pLvl;
 
-    float dieDelay, dieTimer;
 
     void Start()
     {
         m_MaxHealth = 100;
         m_Health = m_MaxHealth;
-
-        dieTimer = 0;
-        dieDelay = 3;
 
         m_PowerLevel = false;
     }
@@ -42,16 +38,13 @@ public class EnemyStats : Stats
         {
             if (transform.eulerAngles.x < 80)
             {
+               // print(transform.rotation.x);
                 transform.Rotate(Vector3.right * Time.deltaTime * 50);
+                //transform.Rotate(Vector3.right, 25.0f);
             }
             else
             {
-                dieTimer += Time.deltaTime;
-            }
-
-            if (dieTimer >= dieDelay)
-            {
-                Destroy(gameObject);
+               
             }
         }
     }

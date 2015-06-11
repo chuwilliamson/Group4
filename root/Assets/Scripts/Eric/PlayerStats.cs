@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class PlayerStats : Stats
@@ -18,15 +19,17 @@ public class PlayerStats : Stats
     void Update()
     {
         //Will only regin health if play has not recived damage for as long as m_reginDelay
-        if (m_preaviousHealth == m_Health)
-            m_reginTimer += Time.deltaTime;
-        else
-            m_reginTimer = 0;
+        //if (m_preaviousHealth == m_Health)
+        //    m_reginTimer += Time.deltaTime;
+        //else
+        //    m_reginTimer = 0;
 
         //Will only regin health if m_Health is lower than m_MaxHealth
         //if(m_reginTimer >= m_reginDelay && m_Health <= m_MaxHealth
         //    && gameObject.GetComponent<PlayerStates>().cState == PlayerStates.eStates.Idle)
         //    m_Health += m_HealthRegen * Time.deltaTime;
+
+        HUDManager.instance.HpHUD(m_Health, m_MaxHealth);
 
         m_preaviousHealth = m_Health;
     }

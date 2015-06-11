@@ -88,10 +88,10 @@ public class HUDManager : Singleton<HUDManager>
     called in by the turret script to show the player how many turrets
     are on the playing field
     */ 
-    public void TurHUD(float tur)
-    {
-        turrent.GetComponent<Text>().text = tur.ToString();
-    }
+    //public void TurHUD(float tur)
+    //{
+    //    turrent.GetComponent<Text>().text = tur.ToString();
+    //}
     public void TurHUD(int tur)
     {
         turrent.GetComponent<Text>().text = tur.ToString();
@@ -104,6 +104,12 @@ public class HUDManager : Singleton<HUDManager>
         waveNumber.GetComponent<Text>().text = curWave.ToString();
     }
 
+    //Gets the info about the number of enemeis the player has killed
+    public void enemyProgHUD(int enemyKilled, int enemyNeededDead)
+    {
+        enemiesKilled.GetComponent<Text>().text = enemiesKilled.ToString();
+        enemiesKilled.GetComponent<Text>().text = enemyNeededDead.ToString();
+    }
 
     //Displays the curret turret selcete to be placed by the player
     public void CurTur(int ctur)
