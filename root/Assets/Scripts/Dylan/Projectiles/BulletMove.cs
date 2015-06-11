@@ -31,7 +31,7 @@ public class BulletMove : MonoBehaviour
             Destroy(gameObject);
             if (doDmg == true)
             {
-                enemy.GetComponent<EnemyStats>().m_Health -= bDamage;
+                c.GetComponent<EnemyStats>().m_Health -= bDamage;
                 Debug.Log("Im dying");
             }
         }

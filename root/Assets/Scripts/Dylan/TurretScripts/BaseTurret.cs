@@ -31,7 +31,7 @@ public class BaseTurret : Stats
     public float reloadTime;
 
 
-    public void OnTriggerEnter(Collider c)
+    public void OnTriggerStay(Collider c)
     {
         if (c.gameObject.tag == "Enemy")
         {

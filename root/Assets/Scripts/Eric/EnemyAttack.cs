@@ -11,7 +11,7 @@ public class EnemyAttack : MonoBehaviour
             other.CompareTag("Turret") ||
             other.CompareTag("Goal") )
         {
-            other.GetComponent<Stats>().m_Health -= (int)(damage * Time.deltaTime);
+            other.GetComponent<Stats>().m_Health -= (damage * Time.deltaTime);
         }
     }
 }
