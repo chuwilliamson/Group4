@@ -20,8 +20,8 @@ public class HUDManager : Singleton<HUDManager>
     //Displays the amount of health the player has next to the max health the player can have
     public void HpHUD(float curHp, float maxHp)
     {
-        string curString = curHp.ToString();
-        string maxString = maxHp.ToString();
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
 
         if (curHp >= 10000)
         {
@@ -39,8 +39,8 @@ public class HUDManager : Singleton<HUDManager>
     }
     public void HpHUD(int curHp, int maxHp)
     {
-        string curString = curHp.ToString();
-        string maxString = maxHp.ToString();
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
 
         if (curHp >= 10000)
         {
@@ -74,7 +74,7 @@ public class HUDManager : Singleton<HUDManager>
     public void ScrapHUD(int scraps)
     {
 
-        string scrapsString = scraps.ToString();
+        string scrapsString = scraps.ToString("#.#");
 
         if (scraps >= 10000)
         {
@@ -94,28 +94,10 @@ public class HUDManager : Singleton<HUDManager>
     //}
     public void TurHUD(int tur)
     {
-        turrent.GetComponent<Text>().text = tur.ToString();
+        turrent.GetComponent<Text>().text = tur.ToString("#.#");
     }
 
-    //Gets the info about the wave progression the player has made
-    public void WaveHUD(int curWave, int maxWave)
-    {
-        waveNumber.GetComponent<Text>().text = maxWave.ToString();
-        waveNumber.GetComponent<Text>().text = curWave.ToString();
-    }
-
-    //Gets the info about the number of enemeis the player has killed
-    public void enemyProgHUD(int enemyKilled, int enemyNeededDead)
-    {
-        enemiesKilled.GetComponent<Text>().text = enemiesKilled.ToString();
-        enemiesKilled.GetComponent<Text>().text = enemyNeededDead.ToString();
-    }
-
-    //Displays the curret turret selcete to be placed by the player
-    public void CurTur(int ctur)
-    {
-        curTurrent.GetComponent<Text>().text = ctur.ToString(); 
-    }
+    
 
  
     ////////////////////////////////////////////////////////////////////////////////////
@@ -333,13 +315,11 @@ public class HUDManager : Singleton<HUDManager>
      [SerializeField]    GameObject scrap;
      [SerializeField]    GameObject curTurrent;
      [SerializeField]    GameObject promp;
-     [SerializeField]    GameObject waveNumber;
-     [SerializeField]    GameObject enemiesKilled;
      
 
 
      [SerializeField]    GameObject LogText;
-     List<GameObject> Log = new List<GameObject>();
+     List<GameObject>    Log = new List<GameObject>();
 
      private int MaxCharInNodes = 40;
      private int LogNodeNum;
