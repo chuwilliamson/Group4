@@ -5,7 +5,8 @@ public class WinCondition : MonoBehaviour
 {
     public GameObject playerInv;
     public GameObject gameManager;
-    private int scarpGoal = 100;
+    
+    private int scarpGoal = 1000;
 
 	// Use this for initialization
 	void Start () {
@@ -20,5 +21,8 @@ public class WinCondition : MonoBehaviour
             Debug.Log("You Win");
             gameManager.GetComponent<LevelLoader>().loadLevel("Exit");
         }
+
+        GameObject.Find("HUDManager").GetComponent<HUDManager>().ScrapHUD(playerInv.GetComponent<ItemDatabase>().scraps);
+
 	}
 }
