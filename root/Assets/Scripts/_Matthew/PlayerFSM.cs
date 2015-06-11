@@ -48,9 +48,15 @@ public class PlayerFSM
                 case PlayerState.walk:
                     ActionDict[Key] = true; //can do everything in the dictionary
                     break;
+<<<<<<< HEAD
+
+                case PlayerState.run:
+                    ActionDict["slap"] = false; //cant slap but can do everyting else in the dictionary
+=======
                 case PlayerState.run:
                     ActionDict["slap"] = false; //cant slap but can do everyting else in the dictionary
                     ActionDict["placeTurret"] = false;
+>>>>>>> chuwilliamson/master
                     break;
             }
         }
@@ -77,6 +83,10 @@ public class PlayerFSM
             case PlayerState.init:
                 if (to == PlayerState.idle)
                 {
+<<<<<<< HEAD
+                    Debug.Log(to);
+=======
+>>>>>>> chuwilliamson/master
                     cState = to;
                     return true;
                 }
@@ -85,6 +95,11 @@ public class PlayerFSM
             case PlayerState.idle:
                 if (to == PlayerState.walk)
                 {
+<<<<<<< HEAD
+
+                    Debug.Log(to);
+=======
+>>>>>>> chuwilliamson/master
                     cState = to;
                     return true;
                 }
@@ -93,6 +108,10 @@ public class PlayerFSM
             case PlayerState.walk:
                 if (to == PlayerState.run || to == PlayerState.idle)
                 {
+<<<<<<< HEAD
+                    Debug.Log(to);
+=======
+>>>>>>> chuwilliamson/master
                     cState = to;
                     return true;
                 }

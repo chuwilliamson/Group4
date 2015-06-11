@@ -19,6 +19,10 @@ public class PlayerActions : MonoBehaviour, IActions
     {
         if (fsm.ActionDict["slap"] == true)
             action = "slap";
+<<<<<<< HEAD
+
+=======
+>>>>>>> chuwilliamson/master
     }
 
     public void Jump()
@@ -34,9 +38,12 @@ public class PlayerActions : MonoBehaviour, IActions
     {
         if (fsm.ActionDict["shoot"] == true)
             action = "shoot";
+<<<<<<< HEAD
+=======
 
         Grenade.GetComponent<BulletMove>().isFired = true;       
         Instantiate(Grenade, transform.position, transform.rotation);
+>>>>>>> chuwilliamson/master
     }
 
     public void PlaceTurret()
