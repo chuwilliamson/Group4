@@ -26,10 +26,5 @@ public class SpawnEnemy : MonoBehaviour
             m_Timer = 0;
             enemyCount = enemyCount + 1;
         }
-
-        if(a.GetComponent<EnemyStats>().m_Health <= 0)
-        {
-            progess.GetComponent<LevelProgression>().numOfKills = progess.GetComponent<LevelProgression>().numOfKills + 1;
-        }
 	}
 }

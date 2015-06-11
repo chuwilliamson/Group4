@@ -52,6 +52,9 @@ public class PlayerFSM
                     ActionDict["slap"] = false; //cant slap but can do everyting else in the dictionary
                     ActionDict["placeTurret"] = false;
                     break;
+                case PlayerState.dead:
+                    ActionDict[Key] = false; //cant do everything in the dictionary
+                    break;
             }
         }
 
@@ -75,7 +78,7 @@ public class PlayerFSM
         switch (from)
         {
             case PlayerState.init:
-                if (to == PlayerState.idle)
+                if (to == PlayerState.idle || to == PlayerState.dead)
                 {
                     cState = to;
                     return true;
@@ -83,7 +86,7 @@ public class PlayerFSM
                 break;
 
             case PlayerState.idle:
-                if (to == PlayerState.walk)
+                if (to == PlayerState.walk || to == PlayerState.dead)
                 {
                     cState = to;
                     return true;
@@ -91,7 +94,7 @@ public class PlayerFSM
                 break;
 
             case PlayerState.walk:
-                if (to == PlayerState.run || to == PlayerState.idle)
+                if (to == PlayerState.run || to == PlayerState.idle || to == PlayerState.dead)
                 {
                     cState = to;
                     return true;
@@ -99,7 +102,7 @@ public class PlayerFSM
                 break;
 
             case PlayerState.run:
-                if (to == PlayerState.walk)
+                if (to == PlayerState.walk || to == PlayerState.dead)
                 {
                     cState = to;
                     return true;

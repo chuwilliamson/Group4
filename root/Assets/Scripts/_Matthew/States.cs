@@ -4,6 +4,7 @@
     idle,
     walk,
     run,
+    dead,
 }
 
 public enum LevelState

@@ -4,7 +4,7 @@ using System.Collections;
 public class LevelProgression : MonoBehaviour 
 {
     public GameObject gameManager;
-
+    public GameObject enemy;
     public int numOfWaves = 5;
     public int curWave = 1;
 

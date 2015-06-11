@@ -8,8 +8,6 @@ public class WinCondition : MonoBehaviour
     public GameObject player;
     public GameObject progress;
 
-    private int scarpGoal = 1000;
-
 	// Use this for initialization
 	void Start ()
     {
@@ -27,6 +25,11 @@ public class WinCondition : MonoBehaviour
         //}
 
         if(progress.GetComponent<LevelProgression>().curWave > progress.GetComponent<LevelProgression>().numOfWaves)
+        {
+            gameManager.GetComponent<LevelLoader>().loadLevel("Exit");
+        }
+
+        if(player.GetComponent<PlayerStats>().m_Health <= 0)
         {
             gameManager.GetComponent<LevelLoader>().loadLevel("Exit");
         }

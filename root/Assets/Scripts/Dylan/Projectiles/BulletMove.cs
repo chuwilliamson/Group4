@@ -3,12 +3,12 @@ using System.Collections;
 
 public class BulletMove : MonoBehaviour 
 {
-    GameObject[] BB; // shots inside of a shot
+    public GameObject[] BB; // shots inside of a shot
     public GameObject enemy;
 
     public float throwPower = 25f;
     
-    private float mySpeed = 1f;
+    private float mySpeed = 50f;
     private float maxDistance = 4f;
 
     private float myDist;
