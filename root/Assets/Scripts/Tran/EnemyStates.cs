@@ -4,7 +4,7 @@ using System.Collections;
 public class EnemyStates : MonoBehaviour {
 
     NavMeshAgent enemy;
-    private GameObject target;
+    GameObject target;
 
     public enum States { Idle, Goal, Chase };
     public States enemyStates = States.Idle;
@@ -20,7 +20,8 @@ public class EnemyStates : MonoBehaviour {
     {
         enemy = GetComponent<NavMeshAgent>();
         enemy.autoBraking = false;
-        target = gameObject;
+        goal = GameObject.FindGameObjectWithTag("Goal").transform;
+        target = goal.gameObject;
        
 	}
 
