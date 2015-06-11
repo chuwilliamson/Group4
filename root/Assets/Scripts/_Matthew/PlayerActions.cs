@@ -28,7 +28,10 @@ public class PlayerActions : MonoBehaviour, IActions
     public void Jump()
     {
         if (fsm.ActionDict["jump"] == true)
+        {
+            fsm.ActionDict["placeTurret"] = false;
             action = "jump";
+        }
     }
 
     public void Shoot()
@@ -90,6 +93,8 @@ public class PlayerActions : MonoBehaviour, IActions
 
         bool running = Vector3.Distance(transform.position, lastFramePosition) > 5.00;
 
+        bool jumping = transform.position.y != 0;
+
         if(idle)
         {
             State(PlayerState.idle);
@@ -99,5 +104,12 @@ public class PlayerActions : MonoBehaviour, IActions
         {
             State(PlayerState.run);
         }
+
+        if(jumping)
+        {
+            Jump();
+        }
+
+        action = "";
     }
 }
