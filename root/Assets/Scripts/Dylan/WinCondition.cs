@@ -22,6 +22,7 @@ public class WinCondition : MonoBehaviour
             gameManager.GetComponent<LevelLoader>().loadLevel("Exit");
         }
 
+
         GameObject.Find("HUDManager").GetComponent<HUDManager>().ScrapHUD(playerInv.GetComponent<ItemDatabase>().scraps);
 
 	}
