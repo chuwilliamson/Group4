@@ -15,6 +15,9 @@ public class HUDManager : Singleton<HUDManager>
     /// </summary>
     /// <usedby>ScoreManager (Each function is used by the simular "Score" Funcion in the ScoreManager)</usedby>
     /// // // // // // // // // // // // // // // // // // // // // // // // // // // //
+    /// 
+
+    //Displays the amount of health the player has next to the max health the player can have
     public void HpHUD(float curHp, float maxHp)
     {
         string curString = curHp.ToString();
@@ -54,6 +57,8 @@ public class HUDManager : Singleton<HUDManager>
 
         hp.GetComponent<Text>().text = curString + '/' + maxString;
     }
+
+    //Displays the amount of scraps are in the players envintory
     public void ScrapHUD(float scraps)
     {
 
@@ -78,14 +83,35 @@ public class HUDManager : Singleton<HUDManager>
         }
         scrap.GetComponent<Text>().text = scrapsString.ToString();
     }
-    public void TurHUD(float tur)
-    {
-        turrent.GetComponent<Text>().text = tur.ToString();
-    }
+
+    /*
+    called in by the turret script to show the player how many turrets
+    are on the playing field
+    */ 
+    //public void TurHUD(float tur)
+    //{
+    //    turrent.GetComponent<Text>().text = tur.ToString();
+    //}
     public void TurHUD(int tur)
     {
         turrent.GetComponent<Text>().text = tur.ToString();
     }
+
+    //Gets the info about the wave progression the player has made
+    public void WaveHUD(int curWave, int maxWave)
+    {
+        waveNumber.GetComponent<Text>().text = maxWave.ToString();
+        waveNumber.GetComponent<Text>().text = curWave.ToString();
+    }
+
+    //Gets the info about the number of enemeis the player has killed
+    public void enemyProgHUD(int enemyKilled, int enemyNeededDead)
+    {
+        enemiesKilled.GetComponent<Text>().text = enemiesKilled.ToString();
+        enemiesKilled.GetComponent<Text>().text = enemyNeededDead.ToString();
+    }
+
+    //Displays the curret turret selcete to be placed by the player
     public void CurTur(int ctur)
     {
         curTurrent.GetComponent<Text>().text = ctur.ToString(); 
@@ -307,7 +333,8 @@ public class HUDManager : Singleton<HUDManager>
      [SerializeField]    GameObject scrap;
      [SerializeField]    GameObject curTurrent;
      [SerializeField]    GameObject promp;
-   
+     [SerializeField]    GameObject waveNumber;
+     [SerializeField]    GameObject enemiesKilled;
      
 
 
