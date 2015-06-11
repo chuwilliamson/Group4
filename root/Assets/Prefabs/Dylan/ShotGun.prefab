@@ -32,7 +32,7 @@ GameObject:
   - 114: {fileID: 11425518}
   m_Layer: 0
   m_Name: shotGun Rote Joint
-  m_TagString: One Barrel
+  m_TagString: MG
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,14 +312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b32c9517789fa64d807966c8b86bbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Level: 0
-  m_Exp: 0
-  m_ExpNeeded: 0
   m_MaxHealth: 0
   m_Health: 0
   m_HealthRegen: 0
-  m_Acc: 0
-  cGrowthType: 0
   bullet: {fileID: 102918, guid: da23fc14d165709449cb43eb8340a44b, type: 2}
   turretView: {fileID: 147146}
   target: {fileID: 0}
@@ -332,7 +327,6 @@ MonoBehaviour:
   maxAmmo: 100
   currentAmmo: 100
   damage: 5
-  turretCost: 10
   isTargetInRadius: 0
   isReloading: 0
   validTarget: 0

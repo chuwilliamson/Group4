@@ -3,18 +3,13 @@ using System.Collections;
 
 public class BulletMove : MonoBehaviour 
 {
-    GameObject[] BB; // shots inside of a shot
+    public GameObject[] BB; // shots inside of a shot
     public GameObject enemy;
-
     public float throwPower = 25f;
-    
-    private float mySpeed = 1f;
-    private float maxDistance = 4f;
-
+    private float mySpeed = 5f;
+    private float maxDistance = 5f;
     private float myDist;
-
-    private float spreadRate = 4;
-
+    private float spreadRate = 100;
     public int bDamage = 10;
 
     int numOfShots = 1;
@@ -22,7 +17,7 @@ public class BulletMove : MonoBehaviour
     public bool isFired = false; //a bool to check if the bullet is beign fired
     public bool doDmg = false;
 
-    public void OnTriggerEnter(Collider c)
+    public void OnTriggerStay(Collider c)
     {
         if(c.tag == "Enemy")
         {
@@ -80,7 +75,10 @@ public class BulletMove : MonoBehaviour
         if (gameObject.tag == "ShotGunShell" && isFired == true)
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
-            Instantiate(BB[numOfShots], transform.position, transform.rotation);
+            for (int i = 0; i < numOfShots; numOfShots++)
+            {
+                Instantiate(BB[numOfShots], transform.position, transform.rotation);
+            }
 
             transform.Translate(Vector3.up * Time.deltaTime * mySpeed);
 
