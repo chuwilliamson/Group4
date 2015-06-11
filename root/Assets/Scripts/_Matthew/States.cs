@@ -7,6 +7,28 @@
     dead,
 }
 
+public enum TurretState
+{
+    idle,
+    patrol,
+    shoot,
+    destroyed,
+}
+
+public enum GoalState
+{
+    alive,
+    destroyed,
+}
+
+public enum EnemyState
+{
+    Idle,
+    Goal,
+    Chase,
+    Dead,
+}
+
 public enum LevelState
 {
     intro,
