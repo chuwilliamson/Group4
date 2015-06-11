@@ -15,30 +15,27 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         public enum States { Idle, Goal, Chase };
         public States enemyStates = States.Idle;
-        /// <summary>
-        /// user must set this or dude wont move... this is tran prmse
-        /// </summary>
         public Transform goal;
-        public float delay;
 
         public float timer;
+        public float delay;
 
         void Start()
         {
             enemy = GetComponent<NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
             enemy.autoBraking = false;
-            goal = GameObject.FindGameObjectWithTag("Goal").transform;
+            goal = GameObject.FindObjectOfType<GoalStats>().transform;
             target = gameObject;
 
         }
 
         void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.GetComponent<Stats>().isPlayer)
                 target = other.gameObject;
 
-            else if (other.gameObject.tag == "Turret")
+            else if (other.gameObject.GetComponent<Stats>().isTurret)
                 target = other.gameObject;
         }
 

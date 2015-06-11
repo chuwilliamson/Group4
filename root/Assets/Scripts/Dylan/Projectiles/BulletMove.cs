@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletMove : MonoBehaviour 
+public class BulletMove : MonoBehaviour
 {
     GameObject[] BB; // shots inside of a shot
     public GameObject enemy;
 
     public float throwPower = 25f;
-    
+
     private float mySpeed = 1f;
     private float maxDistance = 4f;
 
@@ -24,28 +24,26 @@ public class BulletMove : MonoBehaviour
 
     public void OnTriggerEnter(Collider c)
     {
-        if(c.tag == "Enemy")
+        
+        if (c.tag == "Enemy")
         {
+            enemy = c.gameObject;
             doDmg = true;
-            Debug.Log(doDmg);
-            Destroy(gameObject);
-            if (doDmg == true)
+            Debug.Log(doDmg); 
+            if (enemy != null)
             {
                 enemy.GetComponent<EnemyStats>().m_Health -= bDamage;
-                Debug.Log("Im dying");
+                Destroy(gameObject);
             }
+
         }
     }
-
-	// Use this for initialization
-	void Start () {}
-	
-	// Update is called once per frame
-	void Update ()
+ 
+    // Update is called once per frame
+    void Update()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
 
-        if(isFired == true)
+        if (isFired == true)
         {
             transform.Translate(Vector3.up * Time.deltaTime * mySpeed);
             myDist += Time.deltaTime * mySpeed;
@@ -55,49 +53,26 @@ public class BulletMove : MonoBehaviour
             if (myDist > maxDistance)
             {
                 Destroy(gameObject);
-                    //checks to see if the bullet has passed the maximum distance it can travel
-                    //and if it dis destroy the object
-            }
-        }
-
-        if(gameObject.tag=="Grenade" && isFired==true)
-        {
-            Vector3 forward = transform.TransformDirection(Vector3.forward*throwPower);
-            transform.Translate(forward * Time.deltaTime * mySpeed);
-                        myDist += Time.deltaTime * mySpeed;
-
-            //moves the bullet across the screen when the turret fire
-
-            if (myDist > maxDistance)
-            {
-                Destroy(gameObject);
-                    //checks to see if the bullet has passed the maximum distance it can travel
-                    //and if it dis destroy the object
-            } 
-        }
-
-
-        if (gameObject.tag == "ShotGunShell" && isFired == true)
-        {
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
-            Instantiate(BB[numOfShots], transform.position, transform.rotation);
-
-            transform.Translate(Vector3.up * Time.deltaTime * mySpeed);
-
-            forward.x += Random.Range(spreadRate, -spreadRate);
-            forward.y += Random.Range(spreadRate, -spreadRate);
-            forward.z += Random.Range(spreadRate, -spreadRate);
-
-            BB[numOfShots].transform.LookAt(forward);
-
-            myDist += Time.deltaTime * mySpeed;
-            if (myDist > maxDistance)
-            {
-                Destroy(gameObject);
-                print("Obj Gone");
                 //checks to see if the bullet has passed the maximum distance it can travel
                 //and if it dis destroy the object
             }
         }
-	}
+
+        if (gameObject.tag == "Grenade" && isFired == true)
+        {
+            Vector3 forward = transform.TransformDirection(Vector3.forward * throwPower);
+            transform.Translate(forward * Time.deltaTime * mySpeed);
+            myDist += Time.deltaTime * mySpeed;
+
+            //moves the bullet across the screen when the turret fire
+
+            if (myDist > maxDistance)
+            {
+                Destroy(gameObject);
+                //checks to see if the bullet has passed the maximum distance it can travel
+                //and if it dis destroy the object
+            }
+        }
+
+    }
 }

@@ -12,7 +12,7 @@ public class BaseTurret : Stats
 
     public float rotationSpeed = 5.0f; //Sets the rotation speed for the turret to travel to get to the targets position
     public float reloadSpeed = 5.0f; //The time for the turret to replinish its ammo (also will be a rest time no turret movement)
-    public float rateOfFire = .25f; //how fast the turret will fire
+    public float rateOfFire = 1.0f; //how fast the turret will fire
 
     public int maxAmmo = 100; //how mmuch ammo the turret can hold
     public int currentAmmo = 100; //how many shots the turret has is decressed by one for every shot unless the turret has multiple barrels
@@ -27,7 +27,7 @@ public class BaseTurret : Stats
     public bool validTarget = false;
     private Quaternion rotationToGoal;
 
-    public float fireDelay;
+    private float fireDelay = 1;
     public float reloadTime;
 
 
@@ -35,9 +35,29 @@ public class BaseTurret : Stats
     {
         if (c.gameObject.tag == "Enemy")
         {
+            c.GetComponent<EnemyStats>().validTarget = true;
             validTarget = true;
             target = c.gameObject;
             isTargetInRadius = true;
+        }
+    }
+
+    public void OnTriggerStay(Collider c)
+    {
+        if (target != null)
+        {
+            if (c.gameObject.tag == "Enemy")
+            {
+                bool enemyState = c.GetComponent<EnemyStats>().validTarget;
+                if (enemyState)
+                {
+                    c.GetComponent<EnemyStats>().validTarget = true;
+                    validTarget = true;
+                    target = c.gameObject;
+                    isTargetInRadius = true;
+                }
+            }
+
         }
     }
 
@@ -50,7 +70,7 @@ public class BaseTurret : Stats
     void distanceToTarget(Vector3 targetPos)
     {
         Vector3 aimPoint = new Vector3(targetPos.x, targetPos.y, targetPos.z);
-        aimPoint.y = target.transform.localScale.y /2;
+        aimPoint.y = target.transform.localScale.y / 2;
         rotationToGoal = Quaternion.LookRotation(aimPoint - transform.position);
         /*
             used to calculate the distance the turret must rotate till it reaches its targets position
@@ -59,21 +79,22 @@ public class BaseTurret : Stats
 
     void bulletFire()
     {
+
+
         if (currentAmmo != 0 && turretView.GetComponent<FieldOfView>().isTargetInView == true)
         {
-            fireDelay = Time.time + rateOfFire;
-
             bullet.GetComponent<BulletMove>().isFired = true;
             currentAmmo -= 1;
 
             //Fire mechanics for the MachineGun turret
             //gets the position of the barrel and spawns the 
             //bullet at that barrels position
-            if(gameObject.tag == "MG")
+            if (gameObject.tag == "MG")
             {
                 foreach (Transform theBarrelPos in barrelPos)
                 {
                     Instantiate(bullet, theBarrelPos.position, theBarrelPos.rotation);
+                    bullet_cd = 0;
                     print("Shoot");
                 }
             }
@@ -83,10 +104,10 @@ public class BaseTurret : Stats
             //spawn positions for the bullet based on the
             //case selected for the barrel's location that
             //we want the bullet to spawn
-            if(gameObject.tag == "AA")
+            if (gameObject.tag == "AA")
             {
-                Vector3 spawnPos = new Vector3(barrelPos[0].position.x, 
-                                               barrelPos[0].position.y, 
+                Vector3 spawnPos = new Vector3(barrelPos[0].position.x,
+                                               barrelPos[0].position.y,
                                                barrelPos[0].position.z);
                 looper++;
 
@@ -99,11 +120,12 @@ public class BaseTurret : Stats
                     case 5: spawnPos = barrelPos[4].position; print("Fire 5"); break;
                     case 6: spawnPos = barrelPos[5].position; print("Fire 6"); break;
                 }
-                
-                Instantiate(bullet, spawnPos, barrelPos[1].rotation);
-                }
 
-            if(currentAmmo == 0)
+                Instantiate(bullet, spawnPos, barrelPos[1].rotation);
+
+            }
+
+            if (currentAmmo == 0)
             {
                 isReloading = true;
                 turretView.GetComponent<FieldOfView>().isTargetInView = false;
@@ -113,6 +135,9 @@ public class BaseTurret : Stats
              *  turrets barrels to spawn a new bullet in the barrel to be fired agian
              */
         }
+
+
+
     }
 
     void turretReload()
@@ -129,42 +154,67 @@ public class BaseTurret : Stats
     }
 
     // Use this for initialization
-    void Start() 
+    void Start()
     {
         m_Health = 100;
     }
 
+    public float bullet_cd;
+    public bool bulletFired;
     // Update is called once per frame
     void Update()
     {
+
+        if (bulletFired)
+            bullet_cd -= Time.deltaTime;
+
+
+
         if (isTargetInRadius == true && isReloading == false && validTarget == true)
         {
-            distanceToTarget(target.transform.position);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotationToGoal, Time.deltaTime * rotationSpeed);
-
-            if (Time.time > fireDelay)
+            
+            if (target != null)
             {
-                bulletFire();
-            }
-            /*
-                when the target comes into the radius of the turret the turret will begin to rotate till 
-             * the target is in its field of view and once it comes into the field of view it will begin to fire
-             */
-        }
+                if (target.GetComponent<EnemyStats>().validTarget && target.GetComponent<EnemyStats>().dead == false)
+                {
+                    distanceToTarget(target.transform.position);
+                    transform.rotation = Quaternion.Lerp(transform.rotation, rotationToGoal, Time.deltaTime * rotationSpeed);
+                    bulletFired = true;
 
-        if (m_Health <= 0)
-        {
-            print("I dead");
-            Destroy(gameObject);
-        }
+                    if (bullet_cd <= 0)
+                    {
 
-        if (isReloading == true)
-        {
-            if (Time.time > reloadTime)
-            {
-                turretReload();
-                print("Reloading");
+                        bulletFire();
+                        bullet_cd = 1;
+                        bulletFired = false;
+                    }
+
+
+
+                    /*
+                        when the target comes into the radius of the turret the turret will begin to rotate till 
+                     * the target is in its field of view and once it comes into the field of view it will begin to fire
+                     */
+                }
+
+                if (m_Health <= 0)
+                {
+                    print("I dead");
+                    Destroy(gameObject);
+                }
+
+                if (isReloading == true)
+                {
+                    if (bullet_cd > reloadTime)
+                    {
+                        turretReload();
+                        print("Reloading");
+                    }
+                }
             }
         }
+        
     }
+
+
 }

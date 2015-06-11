@@ -6,4 +6,10 @@ public class Stats : MonoBehaviour
     //Health related
     public float m_MaxHealth, m_Health, m_HealthRegen;
 
+    public bool isPlayer, isEnemy, isTurret, isGoal;
+
+    void Awake()
+    {
+        isPlayer = isEnemy = isTurret = isGoal = false;
+    }
 }

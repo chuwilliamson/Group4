@@ -19,7 +19,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             agent = GetComponentInChildren<NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
 
-            goal = GameObject.FindGameObjectWithTag("Goal").transform;
+            if(goal == null)
+                goal = GameObject.FindGameObjectWithTag("Goal").transform;
+
             target = goal;
 
 	        agent.updateRotation = false;
