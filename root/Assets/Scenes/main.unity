@@ -308,7 +308,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1001 &158775398
 Prefab:
   m_ObjectHideFlags: 0
@@ -589,7 +589,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c35495fa0ed1c3439f147078fddbfa4, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &447711039
+--- !u!1 &447711039 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 186422, guid: 8c35495fa0ed1c3439f147078fddbfa4, type: 2}
   m_PrefabInternal: {fileID: 447711038}
@@ -1562,6 +1562,10 @@ Prefab:
       propertyPath: progress
       value: 
       objectReference: {fileID: 447711039}
+    - target: {fileID: 11490096, guid: cca90f02389492e4aaeb20dbddbdaba1, type: 2}
+      propertyPath: GameOver
+      value: 
+      objectReference: {fileID: 8300000, guid: d34ac269006660149964fece21291c88, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cca90f02389492e4aaeb20dbddbdaba1, type: 2}
   m_IsPrefabParent: 0
@@ -1600,7 +1604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 0}
   Shooting: {fileID: 8300000, guid: e5ffe5ad56ed84f80b79cf081c6d0209, type: 3}
-  Turretplaces: {fileID: 0}
+  Turretplaces: {fileID: 8300000, guid: bbc2224d20e94f34f82c5d4149e72506, type: 3}
   Slapping: {fileID: 8300000, guid: 3ca121c001790493aac9f6aec90cfc06, type: 3}
   halfPause: 99
   pause: 27
@@ -2324,6 +2328,91 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
   m_PrefabInternal: {fileID: 1710311220}
+--- !u!1 &2098501162 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 139632, guid: cca90f02389492e4aaeb20dbddbdaba1, type: 2}
+  m_PrefabInternal: {fileID: 1437680254}
+--- !u!114 &2098501163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2098501162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adf08bccf92c244dadb685d06f12fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aSource: {fileID: 2098501164}
+--- !u!82 &2098501164
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2098501162}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!4 &2114649288 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 2b127815fd0f2074eae3a0c6a4786d0b, type: 2}
