@@ -30,18 +30,20 @@ public class TurretStats : Stats
 
     void OnTriggerStay(Collider c)
     {
-        if (c.GetComponentInParent<Stats>().isShootable == true)
-        {
-            target = c.gameObject;
-            Debug.Log("Hi Mr.Panda");
-        }
+        if (c.GetComponent<Stats>())
+            if (c.GetComponentInParent<Stats>().isShootable == true)
+            {
+                target = c.gameObject;
+                Debug.Log("Hi Mr.Panda");
+            }
         Debug.Log("Let me love you");
     }
 
     void OnTriggerExit(Collider c)
     {
-        if (c.GetComponentInParent<Stats>().isShootable == true)
-            target = null;
+        if (c.GetComponent<Stats>())
+            if (c.GetComponentInParent<Stats>().isShootable == true)
+                target = null;
     }
 
     // Use this for initialization

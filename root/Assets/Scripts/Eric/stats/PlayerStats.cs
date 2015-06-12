@@ -31,6 +31,7 @@ public class PlayerStats : Stats
         //    m_Health += m_HealthRegen * Time.deltaTime;
 
         HUDManager.instance.HpHUD(m_Health, m_MaxHealth);
+      
 
         m_preaviousHealth = m_Health;
     }
