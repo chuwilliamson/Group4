@@ -11,41 +11,76 @@ public class TurretStats : Stats
     }
 
     public float rotationSpeed = 5.0f;
-    public float reloadSpeed = 5.0f;
-    public float rateOfFire = .25f;
 
     public int damage = 5;
 
     public GameObject bullet;
     public GameObject turretView;
 
+    public GameObject target;
     public Transform[] barrelPos;
     public Transform[] turretTop;
 
+    public Quaternion rotationToGoal;
+    public int t_cycle;
+    public float t_RateOfFire;
+    public float t_ReloadTime;
+
+    public e_TurretType type;
+
+    void OnTriggerStay(Collider c)
+    {
+        if (c.GetComponentInParent<Stats>().isShootable == true)
+        {
+            target = c.gameObject;
+            Debug.Log("Hi Mr.Panda");
+        }
+        Debug.Log("Let me love you");
+    }
+
+    void OnTriggerExit(Collider c)
+    {
+        if (c.GetComponentInParent<Stats>().isShootable == true)
+            target = null;
+    }
 
     // Use this for initialization
-    void Start(e_TurretType type)
+    void Start()
     {
         m_MaxHealth = 100;
         m_Health = m_MaxHealth;
-        switch(type)
+        if (type == e_TurretType.e_MachineGun)
         {
-            case e_TurretType.e_MachineGun:
-                m_maxAmmo = 30;
-                break;
-            case e_TurretType.e_AntiAir:
-                m_maxAmmo = 100;
-                break;
-            case e_TurretType.e_ShotGun:
-                m_maxAmmo = 5;
-                break;
+            m_maxAmmo = 30;
+            t_RateOfFire = Time.deltaTime * .25f;
+            t_ReloadTime = Time.deltaTime * 5.0f;
+        }
+
+        if (type == e_TurretType.e_AntiAir)
+        {
+            m_maxAmmo = 100;
+            t_RateOfFire = Time.deltaTime * .10f;
+            t_ReloadTime = Time.deltaTime * 7.0f;
+        }
+
+
+        if (type == e_TurretType.e_ShotGun)
+        {
+            m_maxAmmo = 5;
+            t_RateOfFire = Time.deltaTime *  .1f;
+            t_ReloadTime = Time.deltaTime * 8.0f;
         }
         m_Ammo = m_maxAmmo;
+
+        isTurret = true;
+        target = null;
     }
 
-    // Update is called once per frame
     void Update()
     {
-
+        if(m_Health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
