@@ -79,8 +79,65 @@ public class HUDManager : Singleton<HUDManager>
         healthBar.GetComponent<Slider>().maxValue = maxHp;
         healthBar.GetComponent<Slider>().value = curHP;
     }
-    
 
+
+
+    public void CoinHpHUD(int curHp, int maxHp)
+    {
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
+
+        if (curHp >= 10000)
+        {
+
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+
+
+        coinHp.GetComponent<Text>().text = curString + '/' + maxString;
+        if (hpBar)
+            helthBar(curHp, maxHp);
+    }
+    public void CoinHpHUD(float curHp, float maxHp)
+    {
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
+
+        if (curHp >= 10000)
+        {
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            maxString = curHp.ToString("#.#") + 'K';
+        }
+
+
+        coinHp.GetComponent<Text>().text = curString + '/' + maxString;
+        if (hpBar)
+            helthBar(curHp, maxHp);
+
+    }
+
+    private void CoinhelthBar(float curHP, float maxHp)
+    {
+        CoinhealthBar.GetComponent<Slider>().maxValue = maxHp;
+        CoinhealthBar.GetComponent<Slider>().value = curHP;
+    }
+    private void COinhelthBar(int curHP, int maxHp)
+    {
+        CoinhealthBar.GetComponent<Slider>().maxValue = maxHp;
+        CoinhealthBar.GetComponent<Slider>().value = curHP;
+    }
+    
 
     //Displays the amount of scraps are in the players envintory
     public void ScrapHUD(float scraps)
@@ -121,6 +178,10 @@ public class HUDManager : Singleton<HUDManager>
         turrent.GetComponent<Text>().text = tur.ToString("#.#");
     }
 
+    public void ChosenTurHUD(int tur)
+    {
+        curTurrent.GetComponent<Text>().text = tur.ToString("#.#");
+    }
     
 
  
@@ -199,7 +260,9 @@ public class HUDManager : Singleton<HUDManager>
             for(int i = 0; i < dif; i++ )
             {
                 Vector3 vec3 = Log[Log.Count - 1].GetComponent<RectTransform>().localPosition;
-                vec3.y += Log[Log.Count - 1].GetComponent<RectTransform>().sizeDelta.y;
+                
+                vec3.y += (Log[Log.Count - 1].GetComponent<RectTransform>().sizeDelta.y);
+                
                 Log.Add((GameObject)Instantiate(LogText, vec3, Log[Log.Count - 1].GetComponent<RectTransform>().localRotation));
                 Log[Log.Count - 1].GetComponent<RectTransform>().transform.SetParent(Log[Log.Count - 2].GetComponent<RectTransform>().transform.parent);
                 Log[Log.Count - 1].GetComponent<RectTransform>().transform.localPosition = vec3;
@@ -341,6 +404,8 @@ public class HUDManager : Singleton<HUDManager>
      [SerializeField]    GameObject curTurrent;
      [SerializeField]    GameObject promp;
      [SerializeField]    GameObject healthBar;
+     [SerializeField]    GameObject coinHp;
+     [SerializeField]    GameObject CoinhealthBar;
    
 
 
