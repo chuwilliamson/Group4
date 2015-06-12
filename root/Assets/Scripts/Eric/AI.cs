@@ -20,13 +20,16 @@ public class AI : AICharacterControl
 
     void OnTriggerStay (Collider other)
     {
-        if (other.GetComponent<Stats>().isPlayer)
+        if (other.GetComponent<Stats>())
         {
-            SetTarget(other.transform);
-        }
-        else if (other.GetComponent<Stats>().isTurret)
-        {
-            SetTarget(other.transform);
+            if (other.GetComponent<Stats>().isPlayer)
+            {
+                SetTarget(other.transform);
+            }
+            else if (other.GetComponent<Stats>().isTurret)
+            {
+                SetTarget(other.transform);
+            }
         }
     }
 }
