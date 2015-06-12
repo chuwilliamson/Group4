@@ -1267,6 +1267,14 @@ MonoBehaviour:
   m_MaxHealth: 0
   m_Health: 0
   m_HealthRegen: 0
+  m_maxAmmo: 0
+  m_Ammo: 0
+  isPlayer: 0
+  isEnemy: 0
+  isTurret: 0
+  isGoal: 0
+  isShootable: 0
+  isReloading: 0
 --- !u!1001 &1244172846
 Prefab:
   m_ObjectHideFlags: 0
