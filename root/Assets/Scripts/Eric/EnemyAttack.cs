@@ -7,16 +7,13 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerStay (Collider other)
     {
-        var co = other.gameObject.GetComponent<Stats>();
+        var co = other.GetComponent<Stats>();
 
-        if (!GetComponent<EnemyStats>().dead)
+        if (GetComponent<EnemyStats>().Shootable)
         {
-            if (co)
+            if (co && !co.isEnemy)
             {
-                if (co.isPlayer || co.isTurret || co.isGoal)
-                {
-                    other.gameObject.GetComponent<Stats>().m_Health -= (damage * Time.deltaTime);
-                }
+               other.gameObject.GetComponent<Stats>().m_Health -= (damage * Time.deltaTime);
             }
         }
     }

@@ -79,8 +79,6 @@ public class BaseTurret : Stats
 
     void bulletFire()
     {
-
-
         if (currentAmmo != 0 && turretView.GetComponent<FieldOfView>().isTargetInView == true)
         {
             bullet.GetComponent<BulletMove>().isFired = true;
@@ -175,7 +173,7 @@ public class BaseTurret : Stats
             
             if (target != null)
             {
-                if (target.GetComponent<EnemyStats>().validTarget && target.GetComponent<EnemyStats>().dead == false)
+                if (target.GetComponent<EnemyStats>().validTarget && target.GetComponent<EnemyStats>().Shootable == true)
                 {
                     distanceToTarget(target.transform.position);
                     transform.rotation = Quaternion.Lerp(transform.rotation, rotationToGoal, Time.deltaTime * rotationSpeed);

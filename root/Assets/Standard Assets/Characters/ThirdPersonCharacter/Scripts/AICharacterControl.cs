@@ -19,7 +19,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             agent = GetComponentInChildren<NavMeshAgent>();
             character = GetComponent<ThirdPersonCharacter>();
 
-            if(goal == null)
+            if (goal == null)
                 goal = GameObject.FindGameObjectWithTag("Goal").transform;
 
             target = goal;
@@ -52,10 +52,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         void OnTriggerStay(Collider other)
         {
             if (other.gameObject.tag == "Player")
-                target = other.transform;
+                SetTarget(other.transform);
 
             else if (other.gameObject.tag == "Turret")
-                target = other.transform;
+                SetTarget(other.transform);
         }
 
         void OnTriggerExit(Collider other)
