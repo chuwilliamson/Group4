@@ -79,8 +79,65 @@ public class HUDManager : Singleton<HUDManager>
         healthBar.GetComponent<Slider>().maxValue = maxHp;
         healthBar.GetComponent<Slider>().value = curHP;
     }
-    
 
+
+
+    public void CoinHpHUD(int curHp, int maxHp)
+    {
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
+
+        if (curHp >= 10000)
+        {
+
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+
+
+        coinHp.GetComponent<Text>().text = curString + '/' + maxString;
+        if (hpBar)
+            helthBar(curHp, maxHp);
+    }
+    public void CoinHpHUD(float curHp, float maxHp)
+    {
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
+
+        if (curHp >= 10000)
+        {
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            maxString = curHp.ToString("#.#") + 'K';
+        }
+
+
+        coinHp.GetComponent<Text>().text = curString + '/' + maxString;
+        if (hpBar)
+            helthBar(curHp, maxHp);
+
+    }
+
+    private void CoinhelthBar(float curHP, float maxHp)
+    {
+        CoinhealthBar.GetComponent<Slider>().maxValue = maxHp;
+        CoinhealthBar.GetComponent<Slider>().value = curHP;
+    }
+    private void COinhelthBar(int curHP, int maxHp)
+    {
+        CoinhealthBar.GetComponent<Slider>().maxValue = maxHp;
+        CoinhealthBar.GetComponent<Slider>().value = curHP;
+    }
+    
 
     //Displays the amount of scraps are in the players envintory
     public void ScrapHUD(float scraps)
@@ -341,6 +398,8 @@ public class HUDManager : Singleton<HUDManager>
      [SerializeField]    GameObject curTurrent;
      [SerializeField]    GameObject promp;
      [SerializeField]    GameObject healthBar;
+     [SerializeField]    GameObject coinHp;
+     [SerializeField]    GameObject CoinhealthBar;
    
 
 
