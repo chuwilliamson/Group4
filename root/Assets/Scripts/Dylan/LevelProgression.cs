@@ -4,17 +4,19 @@ using System.Collections;
 public class LevelProgression : MonoBehaviour 
 {
     public GameObject gameManager;
+    public GameObject enemy;
+    public int numOfWaves = 5;
+    public int curWave = 1;
 
-    private int numOfWaves = 5;
-    private int curWave = 1;
-
-    private int goalKillCount = 10;
-    private int numOfKills = 0;
+    public int goalKillCount = 10;
+    public int numOfKills = 0;
+    public int numOfEnemies = 10; //the number of enemies in the round
 
     private void progress()
     {
         curWave = curWave + 1;
         goalKillCount = goalKillCount * curWave;
+        numOfEnemies = numOfEnemies * curWave;
     }
 
     void Update()

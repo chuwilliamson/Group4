@@ -18,10 +18,33 @@ public class HUDManager : Singleton<HUDManager>
     /// 
 
     //Displays the amount of health the player has next to the max health the player can have
+    
+    public void HpHUD(int curHp, int maxHp)
+    {
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
+
+        if (curHp >= 10000)
+        {
+
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+
+
+        hp.GetComponent<Text>().text = curString + '/' + maxString;
+        if(hpBar)
+        helthBar(curHp, maxHp);
+    }
     public void HpHUD(float curHp, float maxHp)
     {
-        string curString = curHp.ToString();
-        string maxString = maxHp.ToString();
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
 
         if (curHp >= 10000)
         {
@@ -36,27 +59,28 @@ public class HUDManager : Singleton<HUDManager>
 
 
         hp.GetComponent<Text>().text = curString + '/' + maxString;
+        if (hpBar)
+            helthBar(curHp, maxHp);
+        
     }
-    public void HpHUD(int curHp, int maxHp)
+    // Pass a bool at the end for true = Health Bar (Object with Scroll scrip) and false = no Health Bar
+    public void UseHelthBar(bool hpbar = true)
     {
-        string curString = curHp.ToString();
-        string maxString = maxHp.ToString();
-
-        if (curHp >= 10000)
-        {
-
-            curHp /= 1000;
-            curString = curHp.ToString("#.#") + 'K';
-        }
-        if (maxHp >= 10000)
-        {
-            maxHp /= 1000;
-            curString = curHp.ToString("#.#") + 'K';
-        }
-
-
-        hp.GetComponent<Text>().text = curString + '/' + maxString;
+        hpBar = hpbar; 
     }
+
+    private void helthBar(float curHP, float maxHp)
+    {
+        healthBar.GetComponent<Slider>().maxValue = maxHp;
+        healthBar.GetComponent<Slider>().value = curHP;
+    }
+    private void helthBar(int curHP, int maxHp)
+    {
+        healthBar.GetComponent<Slider>().maxValue = maxHp;
+        healthBar.GetComponent<Slider>().value = curHP;
+    }
+    
+
 
     //Displays the amount of scraps are in the players envintory
     public void ScrapHUD(float scraps)
@@ -74,7 +98,7 @@ public class HUDManager : Singleton<HUDManager>
     public void ScrapHUD(int scraps)
     {
 
-        string scrapsString = scraps.ToString();
+        string scrapsString = scraps.ToString("#.#");
 
         if (scraps >= 10000)
         {
@@ -94,28 +118,10 @@ public class HUDManager : Singleton<HUDManager>
     //}
     public void TurHUD(int tur)
     {
-        turrent.GetComponent<Text>().text = tur.ToString();
+        turrent.GetComponent<Text>().text = tur.ToString("#.#");
     }
 
-    //Gets the info about the wave progression the player has made
-    public void WaveHUD(int curWave, int maxWave)
-    {
-        waveNumber.GetComponent<Text>().text = maxWave.ToString();
-        waveNumber.GetComponent<Text>().text = curWave.ToString();
-    }
-
-    //Gets the info about the number of enemeis the player has killed
-    public void enemyProgHUD(int enemyKilled, int enemyNeededDead)
-    {
-        enemiesKilled.GetComponent<Text>().text = enemiesKilled.ToString();
-        enemiesKilled.GetComponent<Text>().text = enemyNeededDead.ToString();
-    }
-
-    //Displays the curret turret selcete to be placed by the player
-    public void CurTur(int ctur)
-    {
-        curTurrent.GetComponent<Text>().text = ctur.ToString(); 
-    }
+    
 
  
     ////////////////////////////////////////////////////////////////////////////////////
@@ -316,7 +322,7 @@ public class HUDManager : Singleton<HUDManager>
         HUDManager.instance.SetState("menu", true);
     }
 
-     public void SetInfoLeft(string t)
+    public void SetInfoLeft(string t)
      {
          _info.text = t;
      }
@@ -327,22 +333,28 @@ public class HUDManager : Singleton<HUDManager>
      public GameObject _finish; 
      public GameObject _panel;     
      public Text _info;
+     
 
      [SerializeField]    GameObject hp;
      [SerializeField]    GameObject turrent;
      [SerializeField]    GameObject scrap;
      [SerializeField]    GameObject curTurrent;
      [SerializeField]    GameObject promp;
-     [SerializeField]    GameObject waveNumber;
-     [SerializeField]    GameObject enemiesKilled;
-     
+     [SerializeField]    GameObject healthBar;
+   
 
 
      [SerializeField]    GameObject LogText;
-     List<GameObject> Log = new List<GameObject>();
+     List<GameObject>    Log = new List<GameObject>();
 
      private int MaxCharInNodes = 40;
      private int LogNodeNum;
+
+
+    [SerializeField]
+
+    
+    public  bool hpBar = true;
    /*
     * 994 559
     */

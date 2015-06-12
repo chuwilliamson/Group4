@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1265adab971183e47a99eb6ce2e6896b
-timeCreated: 1434055837
+guid: 6183c60f335a8ab43950382dd9e07f34
+timeCreated: 1434055660
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: dot_0
+    21300000: Aim Reticle_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,25 +38,25 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 15, y: 15, z: 15, w: 15}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: dot_0
+    - name: Aim Reticle_0
       rect:
         serializedVersion: 2
-        x: 85
-        y: 91
-        width: 46
-        height: 46
+        x: 0
+        y: 0
+        width: 80
+        height: 80
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
