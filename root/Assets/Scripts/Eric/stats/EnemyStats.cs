@@ -35,10 +35,16 @@ public class EnemyStats : Stats
             shootable = false;
         }
 
-        if(!shootable)
+        if (m_Health > 1 && GetComponent<Animator>().enabled == false)
+        {
+            Destroy(gameObject);
+        }
+
+        if (!shootable)
         {
             GetComponent<Animator>().enabled = false;
             GetComponent<NavMeshAgent>().speed = 0;
+
             if (transform.eulerAngles.x < 80)
             { 
                 transform.Rotate(Vector3.right * Time.deltaTime * 50); 
@@ -56,6 +62,7 @@ public class EnemyStats : Stats
         }
     }
 
+    // What happends when the entiyi dies
     void Die()
     {
         int i = Random.Range(5, 11);
@@ -69,8 +76,8 @@ public class EnemyStats : Stats
 
             GameObject _specialDrop, _item, _regDrop;
 
-            //rolled 7 spawn an enemy
-            if (j == 7)
+            //rolled 8 spawn an enemy
+            if (j == 8)
             {
                _specialDrop = Instantiate(sDrop, DropPos, transform.rotation) as GameObject;
                _specialDrop.name = "Enemy";
