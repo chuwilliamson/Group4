@@ -9,11 +9,14 @@ public class EnemyAttack : MonoBehaviour
     {
         var co = other.GetComponent<Stats>();
 
-        if (GetComponent<EnemyStats>().Shootable)
+        if (co)
         {
-            if (co && !co.isEnemy)
+            if (GetComponentInParent<Stats>().shootable) // Shootable = alive
             {
-               other.gameObject.GetComponent<Stats>().m_Health -= (damage * Time.deltaTime);
+                if (!co.isEnemy)                            // Dont attack other enemies
+                {
+                    other.gameObject.GetComponent<Stats>().m_Health -= (damage * Time.deltaTime);
+                }
             }
         }
     }

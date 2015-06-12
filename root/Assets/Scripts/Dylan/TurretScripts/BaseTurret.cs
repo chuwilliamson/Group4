@@ -173,7 +173,7 @@ public class BaseTurret : Stats
             
             if (target != null)
             {
-                if (target.GetComponent<EnemyStats>().validTarget && target.GetComponent<EnemyStats>().Shootable == true)
+                if (target.GetComponent<EnemyStats>().validTarget && target.GetComponent<EnemyStats>().shootable == true)
                 {
                     distanceToTarget(target.transform.position);
                     transform.rotation = Quaternion.Lerp(transform.rotation, rotationToGoal, Time.deltaTime * rotationSpeed);

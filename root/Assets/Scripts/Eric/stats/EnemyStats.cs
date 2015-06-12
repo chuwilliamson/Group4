@@ -9,14 +9,13 @@ public class EnemyStats : Stats
     public bool m_PowerLevel;
     public int m_pLvl;
     public bool validTarget = false;
-    public bool Shootable = false;
 
     public float dieTimer, dieDelay;
 
     void Start()
     {
         isEnemy = true;
-        Shootable = true;
+        shootable = true;
         m_Health = m_MaxHealth;
         m_PowerLevel = false;
     }
@@ -33,10 +32,10 @@ public class EnemyStats : Stats
         {
             m_Health = 1;
             Die();
-            Shootable = false;
+            shootable = false;
         }
 
-        if(!Shootable)
+        if(!shootable)
         {
             GetComponent<Animator>().enabled = false;
             GetComponent<NavMeshAgent>().speed = 0;
