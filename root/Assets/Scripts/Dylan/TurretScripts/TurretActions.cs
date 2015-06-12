@@ -6,6 +6,10 @@ public class TurretActions : MonoBehaviour, TActions
     protected static TurretActions t_instance;
     private TurretFSM t_fsm;
 
+    void OnTriggerStay(Collider c)
+    {
+        //if(c.GetComponent<Stats>().)
+    }
 
     void Awake()
     {
