@@ -6,13 +6,13 @@ public class BulletMove : MonoBehaviour
     public GameObject[] BB; // shots inside of a shot
     public GameObject enemy;
     public float throwPower = 25f;
-    private float mySpeed = 5f;
+    private float mySpeed = 50f;
     private float maxDistance = 5f;
     private float myDist;
     private float spreadRate = 100;
     public int bDamage = 10;
 
-    int numOfShots = 1;
+    int numOfShots = 10;
 
     public bool isFired = false; //a bool to check if the bullet is beign fired
     public bool doDmg = false;
@@ -80,22 +80,24 @@ public class BulletMove : MonoBehaviour
                 Instantiate(BB[numOfShots], transform.position, transform.rotation);
             }
 
-            transform.Translate(Vector3.up * Time.deltaTime * mySpeed);
+            
 
-            forward.x += Random.Range(spreadRate, -spreadRate);
-            forward.y += Random.Range(spreadRate, -spreadRate);
-            forward.z += Random.Range(spreadRate, -spreadRate);
+            //transform.Translate(Vector3.up * Time.deltaTime * mySpeed);
 
-            BB[numOfShots].transform.LookAt(forward);
+            //forward.x += Random.Range(spreadRate, -spreadRate);
+            //forward.y += Random.Range(spreadRate, -spreadRate);
+            //forward.z += Random.Range(spreadRate, -spreadRate);
 
-            myDist += Time.deltaTime * mySpeed;
-            if (myDist > maxDistance)
-            {
-                Destroy(gameObject);
-                print("Obj Gone");
-                //checks to see if the bullet has passed the maximum distance it can travel
-                //and if it dis destroy the object
-            }
+            //BB[numOfShots].transform.LookAt(forward);
+
+            //myDist += Time.deltaTime * mySpeed;
+            //if (myDist > maxDistance)
+            //{
+            //    Destroy(gameObject);
+            //    print("Obj Gone");
+            //    //checks to see if the bullet has passed the maximum distance it can travel
+            //    //and if it dis destroy the object
+            //}
         }
 	}
 }
