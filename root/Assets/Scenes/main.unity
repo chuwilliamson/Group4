@@ -1604,7 +1604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 0}
   Shooting: {fileID: 8300000, guid: e5ffe5ad56ed84f80b79cf081c6d0209, type: 3}
-  Turretplaces: {fileID: 8300000, guid: bbc2224d20e94f34f82c5d4149e72506, type: 3}
+  Turretplaces: {fileID: 0}
   Slapping: {fileID: 8300000, guid: 3ca121c001790493aac9f6aec90cfc06, type: 3}
   halfPause: 99
   pause: 27
