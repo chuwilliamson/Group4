@@ -31,9 +31,6 @@ public class BulletMove : MonoBehaviour
             if (doDmg == true)
             {
                 c.GetComponent<EnemyStats>().m_Health -= bDamage;
-
-                Debug.Log("Im dying");
-
             }
         }
     }

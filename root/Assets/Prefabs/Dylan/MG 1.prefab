@@ -338,8 +338,6 @@ MonoBehaviour:
   m_MaxHealth: 0
   m_Health: 0
   m_HealthRegen: 0
-<<<<<<< HEAD
-=======
   m_maxAmmo: 0
   m_Ammo: 0
   isPlayer: 0
@@ -350,35 +348,18 @@ MonoBehaviour:
   isReloading: 0
   rotationSpeed: 5
   damage: 5
->>>>>>> Quinton/master
   bullet: {fileID: 102918, guid: da23fc14d165709449cb43eb8340a44b, type: 2}
   turretView: {fileID: 170156}
-  fire: {fileID: 8300000, guid: 8602b7d5cd15c1943a50aa53f171c8cf, type: 3}
   target: {fileID: 0}
   barrelPos:
   - {fileID: 447942}
   turretTop: []
-<<<<<<< HEAD
-  rotationSpeed: 5
-  reloadSpeed: 5
-  rateOfFire: .25
-  maxAmmo: 100
-  currentAmmo: 100
-  damage: 5
-  isTargetInRadius: 0
-  isReloading: 0
-  validTarget: 0
-  fireDelay: 0
-  reloadTime: 0
---- !u!114 &11431978
-=======
   rotationToGoal: {x: 0, y: 0, z: 0, w: 0}
   t_cycle: 0
   t_RateOfFire: 0
   t_ReloadTime: 0
   type: 0
 --- !u!114 &11493762
->>>>>>> Quinton/master
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

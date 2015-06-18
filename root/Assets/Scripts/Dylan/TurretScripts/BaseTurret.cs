@@ -10,8 +10,6 @@ public class BaseTurret : Stats
     public Transform[] barrelPos; //refrence to the pos of the barrel
     public Transform[] turretTop; //refrence to the pos of the top of the turret
 
-    public AudioClip Fire;
-
     public float rotationSpeed = 5.0f; //Sets the rotation speed for the turret to travel to get to the targets position
     public float reloadSpeed = 5.0f; //The time for the turret to replinish its ammo (also will be a rest time no turret movement)
     public float rateOfFire = .25f; //how fast the turret will fire
@@ -145,7 +143,6 @@ public class BaseTurret : Stats
 
             if (Time.time > fireDelay)
             {
-                AudioManager.instance.PlayAudio(Fire);
                 bulletFire();
             }
             /*

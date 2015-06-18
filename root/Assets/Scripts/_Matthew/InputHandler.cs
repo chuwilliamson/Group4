@@ -11,10 +11,6 @@ public class InputHandler : MonoBehaviour
     private GameObject Enemy;
     private GameObject goal;
 
-    public AudioClip Shooting;
-    public AudioClip Turretplaces;
-    public AudioClip Slapping;
-    
 
     //Stores all the keys for each input that should perform an action
     //GameStates
@@ -157,21 +153,17 @@ public class InputHandler : MonoBehaviour
 
         if (Input.GetKeyDown(place))
         {
-            
             turretManager.GetComponent<TurretPlacement>().TurretPlacePoint();
-            AudioManager.instance.PlayAudio(Turretplaces);
         }
-        
+
         ////Player Actions
         if (Input.GetKeyDown(slap))
         {
-            AudioManager.instance.PlayAudio(Slapping);
             player.GetComponent<PlayerActions>().Slap();
         }
 
         if (Input.GetKeyDown(shoot))
         {
-            AudioManager.instance.PlayAudio(Shooting);
             player.GetComponent<PlayerActions>().Shoot();
         }
 

@@ -1,13 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-<<<<<<< HEAD
-//public class TurretActions : MonoBehaviour, TActions 
-//{
-    
-
-//}
-=======
 public class TurretActions : MonoBehaviour, TActions
 {
     protected static TurretActions t_instance;
@@ -133,4 +126,3 @@ public class TurretActions : MonoBehaviour, TActions
         }
     }
 }
->>>>>>> Quinton/master
