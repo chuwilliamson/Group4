@@ -22,10 +22,10 @@ public class EnemyStats : Stats
         transform.localScale *= Random.Range(1f, 2f);
     }
 
-    void TakeDamage(int amount, Vector3 hitPoint)
-    {
-        m_Health -= amount;
-    }
+    //void TakeDamage(int amount, Vector3 hitPoint)
+    //{
+    //    m_Health -= amount;
+    //}
 
     void Update()
     {
@@ -63,7 +63,7 @@ public class EnemyStats : Stats
         }
     }
 
-    // What happends when the entiyi dies
+    // What happends when the entity dies
     void Die()
     {
         int i = Random.Range(3, 6);
