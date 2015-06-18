@@ -6,6 +6,8 @@ public class TurretActions : MonoBehaviour, TActions
     protected static TurretActions t_instance;
     private TurretFSM t_fsm;
 
+    public AudioClip Fire;
+
     void Awake()
     {
         t_fsm = new TurretFSM();
@@ -41,6 +43,7 @@ public class TurretActions : MonoBehaviour, TActions
         {
             t_State(TurretState.shoot);
             GetComponentInParent<TurretStats>().bullet.GetComponent<BulletMove>().isFired = true;
+            AudioManager.instance.PlayAudio(Fire);
             GetComponentInParent<TurretStats>().m_Ammo -= 1;
 
             switch(type)
@@ -111,7 +114,9 @@ public class TurretActions : MonoBehaviour, TActions
             transform.rotation = Quaternion.Lerp(transform.rotation, GetComponentInParent<TurretStats>().rotationToGoal, Time.deltaTime * GetComponentInParent<TurretStats>().rotationSpeed);
 
             if (Time.deltaTime > GetComponentInParent<TurretStats>().t_RateOfFire)
+             {
                 t_Fire(GetComponentInParent<TurretStats>().type);
+             }
         }
 
 

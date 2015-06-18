@@ -22,6 +22,7 @@ public class SpawnEnemy : MonoBehaviour
 
 	void Update ()
     {
+        m_Timer += Time.deltaTime;
         if (m_Timer >= SpawnDelay && canSpawn)
         {
             m_Timer = 0;
