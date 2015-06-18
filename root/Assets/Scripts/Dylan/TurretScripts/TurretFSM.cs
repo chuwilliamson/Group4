@@ -4,16 +4,22 @@ using System.Collections.Generic;
 
 public class TurretFSM
 {
+<<<<<<< HEAD
 
     bool isReloading;
 
     bool t_IsReloading;
 
 
+=======
+    bool t_IsReloading;
+
+>>>>>>> Eric/master
     public Dictionary<string, bool> TurretActions;
 
     public TurretFSM()
     {
+<<<<<<< HEAD
 
         isReloading = false;
 
@@ -25,6 +31,8 @@ public class TurretFSM
     {
         foreach(string Key in new List<string>(TurretActions.Keys))
 
+=======
+>>>>>>> Eric/master
         t_IsReloading = false;
 
         TurretActions = new Dictionary<string, bool>();
@@ -34,7 +42,10 @@ public class TurretFSM
     private void t_HandleTransition(TurretState state)
     {
         foreach (string Key in new List<string>(TurretActions.Keys))
+<<<<<<< HEAD
 
+=======
+>>>>>>> Eric/master
         {
             switch (state)
             {
@@ -56,6 +67,7 @@ public class TurretFSM
 
     protected static TurretFSM _fsm;
 
+<<<<<<< HEAD
 
     private bool checkTransition(TurretState from, TurretState to)
     {
@@ -65,10 +77,16 @@ public class TurretFSM
     {
         switch (from)
 
+=======
+    private bool t_CheckTransition(TurretState from, TurretState to)
+    {
+        switch (from)
+>>>>>>> Eric/master
         {
             case TurretState.idle:
                 if (to == TurretState.patrol || to == TurretState.patrol)
                 {
+<<<<<<< HEAD
 
                     cState = to;
                     return true;
@@ -80,6 +98,8 @@ public class TurretFSM
                 {
                     cState = to;
 
+=======
+>>>>>>> Eric/master
                     t_cState = to;
                     return true;
                 }
@@ -89,12 +109,16 @@ public class TurretFSM
                 if (to == TurretState.shoot || to == TurretState.patrol || to == TurretState.idle)
                 {
                     t_cState = to;
+<<<<<<< HEAD
 
+=======
+>>>>>>> Eric/master
                     return true;
                 }
                 break;
 
             case TurretState.shoot:
+<<<<<<< HEAD
 
                 if(to == TurretState.destroyed || to == TurretState.patrol)
                 {
@@ -104,6 +128,11 @@ public class TurretFSM
                 {
                     t_cState = to;
 
+=======
+                if (to == TurretState.destroyed || to == TurretState.patrol)
+                {
+                    t_cState = to;
+>>>>>>> Eric/master
                     return true;
                 }
                 break;
@@ -114,6 +143,7 @@ public class TurretFSM
         return false;
     }
 
+<<<<<<< HEAD
 
     public void ChangeState(TurretState to)
     {
@@ -131,6 +161,8 @@ public class TurretFSM
     }
 }
 
+=======
+>>>>>>> Eric/master
     public void t_ChangeState(TurretState to)
     {
         t_CheckTransition(t_cState, to);
@@ -145,5 +177,9 @@ public class TurretFSM
             return t_cState;
         }
     }
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> Eric/master

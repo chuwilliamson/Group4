@@ -590,10 +590,14 @@ Prefab:
   m_ParentPrefab: {fileID: 100100000, guid: 8c35495fa0ed1c3439f147078fddbfa4, type: 2}
   m_IsPrefabParent: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &447711039 stripped
 =======
 --- !u!1 &447711039
 >>>>>>> Quinton/master
+=======
+--- !u!1 &447711039
+>>>>>>> Eric/master
 GameObject:
   m_PrefabParentObject: {fileID: 186422, guid: 8c35495fa0ed1c3439f147078fddbfa4, type: 2}
   m_PrefabInternal: {fileID: 447711038}
@@ -1589,12 +1593,15 @@ Prefab:
       value: 
       objectReference: {fileID: 447711039}
 <<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 11490096, guid: cca90f02389492e4aaeb20dbddbdaba1, type: 2}
       propertyPath: GameOver
       value: 
       objectReference: {fileID: 8300000, guid: d34ac269006660149964fece21291c88, type: 3}
 =======
 >>>>>>> Quinton/master
+=======
+>>>>>>> Eric/master
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cca90f02389492e4aaeb20dbddbdaba1, type: 2}
   m_IsPrefabParent: 0

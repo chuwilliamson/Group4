@@ -318,6 +318,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170156}
+<<<<<<< HEAD
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 510584ad7e921404d8b4d0f722245921, type: 3}
@@ -332,6 +333,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 188818}
   m_Enabled: 1
   m_EditorHideFlags: 0
+=======
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510584ad7e921404d8b4d0f722245921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTargetInView: 0
+--- !u!114 &11479388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+>>>>>>> Eric/master
   m_Script: {fileID: 11500000, guid: e21efdcfda202894ab957bf9f95d19a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -339,7 +356,10 @@ MonoBehaviour:
   m_Health: 0
   m_HealthRegen: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Eric/master
   m_maxAmmo: 0
   m_Ammo: 0
   isPlayer: 0
@@ -350,7 +370,10 @@ MonoBehaviour:
   isReloading: 0
   rotationSpeed: 5
   damage: 5
+<<<<<<< HEAD
 >>>>>>> Quinton/master
+=======
+>>>>>>> Eric/master
   bullet: {fileID: 102918, guid: da23fc14d165709449cb43eb8340a44b, type: 2}
   turretView: {fileID: 170156}
   fire: {fileID: 8300000, guid: 8602b7d5cd15c1943a50aa53f171c8cf, type: 3}
@@ -358,6 +381,7 @@ MonoBehaviour:
   barrelPos:
   - {fileID: 447942}
   turretTop: []
+<<<<<<< HEAD
 <<<<<<< HEAD
   rotationSpeed: 5
   reloadSpeed: 5
@@ -372,13 +396,18 @@ MonoBehaviour:
   reloadTime: 0
 --- !u!114 &11431978
 =======
+=======
+>>>>>>> Eric/master
   rotationToGoal: {x: 0, y: 0, z: 0, w: 0}
   t_cycle: 0
   t_RateOfFire: 0
   t_ReloadTime: 0
   type: 0
 --- !u!114 &11493762
+<<<<<<< HEAD
 >>>>>>> Quinton/master
+=======
+>>>>>>> Eric/master
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

@@ -38,8 +38,13 @@ public class HUDManager : Singleton<HUDManager>
 
 
         hp.GetComponent<Text>().text = curString + '/' + maxString;
+<<<<<<< HEAD
         if (hpBar)
           helthBar(curHp, maxHp); 
+=======
+        if(hpBar)
+        helthBar(curHp, maxHp);
+>>>>>>> Eric/master
     }
     public void HpHUD(float curHp, float maxHp)
     {
@@ -60,12 +65,19 @@ public class HUDManager : Singleton<HUDManager>
 
         hp.GetComponent<Text>().text = curString + '/' + maxString;
         if (hpBar)
+<<<<<<< HEAD
           helthBar(curHp, maxHp); 
+=======
+            helthBar(curHp, maxHp);
+>>>>>>> Eric/master
         
     }
     // Pass a bool at the end for true = Health Bar (Object with Scroll scrip) and false = no Health Bar
     public void UseHelthBar(bool hpbar = true)
+<<<<<<< HEAD
 
+=======
+>>>>>>> Eric/master
     {
         hpBar = hpbar; 
     }
@@ -76,6 +88,7 @@ public class HUDManager : Singleton<HUDManager>
         healthBar.GetComponent<Slider>().value = curHP;
     }
     private void helthBar(int curHP, int maxHp)
+<<<<<<< HEAD
     {
         healthBar.GetComponent<Slider>().maxValue = maxHp;
         healthBar.GetComponent<Slider>().value = curHP;
@@ -97,6 +110,17 @@ public class HUDManager : Singleton<HUDManager>
 
     public void CoinHpHUD(int curHp, int maxHp)
     {
+=======
+    {
+        healthBar.GetComponent<Slider>().maxValue = maxHp;
+        healthBar.GetComponent<Slider>().value = curHP;
+    }
+
+
+
+    public void CoinHpHUD(int curHp, int maxHp)
+    {
+>>>>>>> Eric/master
         string curString = curHp.ToString("#.#");
         string maxString = maxHp.ToString("#.#");
 
@@ -116,6 +140,7 @@ public class HUDManager : Singleton<HUDManager>
         coinHp.GetComponent<Text>().text = curString + '/' + maxString;
         if (hpBar)
             helthBar(curHp, maxHp);
+<<<<<<< HEAD
     }
     public void CoinHpHUD(float curHp, float maxHp)
     {
@@ -139,6 +164,31 @@ public class HUDManager : Singleton<HUDManager>
              helthBar(curHp, maxHp);
 
     }
+=======
+    }
+    public void CoinHpHUD(float curHp, float maxHp)
+    {
+        string curString = curHp.ToString("#.#");
+        string maxString = maxHp.ToString("#.#");
+
+        if (curHp >= 10000)
+        {
+            curHp /= 1000;
+            curString = curHp.ToString("#.#") + 'K';
+        }
+        if (maxHp >= 10000)
+        {
+            maxHp /= 1000;
+            maxString = curHp.ToString("#.#") + 'K';
+        }
+
+
+        coinHp.GetComponent<Text>().text = curString + '/' + maxString;
+        if (hpBar)
+            helthBar(curHp, maxHp);
+
+    }
+>>>>>>> Eric/master
 
     private void CoinhelthBar(float curHP, float maxHp)
     {

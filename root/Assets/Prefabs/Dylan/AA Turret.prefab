@@ -639,7 +639,10 @@ MonoBehaviour:
   m_Health: 0
   m_HealthRegen: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> Eric/master
   m_maxAmmo: 0
   m_Ammo: 0
   isPlayer: 0
@@ -650,7 +653,10 @@ MonoBehaviour:
   isReloading: 0
   rotationSpeed: 5
   damage: 5
+<<<<<<< HEAD
 >>>>>>> Quinton/master
+=======
+>>>>>>> Eric/master
   bullet: {fileID: 102918, guid: da23fc14d165709449cb43eb8340a44b, type: 2}
   turretView: {fileID: 197494}
   target: {fileID: 0}
@@ -662,6 +668,7 @@ MonoBehaviour:
   - {fileID: 424536}
   - {fileID: 466884}
   turretTop: []
+<<<<<<< HEAD
 <<<<<<< HEAD
   rotationSpeed: 5
   reloadSpeed: 5
@@ -675,12 +682,17 @@ MonoBehaviour:
   fireDelay: 0
   reloadTime: 0
 =======
+=======
+>>>>>>> Eric/master
   rotationToGoal: {x: 0, y: 0, z: 0, w: 0}
   t_cycle: 0
   t_RateOfFire: 0
   t_ReloadTime: 0
   type: 1
+<<<<<<< HEAD
 >>>>>>> Quinton/master
+=======
+>>>>>>> Eric/master
 --- !u!114 &11463876
 MonoBehaviour:
   m_ObjectHideFlags: 1

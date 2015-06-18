@@ -24,6 +24,7 @@ public class AI : AICharacterControl
         {
             if (other.GetComponent<Stats>().isPlayer)
             {
+<<<<<<< HEAD
                 SetTarget(other.transform);
             }
             else if (other.GetComponent<Stats>().isTurret)
@@ -32,4 +33,30 @@ public class AI : AICharacterControl
             }
         }
     }
+=======
+                GetComponent<AICharacterControl>().target = other.transform;
+            }
+            else if (other.GetComponent<Stats>().isTurret)
+            {
+                GetComponent<AICharacterControl>().target = other.transform;
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Stats>() && !other.GetComponent<Stats>().isEnemy)
+        {
+            if (other.GetComponent<Stats>().isPlayer)
+            {
+                GetComponent<AICharacterControl>().target = goal.transform;
+            }
+            else if (other.GetComponent<Stats>().isTurret)
+            {
+                GetComponent<AICharacterControl>().target = goal.transform;
+            }
+        }
+    }
+
+>>>>>>> Eric/master
 }
