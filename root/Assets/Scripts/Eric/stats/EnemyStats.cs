@@ -28,18 +28,16 @@ public class EnemyStats : Stats
     void Update()
     {
  
-        if (m_Health <= 0)
+        if (m_Health <= 0 && isShootable)
         {
-
             isShootable = false;
-            m_Health = 1;
             Die();
         }
 
-        if (m_Health > 1 && GetComponent<Animator>().enabled == false)
-        {
-            Destroy(gameObject);
-        }
+        //if (m_Health > 1 && GetComponent<Animator>().enabled == false)
+        //{
+        //    Destroy(gameObject);
+        //}
 
         if (isShootable == false)
         {
