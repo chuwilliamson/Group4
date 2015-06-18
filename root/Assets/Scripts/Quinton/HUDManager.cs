@@ -38,8 +38,8 @@ public class HUDManager : Singleton<HUDManager>
 
 
         hp.GetComponent<Text>().text = curString + '/' + maxString;
-        if(hpBar)
-        helthBar(curHp, maxHp);
+        if (hpBar)
+          helthBar(curHp, maxHp); 
     }
     public void HpHUD(float curHp, float maxHp)
     {
@@ -60,12 +60,12 @@ public class HUDManager : Singleton<HUDManager>
 
         hp.GetComponent<Text>().text = curString + '/' + maxString;
         if (hpBar)
-            helthBar(curHp, maxHp);
+          helthBar(curHp, maxHp); 
         
     }
     // Pass a bool at the end for true = Health Bar (Object with Scroll scrip) and false = no Health Bar
     public void UseHelthBar(bool hpbar = true)
-<<<<<<< HEAD
+
     {
         hpBar = hpbar; 
     }
@@ -77,9 +77,8 @@ public class HUDManager : Singleton<HUDManager>
     }
     private void helthBar(int curHP, int maxHp)
     {
-=======
-    {
-        hpBar = hpbar; 
+        healthBar.GetComponent<Slider>().maxValue = maxHp;
+        healthBar.GetComponent<Slider>().value = curHP;
     }
 
     private void helthBar(float curHP, float maxHp)
@@ -89,7 +88,7 @@ public class HUDManager : Singleton<HUDManager>
     }
     private void helthBar(int curHP, int maxHp)
     {
->>>>>>> Quinton/master
+
         healthBar.GetComponent<Slider>().maxValue = maxHp;
         healthBar.GetComponent<Slider>().value = curHP;
     }
@@ -137,7 +136,7 @@ public class HUDManager : Singleton<HUDManager>
 
         coinHp.GetComponent<Text>().text = curString + '/' + maxString;
         if (hpBar)
-            helthBar(curHp, maxHp);
+             helthBar(curHp, maxHp);
 
     }
 

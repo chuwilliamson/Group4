@@ -31,10 +31,9 @@ public class BulletMove : MonoBehaviour
             if (doDmg == true)
             {
                 c.GetComponent<EnemyStats>().m_Health -= bDamage;
-<<<<<<< HEAD
+
                 Debug.Log("Im dying");
-=======
->>>>>>> Quinton/master
+
             }
         }
     }

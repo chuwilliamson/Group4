@@ -7,20 +7,18 @@ public class FieldOfView : MonoBehaviour
 
     public void OnTriggerStay(Collider c)
     {
-<<<<<<< HEAD
-=======
+
         if (c.GetComponent<Stats>())
->>>>>>> Quinton/master
+
         if(c.GetComponent<Stats>().isShootable == true)
         isTargetInView = true;
     }
 
     public void OnTriggerExit(Collider c)
     {
-<<<<<<< HEAD
-=======
+
         if (c.GetComponent<Stats>())
->>>>>>> Quinton/master
+
         if (c.GetComponent<Stats>().isShootable == true)
             isTargetInView = false;
     }
