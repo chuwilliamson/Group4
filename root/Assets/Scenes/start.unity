@@ -648,12 +648,7 @@ Transform:
   - {fileID: 1761214197}
   - {fileID: 1973143888}
   m_Father: {fileID: 0}
-<<<<<<< HEAD
-  m_RootOrder: 2
-=======
-<<<<<<< HEAD
-  m_RootOrder: 2
-=======
+
   m_RootOrder: 1
 --- !u!1001 &598610838
 Prefab:
@@ -733,8 +728,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b235eded49217b947b3ed5b580f60303, type: 2}
   m_IsPrefabParent: 0
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
 --- !u!1001 &603839300
 Prefab:
   m_ObjectHideFlags: 0
@@ -1995,15 +1989,9 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 436670, guid: 54eb5844754051b40a918a84c33b7c1a, type: 2}
   m_PrefabInternal: {fileID: 1807262398}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 --- !u!4 &1973143888 stripped
-=======
-=======
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
 --- !u!4 &1973143888
 Transform:
   m_PrefabParentObject: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
