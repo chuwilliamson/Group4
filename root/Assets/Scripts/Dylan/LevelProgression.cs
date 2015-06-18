@@ -25,7 +25,7 @@ public class LevelProgression : MonoBehaviour
 
     void Update()
     {
-        if(FindObjectOfType<EnemyStats>().c_EState == EnemyState.Dead)
+        if(enemy.GetComponent<EnemyStats>().c_EState == EnemyState.Dead)
         {
             numOfKills = numOfKills + 1;
         }

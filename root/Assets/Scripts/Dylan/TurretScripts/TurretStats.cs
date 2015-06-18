@@ -35,8 +35,6 @@ public class TurretStats : Stats
             {
                 target = c.gameObject;
             }
-            else
-                target = null;
     }
 
     void OnTriggerExit(Collider c)
