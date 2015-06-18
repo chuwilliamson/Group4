@@ -24,26 +24,11 @@ public class AI : AICharacterControl
         {
             if (other.GetComponent<Stats>().isPlayer)
             {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
                 SetTarget(other.transform);
             }
             else if (other.GetComponent<Stats>().isTurret)
             {
                 SetTarget(other.transform);
-            }
-        }
-    }
-<<<<<<< HEAD
-=======
-=======
-                GetComponent<AICharacterControl>().target = other.transform;
-            }
-            else if (other.GetComponent<Stats>().isTurret)
-            {
-                GetComponent<AICharacterControl>().target = other.transform;
             }
         }
     }
@@ -63,6 +48,4 @@ public class AI : AICharacterControl
         }
     }
 
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
 }

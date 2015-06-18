@@ -1,19 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
 //public class TurretActions : MonoBehaviour, TActions 
 //{
     
 
 //}
-=======
-=======
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
+
 public class TurretActions : MonoBehaviour, TActions
 {
     protected static TurretActions t_instance;
@@ -37,7 +33,7 @@ public class TurretActions : MonoBehaviour, TActions
 
     public void t_State(TurretState state)
     {
-        t_fsm.t_ChangeState(state);
+        t_fsm.ChangeState(state);
     }
 
     void t_DistanceToTarget()
@@ -67,10 +63,6 @@ public class TurretActions : MonoBehaviour, TActions
                     }
                     break;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
                 case TurretStats.e_TurretType.e_AntiAir:
                      Vector3 spawnPos = new Vector3(GetComponentInParent<TurretStats>().barrelPos[0].position.x,
                                                     GetComponentInParent<TurretStats>().barrelPos[0].position.y,
@@ -93,8 +85,7 @@ public class TurretActions : MonoBehaviour, TActions
                                 GetComponentInParent<TurretStats>().barrelPos[1].rotation);
                     break;
 
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
                 case TurretStats.e_TurretType.e_ShotGun:
                     foreach (Transform t_Barrel in GetComponentInParent<TurretStats>().barrelPos)
                     {
@@ -103,10 +94,7 @@ public class TurretActions : MonoBehaviour, TActions
                     break;
             }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
             if(GetComponentInParent<TurretStats>().type == TurretStats.e_TurretType.e_AntiAir)
             {
                 Vector3 spawnPos = new Vector3(GetComponentInParent<TurretStats>().barrelPos[0].position.x,
@@ -130,11 +118,7 @@ public class TurretActions : MonoBehaviour, TActions
                 GetComponentInParent<TurretStats>().barrelPos[0].rotation);
             }
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
             if (GetComponentInParent<TurretStats>().m_Ammo == 0)
             {
                 GetComponentInParent<TurretStats>().isReloading = true;
@@ -176,10 +160,4 @@ public class TurretActions : MonoBehaviour, TActions
         }
     }
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> Quinton/master
-=======
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+

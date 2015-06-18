@@ -30,27 +30,19 @@ public class TurretStats : Stats
 
     void OnTriggerStay(Collider c)
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (c.GetComponentInParent<Stats>().isShootable == true)
         {
             target = c.gameObject;
             Debug.Log("Hi Mr.Panda");
         }
         Debug.Log("Let me love you");
-=======
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
         if(c.GetComponentInParent<Stats>())
         if (c.GetComponentInParent<Stats>().isShootable == true)
         {
             target = c.gameObject;
         }
-<<<<<<< HEAD
-=======
->>>>>>> Quinton/master
-=======
+
         if (c.GetComponent<Stats>())
             if (c.GetComponentInParent<Stats>().isShootable == true)
             {
@@ -58,29 +50,21 @@ public class TurretStats : Stats
                 Debug.Log("Hi Mr.Panda");
             }
         Debug.Log("Let me love you");
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
     }
 
     void OnTriggerExit(Collider c)
     {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
+
         if (c.GetComponentInParent<Stats>())
         if (c.GetComponentInParent<Stats>().isShootable == true)
             target = null;
-<<<<<<< HEAD
-=======
-=======
+
         if (c.GetComponent<Stats>())
             if (c.GetComponentInParent<Stats>().isShootable == true)
                 target = null;
->>>>>>> Eric/master
->>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+
     }
 
     // Use this for initialization
