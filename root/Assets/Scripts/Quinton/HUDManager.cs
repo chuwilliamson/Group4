@@ -65,6 +65,7 @@ public class HUDManager : Singleton<HUDManager>
     }
     // Pass a bool at the end for true = Health Bar (Object with Scroll scrip) and false = no Health Bar
     public void UseHelthBar(bool hpbar = true)
+<<<<<<< HEAD
     {
         hpBar = hpbar; 
     }
@@ -76,6 +77,19 @@ public class HUDManager : Singleton<HUDManager>
     }
     private void helthBar(int curHP, int maxHp)
     {
+=======
+    {
+        hpBar = hpbar; 
+    }
+
+    private void helthBar(float curHP, float maxHp)
+    {
+        healthBar.GetComponent<Slider>().maxValue = maxHp;
+        healthBar.GetComponent<Slider>().value = curHP;
+    }
+    private void helthBar(int curHP, int maxHp)
+    {
+>>>>>>> Quinton/master
         healthBar.GetComponent<Slider>().maxValue = maxHp;
         healthBar.GetComponent<Slider>().value = curHP;
     }
@@ -260,7 +274,9 @@ public class HUDManager : Singleton<HUDManager>
             for(int i = 0; i < dif; i++ )
             {
                 Vector3 vec3 = Log[Log.Count - 1].GetComponent<RectTransform>().localPosition;
-                vec3.y += Log[Log.Count - 1].GetComponent<RectTransform>().sizeDelta.y;
+                
+                vec3.y += (Log[Log.Count - 1].GetComponent<RectTransform>().sizeDelta.y);
+                
                 Log.Add((GameObject)Instantiate(LogText, vec3, Log[Log.Count - 1].GetComponent<RectTransform>().localRotation));
                 Log[Log.Count - 1].GetComponent<RectTransform>().transform.SetParent(Log[Log.Count - 2].GetComponent<RectTransform>().transform.parent);
                 Log[Log.Count - 1].GetComponent<RectTransform>().transform.localPosition = vec3;
