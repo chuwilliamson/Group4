@@ -1604,7 +1604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 0}
   Shooting: {fileID: 8300000, guid: e5ffe5ad56ed84f80b79cf081c6d0209, type: 3}
-  Turretplaces: {fileID: 0}
+  Turretplaces: {fileID: 8300000, guid: bbc2224d20e94f34f82c5d4149e72506, type: 3}
   Slapping: {fileID: 8300000, guid: 3ca121c001790493aac9f6aec90cfc06, type: 3}
   halfPause: 99
   pause: 27
@@ -2332,18 +2332,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 139632, guid: cca90f02389492e4aaeb20dbddbdaba1, type: 2}
   m_PrefabInternal: {fileID: 1437680254}
---- !u!114 &2098501163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2098501162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3adf08bccf92c244dadb685d06f12fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aSource: {fileID: 2098501164}
 --- !u!82 &2098501164
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2353,11 +2341,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 62d4092fe6c28e945a9ad10b2f5f2d61, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .0500000007
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
