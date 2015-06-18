@@ -7,6 +7,11 @@ public class FieldOfView : MonoBehaviour
 
     public void OnTriggerStay(Collider c)
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
         if (c.GetComponent<Stats>())
         if(c.GetComponent<Stats>().isShootable == true)
         isTargetInView = true;
@@ -15,6 +20,19 @@ public class FieldOfView : MonoBehaviour
     public void OnTriggerExit(Collider c)
     {
         if (c.GetComponent<Stats>())
+<<<<<<< HEAD
+=======
+            if (c.GetComponent<Stats>().isShootable == true)
+                isTargetInView = false;
+>>>>>>> Eric/master
+    }
+
+    public void OnTriggerExit(Collider c)
+    {
+
+        if (c.GetComponent<Stats>())
+
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
         if (c.GetComponent<Stats>().isShootable == true)
             isTargetInView = false;
     }

@@ -4,12 +4,43 @@ using System.Collections.Generic;
 
 public class TurretFSM
 {
+<<<<<<< HEAD
     bool t_IsReloading;
 
+=======
+<<<<<<< HEAD
+
+    bool isReloading;
+
+    bool t_IsReloading;
+
+
+=======
+    bool t_IsReloading;
+
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
     public Dictionary<string, bool> TurretActions;
 
     public TurretFSM()
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+        isReloading = false;
+
+        TurretActions = new Dictionary<string, bool>();
+        TurretActions.Add("Reload", isReloading);
+    }
+
+    private void HandleTransition(TurretState state)
+    {
+        foreach(string Key in new List<string>(TurretActions.Keys))
+
+=======
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
         t_IsReloading = false;
 
         TurretActions = new Dictionary<string, bool>();
@@ -19,6 +50,13 @@ public class TurretFSM
     private void t_HandleTransition(TurretState state)
     {
         foreach (string Key in new List<string>(TurretActions.Keys))
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
         {
             switch (state)
             {
@@ -40,13 +78,48 @@ public class TurretFSM
 
     protected static TurretFSM _fsm;
 
+<<<<<<< HEAD
     private bool t_CheckTransition(TurretState from, TurretState to)
     {
         switch (from)
+=======
+<<<<<<< HEAD
+
+    private bool checkTransition(TurretState from, TurretState to)
+    {
+        switch(from)
+
+    private bool t_CheckTransition(TurretState from, TurretState to)
+    {
+        switch (from)
+
+=======
+    private bool t_CheckTransition(TurretState from, TurretState to)
+    {
+        switch (from)
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
         {
             case TurretState.idle:
                 if (to == TurretState.patrol || to == TurretState.patrol)
                 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+                    cState = to;
+                    return true;
+                }
+                break;
+                
+            case TurretState.patrol:
+                if (to == TurretState.shoot || to == TurretState.patrol || to == TurretState.idle)
+                {
+                    cState = to;
+
+=======
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
                     t_cState = to;
                     return true;
                 }
@@ -56,14 +129,39 @@ public class TurretFSM
                 if (to == TurretState.shoot || to == TurretState.patrol || to == TurretState.idle)
                 {
                     t_cState = to;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
                     return true;
                 }
                 break;
 
             case TurretState.shoot:
+<<<<<<< HEAD
                 if (to == TurretState.destroyed || to == TurretState.patrol)
                 {
                     t_cState = to;
+=======
+<<<<<<< HEAD
+
+                if(to == TurretState.destroyed || to == TurretState.patrol)
+                {
+                    cState = to;
+
+                if (to == TurretState.destroyed || to == TurretState.patrol)
+                {
+                    t_cState = to;
+
+=======
+                if (to == TurretState.destroyed || to == TurretState.patrol)
+                {
+                    t_cState = to;
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
                     return true;
                 }
                 break;
@@ -74,6 +172,29 @@ public class TurretFSM
         return false;
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+    public void ChangeState(TurretState to)
+    {
+        checkTransition(cState, to);
+    }
+
+    private TurretState cState = TurretState.idle;
+
+    public TurretState CurrentState
+    {
+        get
+        {
+            return cState;
+        }
+    }
+}
+
+=======
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
     public void t_ChangeState(TurretState to)
     {
         t_CheckTransition(t_cState, to);
@@ -88,4 +209,13 @@ public class TurretFSM
             return t_cState;
         }
     }
+<<<<<<< HEAD
 }
+=======
+<<<<<<< HEAD
+}
+
+=======
+}
+>>>>>>> Eric/master
+>>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
