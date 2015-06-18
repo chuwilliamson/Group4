@@ -18,6 +18,8 @@ public class EnemyStats : Stats
         isShootable = true;
         m_Health = m_MaxHealth;
         m_PowerLevel = false;
+
+        transform.localScale *= Random.Range(1f, 2f);
     }
 
     void TakeDamage(int amount, Vector3 hitPoint)
