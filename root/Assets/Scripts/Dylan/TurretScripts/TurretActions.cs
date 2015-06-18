@@ -61,7 +61,7 @@ public class TurretActions : MonoBehaviour, TActions
                     }
                     break;
 
-<<<<<<< HEAD
+
                 case TurretStats.e_TurretType.e_AntiAir:
                      Vector3 spawnPos = new Vector3(GetComponentInParent<TurretStats>().barrelPos[0].position.x,
                                                     GetComponentInParent<TurretStats>().barrelPos[0].position.y,
@@ -85,8 +85,6 @@ public class TurretActions : MonoBehaviour, TActions
                     break;
 
 
-=======
->>>>>>> Eric/master
                 case TurretStats.e_TurretType.e_ShotGun:
                     foreach (Transform t_Barrel in GetComponentInParent<TurretStats>().barrelPos)
                     {
@@ -95,10 +93,6 @@ public class TurretActions : MonoBehaviour, TActions
                     break;
             }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Eric/master
             if(GetComponentInParent<TurretStats>().type == TurretStats.e_TurretType.e_AntiAir)
             {
                 Vector3 spawnPos = new Vector3(GetComponentInParent<TurretStats>().barrelPos[0].position.x,
@@ -122,10 +116,6 @@ public class TurretActions : MonoBehaviour, TActions
                 GetComponentInParent<TurretStats>().barrelPos[0].rotation);
             }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Eric/master
             if (GetComponentInParent<TurretStats>().m_Ammo == 0)
             {
                 GetComponentInParent<TurretStats>().isReloading = true;
