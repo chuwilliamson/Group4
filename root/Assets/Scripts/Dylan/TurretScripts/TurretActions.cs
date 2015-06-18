@@ -23,12 +23,9 @@ public class TurretActions : MonoBehaviour, TActions
 
     public void Reload()
     {
-        if (t_fsm.TurretActions["reload"] == true)
-        {
-            GetComponent<TurretStats>().m_Ammo = GetComponent<TurretStats>().m_maxAmmo;
-            GetComponent<TurretStats>().isReloading = false;
-            GetComponent<TurretStats>().turretView.GetComponent<FieldOfView>().isTargetInView = true;
-        }   
+        GetComponentInParent<TurretStats>().m_Ammo = GetComponentInParent<TurretStats>().m_maxAmmo;
+        GetComponentInParent<TurretStats>().isReloading = false;
+        GetComponentInParent<TurretStats>().turretView.GetComponent<FieldOfView>().isTargetInView = true;
     }
 
     public void t_State(TurretState state)
@@ -48,7 +45,8 @@ public class TurretActions : MonoBehaviour, TActions
     void t_Fire(TurretStats.e_TurretType type)
     {
         if (GetComponentInParent<TurretStats>().m_Ammo != 0 &&
-            GetComponentInParent<TurretStats>().turretView.GetComponent<FieldOfView>().isTargetInView == true)
+            GetComponentInParent<TurretStats>().turretView.GetComponent<FieldOfView>().isTargetInView == true &&
+            GetComponentInParent<TurretStats>().target.GetComponent<EnemyStats>().isShootable == true)
         {
             t_State(TurretState.shoot);
             GetComponentInParent<TurretStats>().bullet.GetComponent<BulletMove>().isFired = true;
@@ -63,6 +61,7 @@ public class TurretActions : MonoBehaviour, TActions
                     }
                     break;
 
+<<<<<<< HEAD
                 case TurretStats.e_TurretType.e_AntiAir:
                      Vector3 spawnPos = new Vector3(GetComponentInParent<TurretStats>().barrelPos[0].position.x,
                                                     GetComponentInParent<TurretStats>().barrelPos[0].position.y,
@@ -86,6 +85,8 @@ public class TurretActions : MonoBehaviour, TActions
                     break;
 
 
+=======
+>>>>>>> Eric/master
                 case TurretStats.e_TurretType.e_ShotGun:
                     foreach (Transform t_Barrel in GetComponentInParent<TurretStats>().barrelPos)
                     {
@@ -94,7 +95,10 @@ public class TurretActions : MonoBehaviour, TActions
                     break;
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Eric/master
             if(GetComponentInParent<TurretStats>().type == TurretStats.e_TurretType.e_AntiAir)
             {
                 Vector3 spawnPos = new Vector3(GetComponentInParent<TurretStats>().barrelPos[0].position.x,
@@ -118,7 +122,10 @@ public class TurretActions : MonoBehaviour, TActions
                 GetComponentInParent<TurretStats>().barrelPos[0].rotation);
             }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Eric/master
             if (GetComponentInParent<TurretStats>().m_Ammo == 0)
             {
                 GetComponentInParent<TurretStats>().isReloading = true;
@@ -143,7 +150,6 @@ public class TurretActions : MonoBehaviour, TActions
             GetComponentInParent<TurretStats>().turretView.GetComponent<FieldOfView>().isTargetInView == true)
         {
             t_State(TurretState.patrol);
-            Debug.Log("Hit Me");
             t_DistanceToTarget();
             transform.rotation = Quaternion.Lerp(transform.rotation, GetComponentInParent<TurretStats>().rotationToGoal, Time.deltaTime * GetComponentInParent<TurretStats>().rotationSpeed);
 
@@ -155,7 +161,6 @@ public class TurretActions : MonoBehaviour, TActions
 
         if (GetComponentInParent<TurretStats>().isReloading == true)
         {
-            Debug.Log("No Ammo");
             Reload();
         }
     }

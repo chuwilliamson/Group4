@@ -10,19 +10,29 @@ public class SpawnEnemy : MonoBehaviour
     public GameObject progess;
     private float m_Timer;
     public float  SpawnDelay;
+    public bool canSpawn;
+
+    int enemyCount = 0;
 
     int enemyCount = 0;
 
     void Start()
     {
+<<<<<<< HEAD
 
         m_Timer = 0;
         SpawnDelay = 3;
 
+=======
+        m_Timer = 0;
+        SpawnDelay = 3;
+        canSpawn = true;
+>>>>>>> Eric/master
     }
 
 	void Update ()
     {
+<<<<<<< HEAD
         m_Timer += Time.deltaTime;
 
         if (m_Timer >= SpawnDelay && enemyCount <= progess.GetComponent<LevelProgression>().numOfEnemies)
@@ -33,6 +43,9 @@ public class SpawnEnemy : MonoBehaviour
         }
 
         if (m_Timer >= SpawnDelay)
+=======
+        if (m_Timer >= SpawnDelay && canSpawn)
+>>>>>>> Eric/master
         {
             m_Timer = 0;
             int pos = Random.Range(0, spawnPoints.Length);

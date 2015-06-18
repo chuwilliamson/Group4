@@ -249,20 +249,26 @@ Prefab:
     - target: {fileID: 483112, guid: 57c806e5fb8b40143a37e27bab03b554, type: 2}
       propertyPath: m_RootOrder
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+=======
+>>>>>>> Eric/master
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13671988, guid: 57c806e5fb8b40143a37e27bab03b554, type: 2}
       propertyPath: m_IsTrigger
       value: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
       value: 0
 >>>>>>> Eric/master
 >>>>>>> 39207fe6139fa5620cfb47c8e02cd1a3e96b2cf7
+=======
+>>>>>>> Eric/master
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57c806e5fb8b40143a37e27bab03b554, type: 2}

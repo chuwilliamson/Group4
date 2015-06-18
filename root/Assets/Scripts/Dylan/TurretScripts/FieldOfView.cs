@@ -15,8 +15,8 @@ public class FieldOfView : MonoBehaviour
     public void OnTriggerExit(Collider c)
     {
         if (c.GetComponent<Stats>())
-            if (c.GetComponent<Stats>().isShootable == true)
-                isTargetInView = false;
+        if (c.GetComponent<Stats>().isShootable == true)
+            isTargetInView = false;
     }
 
 	// Use this for initialization
