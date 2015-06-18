@@ -20,9 +20,9 @@ public class SpawnEnemy : MonoBehaviour
 
         if (m_Timer >= SpawnDelay)
         {
+            m_Timer = 0;
             int pos = Random.Range(0, spawnPoints.Length);
             Instantiate(enemy, spawnPoints[pos].position, transform.rotation);
-            enemy.transform.localScale *= Random.Range(1f, 2f);
         }
 	}
 }
