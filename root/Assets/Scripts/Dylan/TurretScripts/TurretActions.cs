@@ -3,8 +3,10 @@ using System.Collections;
 
 public class TurretActions : MonoBehaviour, TActions
 {
+   
     protected static TurretActions t_instance;
     private TurretFSM t_fsm;
+    private float spreadRate = 2.1f;
 
     void Awake()
     {
@@ -19,7 +21,7 @@ public class TurretActions : MonoBehaviour, TActions
             GetComponent<TurretStats>().m_Ammo = GetComponent<TurretStats>().m_maxAmmo;
             GetComponent<TurretStats>().isReloading = false;
             GetComponent<TurretStats>().turretView.GetComponent<FieldOfView>().isTargetInView = true;
-        }   
+        }
     }
 
     public void t_State(TurretState state)
@@ -45,7 +47,7 @@ public class TurretActions : MonoBehaviour, TActions
             GetComponentInParent<TurretStats>().bullet.GetComponent<ProjectileFSM>().isFired = true;
             GetComponentInParent<TurretStats>().m_Ammo -= 1;
 
-            switch(type)
+            switch (type)
             {
                 case TurretStats.e_TurretType.e_MachineGun:
                     foreach (Transform t_Barrel in GetComponentInParent<TurretStats>().barrelPos)
@@ -57,12 +59,19 @@ public class TurretActions : MonoBehaviour, TActions
                 case TurretStats.e_TurretType.e_ShotGun:
                     foreach (Transform t_Barrel in GetComponentInParent<TurretStats>().barrelPos)
                     {
-                        Instantiate(GetComponentInParent<TurretStats>().bullet, t_Barrel.position, t_Barrel.rotation);
+                        // Spawn more bullets here.
+                        for (int i = 0; i < 10; i++)
+                        {
+                            Quaternion sSpread = new Quaternion(Random.Range(-spreadRate, spreadRate), // Spread for bullets
+                                Random.Range(-spreadRate, spreadRate), Random.Range(-spreadRate, spreadRate), 10);
+                            Instantiate(GetComponentInParent<TurretStats>().bullet, t_Barrel.position, t_Barrel.rotation * sSpread);
+                        }
+                       
                     }
                     break;
             }
 
-            if(GetComponentInParent<TurretStats>().type == TurretStats.e_TurretType.e_AntiAir)
+            if (GetComponentInParent<TurretStats>().type == TurretStats.e_TurretType.e_AntiAir)
             {
                 Vector3 spawnPos = new Vector3(GetComponentInParent<TurretStats>().barrelPos[0].position.x,
                                GetComponentInParent<TurretStats>().barrelPos[0].position.y,
@@ -81,7 +90,7 @@ public class TurretActions : MonoBehaviour, TActions
                 }
 
                 Instantiate(GetComponentInParent<TurretStats>().bullet,
-                spawnPos,  
+                spawnPos,
                 GetComponentInParent<TurretStats>().barrelPos[0].rotation);
             }
 
